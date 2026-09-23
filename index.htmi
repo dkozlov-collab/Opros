@@ -18,269 +18,690 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Форма передачи заявки — ТС ПиОТ</title>
+<title>LIFE PAY — Форма передачи заявки ТС ПиОТ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-       background:#f4f5f7;margin:0;padding:20px;color:#333}
-  .container{max-width:650px;background:#fff;padding:30px;border-radius:12px;
-             box-shadow:0 4px 12px rgba(0,0,0,.08);margin:0 auto}
-  h2{text-align:center;color:#1a1a1a;margin:0 0 24px}
-  .form-group{margin-bottom:18px}
-  label{display:block;font-weight:500;margin-bottom:6px;font-size:14px}
-  input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
-    width:100%;padding:10px 12px;border:1px solid #dcdfe6;border-radius:6px;
-    font-size:14px;transition:border-color .2s;font-family:inherit}
-  input:focus,select:focus,textarea:focus{border-color:#409eff;outline:none}
-  input:invalid:not(:placeholder-shown){border-color:#e53e3e}
-  textarea{resize:vertical;min-height:80px}
-  .sub-block{background:#f8fafc;border-left:3px solid #3b82f6;padding:12px 15px;
-             border-radius:6px;margin:10px 0 15px}
-  .sub-block .kkt-title{font-size:13px;font-weight:600;color:#3b82f6;margin-bottom:10px}
-  .checkbox-group{display:flex;align-items:center;gap:10px;margin-top:6px}
-  .checkbox-group input[type=checkbox]{width:18px;height:18px;flex:none}
-  button{width:100%;background:#2b6cb0;color:#fff;border:none;padding:12px;font-size:16px;
-         font-weight:600;border-radius:6px;cursor:pointer;transition:background .2s;margin-top:10px}
-  button:hover{background:#2c5282}
-  button:disabled{background:#a0aec0;cursor:not-allowed}
-  .btn-secondary{background:#718096;margin-top:15px}
-  .btn-secondary:hover{background:#4a5568}
-  #success-message{display:none;text-align:center;margin-top:20px}
-  .success-text{color:#38a169;font-weight:600;font-size:18px;margin-bottom:15px}
-  .error-text{color:#e53e3e;font-size:14px;margin-top:10px;display:none}
-  .hint{font-size:12px;color:#718096;margin-top:4px}
+:root{
+  --bg:#0f1623;
+  --card:#1c2537;
+  --card2:#222d42;
+  --blue:#2563eb;
+  --blue-h:#4f87ff;
+  --border:rgba(255,255,255,.1);
+  --border-active:rgba(79,135,255,.55);
+  --txt:#e8edf5;
+  --muted:#8fa0be;
+  --muted2:#5a6e8a;
+  --ok:#22c55e;
+  --err:#f43f5e;
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  overflow-x:hidden;
+}
+
+/* сетка */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.05) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+
+/* блобы */
+.blob{position:fixed;border-radius:50%;filter:blur(140px);z-index:0;pointer-events:none}
+.b1{width:580px;height:580px;background:#1a3a8f;top:-220px;left:-180px;opacity:.38;animation:bf1 22s ease-in-out infinite}
+.b2{width:480px;height:480px;background:#102d6e;bottom:-180px;right:-130px;opacity:.32;animation:bf2 28s ease-in-out infinite}
+.b3{width:320px;height:320px;background:#1a2f6e;top:38%;left:52%;opacity:.2;animation:bf3 32s ease-in-out infinite}
+@keyframes bf1{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,55px)}}
+@keyframes bf2{0%,100%{transform:translate(0,0)}50%{transform:translate(-55px,-45px)}}
+@keyframes bf3{0%,100%{transform:translate(0,0)}50%{transform:translate(-65px,38px)}}
+
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:44px 20px 80px}
+
+/* ── логотип ── */
+.brand{text-align:center;margin-bottom:36px}
+.logo-wrap{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:22px 54px;border-radius:20px;
+  background:linear-gradient(135deg,#1c2537 0%,#1e2e4a 100%);
+  border:1px solid rgba(79,135,255,.28);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 22px 44px rgba(0,0,0,.45),0 0 70px rgba(37,99,235,.1);
+  position:relative;overflow:hidden;
+}
+.logo-wrap::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.07),transparent 60%);pointer-events:none}
+.logo-wrap::after{
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.07),transparent);
+  animation:sheen 5s ease-in-out infinite;
+}
+@keyframes sheen{0%,55%{left:-80%}100%{left:160%}}
+._logo_img{display:block;position:relative;z-index:1;width:clamp(145px,36vw,205px);height:auto}
+.tagline{margin-top:14px;font-size:11.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted2)}
+
+/* ── заголовок ── */
+.form-header{text-align:center;margin-bottom:28px}
+.form-header h1{font-size:clamp(20px,4vw,26px);font-weight:800;color:var(--txt);letter-spacing:-.4px}
+.form-header p{margin-top:7px;font-size:13.5px;color:var(--muted)}
+
+/* ══════════════════════════════════════
+   GLASS-КНОПКА — стиль _btnGlass_
+══════════════════════════════════════ */
+.btn-glass{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 28px;border-radius:99px;
+  font:600 14px/1 'Inter',sans-serif;
+  color:rgba(255,255,255,.92);
+  letter-spacing:.2px;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 4px 20px rgba(0,0,0,.25),
+    0 1px 3px rgba(0,0,0,.3);
+  cursor:pointer;
+  transition:all .22s ease;
+  position:relative;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.btn-glass::before{
+  content:"";position:absolute;inset:0;border-radius:99px;
+  background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.0) 60%);
+  pointer-events:none;
+}
+.btn-glass::after{
+  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent);
+  transition:left .5s ease;pointer-events:none;
+}
+.btn-glass:hover{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 8px 28px rgba(0,0,0,.3),
+    0 0 0 1px rgba(255,255,255,.08);
+  transform:translateY(-1px);
+  color:#fff;
+}
+.btn-glass:hover::after{left:130%}
+.btn-glass:active{transform:translateY(0);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 2px 8px rgba(0,0,0,.25)}
+
+/* варианты */
+.btn-glass.blue{
+  background:rgba(37,99,235,.3);
+  border-color:rgba(79,135,255,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 4px 20px rgba(37,99,235,.25),0 0 0 1px rgba(37,99,235,.15);
+}
+.btn-glass.blue:hover{
+  background:rgba(37,99,235,.45);
+  border-color:rgba(79,135,255,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 28px rgba(37,99,235,.4),0 0 20px rgba(79,135,255,.2);
+}
+.btn-glass.green{
+  background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 4px 20px rgba(34,197,94,.2);
+}
+.btn-glass.green:hover{background:rgba(34,197,94,.3);border-color:rgba(34,197,94,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 28px rgba(34,197,94,.35)}
+.btn-glass.red{
+  background:rgba(244,63,94,.18);border-color:rgba(244,63,94,.38);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 4px 20px rgba(244,63,94,.18);
+}
+.btn-glass.red:hover{background:rgba(244,63,94,.28);border-color:rgba(244,63,94,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 28px rgba(244,63,94,.3)}
+
+/* ════════════════════════════════
+   СТАТУС ЗАЯВКИ
+════════════════════════════════ */
+.status-section{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px 22px;margin-bottom:16px;
+}
+.section-label{
+  font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.section-label::after{content:"";flex:1;height:1px;background:rgba(79,135,255,.15)}
+
+.status-pills{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* скрытые радио */
+.status-pills input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+
+/* каждая кнопка — btn-glass с нужным цветом */
+.s-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 20px;border-radius:99px;
+  font:600 13.5px/1 'Inter',sans-serif;
+  cursor:pointer;transition:all .22s ease;
+  position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 3px 12px rgba(0,0,0,.2);
+  white-space:nowrap;user-select:none;
+}
+.s-btn::before{content:"";position:absolute;inset:0;border-radius:99px;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);pointer-events:none}
+.s-btn::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.1),transparent);transition:left .45s ease;pointer-events:none}
+.s-btn:hover::after{left:130%}
+
+.s-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:all .2s}
+
+/* Новая — синяя */
+.s-btn[data-s=new]{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.25);color:#93c5fd}
+.s-btn[data-s=new]:hover{background:rgba(59,130,246,.25);border-color:rgba(59,130,246,.45);transform:translateY(-1px)}
+.s-btn[data-s=new] .s-dot{background:#60a5fa}
+.s-btn[data-s=new].active{
+  background:rgba(59,130,246,.28);border-color:#3b82f6;color:#bfdbfe;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 0 3px rgba(59,130,246,.2),0 6px 20px rgba(59,130,246,.3);
+}
+
+/* В работе — СИНИЙ (изменено) */
+.s-btn[data-s=work]{background:rgba(37,99,235,.18);border-color:rgba(79,135,255,.3);color:#93c5fd}
+.s-btn[data-s=work]:hover{background:rgba(37,99,235,.28);border-color:rgba(79,135,255,.5);transform:translateY(-1px)}
+.s-btn[data-s=work] .s-dot{background:#4f87ff;animation:blink 1.4s ease-in-out infinite}
+.s-btn[data-s=work].active{
+  background:rgba(37,99,235,.32);border-color:#4f87ff;color:#bfdbfe;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 0 3px rgba(37,99,235,.22),0 6px 20px rgba(37,99,235,.35);
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* Выполнена — зелёная */
+.s-btn[data-s=done]{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.25);color:#86efac}
+.s-btn[data-s=done]:hover{background:rgba(34,197,94,.24);border-color:rgba(34,197,94,.45);transform:translateY(-1px)}
+.s-btn[data-s=done] .s-dot{background:#4ade80}
+.s-btn[data-s=done].active{
+  background:rgba(34,197,94,.25);border-color:#22c55e;color:#bbf7d0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 0 3px rgba(34,197,94,.2),0 6px 20px rgba(34,197,94,.28);
+}
+
+/* Не выполнена — красная */
+.s-btn[data-s=fail]{background:rgba(244,63,94,.14);border-color:rgba(244,63,94,.25);color:#fda4af}
+.s-btn[data-s=fail]:hover{background:rgba(244,63,94,.24);border-color:rgba(244,63,94,.45);transform:translateY(-1px)}
+.s-btn[data-s=fail] .s-dot{background:#fb7185}
+.s-btn[data-s=fail].active{
+  background:rgba(244,63,94,.24);border-color:#f43f5e;color:#fecdd3;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 0 3px rgba(244,63,94,.2),0 6px 20px rgba(244,63,94,.28);
+}
+
+/* текущий статус справа */
+.cur-status{
+  margin-left:auto;display:inline-flex;align-items:center;gap:7px;
+  padding:7px 16px;border-radius:99px;font-size:12.5px;font-weight:700;
+  backdrop-filter:blur(10px);border:1px solid transparent;transition:all .3s;
+  flex-shrink:0;
+}
+.cur-status.s-new {background:rgba(59,130,246,.2);border-color:rgba(59,130,246,.35);color:#bfdbfe}
+.cur-status.s-work{background:rgba(37,99,235,.22);border-color:rgba(79,135,255,.38);color:#bfdbfe}
+.cur-status.s-done{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.35);color:#bbf7d0}
+.cur-status.s-fail{background:rgba(244,63,94,.18);border-color:rgba(244,63,94,.35);color:#fecdd3}
+
+/* ── мета ── */
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.meta-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:16px 18px;transition:border-color .2s;
+}
+.meta-card:focus-within{border-color:var(--border-active)}
+.meta-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.meta-card input{width:100%;background:transparent;border:none;padding:0;font:700 15px/1 'Inter',sans-serif;color:var(--blue-h);caret-color:var(--blue)}
+.meta-card input:focus{outline:none}
+.mini{
+  background:rgba(37,99,235,.15);color:var(--blue-h);border:none;
+  font:600 10px/1 'Inter',sans-serif;letter-spacing:.8px;
+  padding:4px 10px;border-radius:99px;cursor:pointer;width:auto;margin:0;box-shadow:none;transition:background .18s;
+}
+.mini:hover{background:rgba(37,99,235,.28);transform:none;box-shadow:none}
+
+/* ── секции ── */
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:14px}
+.section-title{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue-h);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:"";flex:1;height:1px;background:rgba(79,135,255,.18)}
+
+/* ── поля ── */
+.fg{margin-bottom:14px}.fg:last-child{margin-bottom:0}
+.fg label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:7px}
+.req{color:#f43f5e}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+input[type=text],input[type=email],input[type=tel],
+input[type=number],input[type=datetime-local],select,textarea{
+  width:100%;padding:11px 14px;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;
+  font:500 14px/1.4 'Inter',sans-serif;color:var(--txt);
+  transition:border-color .2s,background .2s,box-shadow .2s;-webkit-appearance:none;
+}
+input::placeholder,textarea::placeholder{color:var(--muted2)}
+input:focus,select:focus,textarea:focus{
+  outline:none;background:rgba(37,99,235,.07);
+  border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.16);
+}
+input[type=datetime-local]{color-scheme:dark}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234f87ff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;
+}
+select option{background:#1c2537;color:var(--txt)}
+textarea{resize:vertical;min-height:96px}
+.hint{font-size:11.5px;color:var(--muted2);margin-top:5px}
+
+/* тогглы */
+.toggle{display:flex;gap:8px}
+.toggle input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.toggle label{
+  flex:1;text-align:center;cursor:pointer;padding:10px 0;
+  font-size:13.5px;font-weight:600;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;transition:all .2s;margin:0;
+}
+.toggle label:hover{color:var(--txt);border-color:rgba(255,255,255,.18)}
+.toggle input[type=radio]:checked+label{
+  background:linear-gradient(135deg,#1d4ed8,#2563eb);
+  border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.38);
+}
+
+/* кассы */
+.kkt-block{background:rgba(255,255,255,.03);border:1px solid rgba(79,135,255,.14);border-radius:12px;padding:16px;margin-top:12px;animation:fadein .22s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.kkt-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.14);color:var(--blue-h);font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:99px;margin-bottom:12px}
+
+/* адрес выезда */
+.visit-block{margin-top:10px;padding:14px;border-radius:12px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.18);animation:fadein .22s ease}
+
+/* кнопка отправки — тоже glass-стиль */
+.btn-submit{
+  width:100%;padding:15px 28px;margin-top:6px;
+  font:700 15.5px/1 'Inter',sans-serif;letter-spacing:.3px;
+  color:rgba(255,255,255,.95);border:1px solid rgba(79,135,255,.45);
+  border-radius:99px;cursor:pointer;
+  background:rgba(37,99,235,.35);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 28px rgba(37,99,235,.3),0 0 0 1px rgba(37,99,235,.15);
+  transition:all .22s ease;position:relative;overflow:hidden;
+}
+.btn-submit::before{content:"";position:absolute;inset:0;border-radius:99px;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 60%);pointer-events:none}
+.btn-submit::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent);transition:left .5s ease;pointer-events:none}
+.btn-submit:hover{background:rgba(37,99,235,.5);border-color:rgba(79,135,255,.65);transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 34px rgba(37,99,235,.45),0 0 0 1px rgba(79,135,255,.25)}
+.btn-submit:hover::after{left:130%}
+.btn-submit:active{transform:translateY(0)}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.btn-reset{
+  width:100%;padding:12px;margin-top:10px;
+  font:600 14px/1 'Inter',sans-serif;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:99px;cursor:pointer;
+  backdrop-filter:blur(8px);transition:all .2s;
+}
+.btn-reset:hover{color:var(--txt);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.08);transform:none;box-shadow:none}
+
+/* ошибка */
+.error-box{display:none;margin-top:12px;padding:12px 16px;border-radius:10px;background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.28);color:#fda4af;font-size:13.5px;font-weight:600}
+
+/* успех */
+#success-message{display:none;text-align:center;padding:20px 0}
+.check-wrap{width:78px;height:78px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff;box-shadow:0 12px 28px rgba(34,197,94,.32);animation:fadein .4s ease}
+.success-title{font-size:22px;font-weight:800;color:var(--txt);margin-bottom:8px}
+.success-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.7}
+.success-no{color:var(--blue-h);font-weight:700}
+
+@media(max-width:580px){
+  .meta,.row2{grid-template-columns:1fr}
+  .logo-wrap{padding:18px 32px}
+  .section,.status-section{padding:18px}
+  .page{padding:30px 14px 60px}
+  .status-pills{gap:7px}
+  .cur-status{margin-left:0;width:100%;justify-content:center}
+  .s-btn{padding:9px 15px;font-size:12.5px}
+}
 </style>
 </head>
 <body>
-<div class="container">
-  <h2>Форма передачи заявки</h2>
 
-  <form id="iotForm" novalidate-off>
-    <div class="form-group">
-      <label for="lpEmployee">ФИО сотрудника LP *</label>
-      <input type="text" id="lpEmployee" name="lpEmployee" required autocomplete="name"
-             placeholder="Иванов Иван Иванович">
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<div class="page">
+
+  <!-- ЛОГОТИП -->
+  <div class="brand">
+    <div class="logo-wrap">
+      <img class="_logo_img" alt="LIFE PAY"
+        src="data:image/svg+xml,%3csvg%20overflow='visible'%20style='display:%20block;'%20viewBox='0%200%20142.001%2023.585'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%3e%3crect%20x='20.3565'%20y='0.000155866'%20width='2.97904'%20height='18.619'%20fill='white'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M88.9949%200.125808C94.047%200.18981%2098.1228%204.30518%2098.1228%209.3725L98.1221%209.49194C98.0581%2014.5441%2093.9427%2018.6198%2088.8754%2018.6199L88.7559%2018.6192C86.3841%2018.5891%2084.2276%2017.6661%2082.6069%2016.171V23.585H79.6279V8.57886C80.0367%203.84942%2084.04%200.125001%2088.8754%200.125001L88.9949%200.125808ZM88.8754%203.10398C85.4135%203.10398%2082.6069%205.91055%2082.6069%209.3725C82.6069%2012.8344%2085.4135%2015.6409%2088.8754%2015.6409C92.3373%2015.6408%2095.1438%2012.8344%2095.1438%209.3725C95.1438%205.91059%2092.3373%203.10403%2088.8754%203.10398Z'%20fill='white'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M111.241%200.125808C116.184%200.188434%20120.195%204.11802%20120.389%209.02858H120.396V18.5862H117.417V16.21C115.763%2017.7395%20113.552%2018.6745%20111.121%2018.6745L111.001%2018.6737C105.974%2018.61%20101.911%2014.5468%20101.847%209.51965L101.847%209.3998C101.847%204.27751%20105.999%200.125014%20111.121%200.125001L111.241%200.125808ZM111.121%203.10398C107.644%203.10399%20104.826%205.92279%20104.826%209.3998C104.826%2012.8768%20107.644%2015.6955%20111.121%2015.6955C114.598%2015.6955%20117.417%2012.8768%20117.417%209.3998C117.417%205.9228%20114.598%203.10401%20111.121%203.10398Z'%20fill='white'/%3e%3cpath%20d='M2.97904%2010.4267C2.97904%2013.3059%205.31313%2015.64%208.19237%2015.64C9.92774%2015.64%2011.4651%2014.7921%2012.4127%2013.488L15.3243%2014.4608C13.9168%2016.9437%2011.2503%2018.619%208.19237%2018.619C3.66785%2018.619%200%2014.9512%200%2010.4267V0H2.97904V10.4267Z'%20fill='white'/%3e%3cpath%20d='M128.72%206.20621C128.72%209.05103%20131.025%2011.3573%20133.87%2011.3576C136.715%2011.3576%20139.021%209.05117%20139.021%206.20621V0.000155866H142.001V6.20621L142%206.31168C141.944%2010.7534%20138.325%2014.3371%20133.87%2014.3371C129.415%2014.3368%20125.797%2010.7533%20125.741%206.31168L125.74%206.20621V0.000155866H128.72V6.20621Z'%20fill='white'/%3e%3cpath%20d='M56.3798%200.000155866C61.502%200.000155866%2065.655%204.15242%2065.6552%209.27457C65.6552%209.77205%2065.6134%2010.3227%2065.538%2010.799H65.3485V10.8H50.2724C50.9543%2013.5397%2053.429%2015.5703%2056.3798%2015.5705C58.1447%2015.5705%2059.7406%2014.8439%2060.8837%2013.674L63.8056%2014.8332C62.1138%2017.0895%2059.417%2018.55%2056.3798%2018.55C51.2576%2018.5498%2047.1054%2014.3968%2047.1054%209.27457C47.1055%204.15253%2051.2577%200.000333086%2056.3798%200.000155866ZM56.3798%202.97965C53.4037%202.9798%2050.9124%205.04505%2050.2558%207.82047H62.5048C61.8482%205.04491%2059.356%202.97965%2056.3798%202.97965Z'%20fill='white'/%3e%3cpath%20d='M37.4865%200.000155866C40.5444%200.000185923%2043.2109%201.67553%2044.6184%204.15836L41.7073%205.13102C40.7597%203.82692%2039.2219%202.97967%2037.4865%202.97965C34.7325%202.97965%2032.4782%205.11493%2032.2873%207.82047H39.8459V10.799H32.2727V18.6193H29.2942V8.19254C29.2942%203.66804%2032.962%200.000155866%2037.4865%200.000155866Z'%20fill='white'/%3e%3cpath%20d='M128.967%2015.6405C128.967%2016.2742%20129.093%2016.902%20129.339%2017.4883C129.584%2018.0746%20129.944%2018.6083%20130.398%2019.0585C130.853%2019.5087%20131.393%2019.8666%20131.989%2020.111C132.585%2020.3554%20133.224%2020.4814%20133.87%2020.4814C134.516%2020.4814%20135.155%2020.3554%20135.751%2020.111C136.347%2019.8666%20136.888%2019.5087%20137.342%2019.0585C137.797%2018.6083%20138.157%2018.0746%20138.402%2017.4883C138.647%2016.902%20138.773%2016.2742%20138.773%2015.6405H141.752C141.752%2016.6695%20141.548%2017.6881%20141.15%2018.6379C140.753%2019.5877%20140.171%2020.4497%20139.439%2021.1752C138.706%2021.9006%20137.837%2022.4754%20136.882%2022.8672C135.927%2023.259%20134.903%2023.4605%20133.87%2023.4605C132.837%2023.4605%20131.814%2023.259%20130.859%2022.8672C129.903%2022.4754%20129.035%2021.9006%20128.302%2021.1752C127.569%2020.4497%20126.988%2019.5877%20126.59%2018.6379C126.193%2017.6881%20125.988%2016.6695%20125.988%2015.6405H128.967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e">
+    </div>
+    <div class="tagline">Форма передачи заявки · ТС ПиОТ</div>
+  </div>
+
+  <div class="form-header">
+    <h1>Передача заявки</h1>
+    <p>Заполните форму — данные автоматически запишутся в таблицу</p>
+  </div>
+
+  <!-- СТАТУС -->
+  <div class="status-section">
+    <div class="section-label">Статус заявки</div>
+    <div class="status-pills">
+
+      <label class="s-btn" data-s="new">
+        <input type="radio" name="ticketStatus" value="Новая">
+        <span class="s-dot"></span>Новая
+      </label>
+
+      <label class="s-btn" data-s="work">
+        <input type="radio" name="ticketStatus" value="В работе">
+        <span class="s-dot"></span>В работе
+      </label>
+
+      <label class="s-btn" data-s="done">
+        <input type="radio" name="ticketStatus" value="Выполнена">
+        <span class="s-dot"></span>Выполнена
+      </label>
+
+      <label class="s-btn" data-s="fail">
+        <input type="radio" name="ticketStatus" value="Не выполнена">
+        <span class="s-dot"></span>Не выполнена
+      </label>
+
+      <div class="cur-status s-new" id="curStatus">
+        <span class="s-dot" style="width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.75;flex-shrink:0"></span>
+        <span id="curTxt">Новая</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- МЕТА -->
+  <div class="meta">
+    <div class="meta-card">
+      <div class="meta-lbl">№ заявки</div>
+      <input type="text" id="ticketNo" placeholder="Введите номер" autocomplete="off">
+    </div>
+    <div class="meta-card">
+      <div class="meta-lbl">
+        Дата / время
+        <button class="mini" type="button" id="btnNow">↺ СЕЙЧАС</button>
+      </div>
+      <input type="datetime-local" id="ticketDate">
+    </div>
+  </div>
+
+  <form id="iotForm">
+
+    <!-- Блок 1: Параметры -->
+    <div class="section">
+      <div class="section-title">Параметры заявки</div>
+      <div class="row2">
+        <div class="fg">
+          <label>Приоритет <span class="req">*</span></label>
+          <select name="priority" required>
+            <option value="" disabled selected>Выберите</option>
+            <option>Низкий</option><option>Средний</option>
+            <option>Высокий</option><option>Критический</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Орг. выполняет заявку <span class="req">*</span></label>
+          <input type="text" name="executorOrg" required placeholder="Название организации">
+        </div>
+      </div>
+      <div class="fg">
+        <label>ФИО сотрудника ??? <span class="req">*</span></label>
+        <input type="text" name="lpEmployee" required autocomplete="name" placeholder="Иванов Иван Иванович">
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="priority">Приоритет *</label>
-      <select id="priority" name="priority" required>
-        <option value="" disabled selected>Выберите приоритет</option>
-        <option>Низкий</option><option>Средний</option>
-        <option>Высокий</option><option>Критический</option>
-      </select>
+    <!-- Блок 2: Клиент -->
+    <div class="section">
+      <div class="section-title">Данные клиента</div>
+      <div class="row2">
+        <div class="fg">
+          <label>Организация (ООО/ИП) <span class="req">*</span></label>
+          <input type="text" name="orgName" required placeholder="ООО «Ромашка»">
+        </div>
+        <div class="fg">
+          <label>ИНН <span class="req">*</span></label>
+          <input type="text" name="inn" required inputmode="numeric" pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
+          <div class="hint">10 цифр — юрлицо · 12 — ИП</div>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Контактное лицо (ФИО) <span class="req">*</span></label>
+        <input type="text" name="contactName" required placeholder="Петров Пётр Петрович">
+      </div>
+      <div class="row2">
+        <div class="fg">
+          <label>Телефон <span class="req">*</span></label>
+          <input type="tel" name="phone" required inputmode="tel" placeholder="+7 900 123-45-67">
+        </div>
+        <div class="fg">
+          <label>E-Mail <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="client@example.ru">
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="orgName">Наименование организации (ООО/ИП) *</label>
-      <input type="text" id="orgName" name="orgName" required placeholder="ООО «Ромашка»">
-    </div>
-
-    <div class="form-group">
-      <label for="inn">ИНН *</label>
-      <input type="text" id="inn" name="inn" required inputmode="numeric"
-             pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
-      <div class="hint">10 цифр для юрлица, 12 — для ИП</div>
-    </div>
-
-    <div class="form-group">
-      <label for="contactName">Контактное лицо (ФИО) *</label>
-      <input type="text" id="contactName" name="contactName" required placeholder="Петров Пётр Петрович">
-    </div>
-
-    <div class="form-group">
-      <label for="phone">Телефон *</label>
-      <input type="tel" id="phone" name="phone" required inputmode="tel"
-             autocomplete="tel" placeholder="+7 900 123-45-67">
-    </div>
-
-    <div class="form-group">
-      <label for="email">E-Mail *</label>
-      <input type="email" id="email" name="email" required autocomplete="email"
-             placeholder="client@example.ru">
-    </div>
-
-    <div class="form-group">
-      <label for="cashCount">Кол-во касс для настройки ТС ПиОТ *</label>
-      <input type="number" id="cashCount" name="cashCount" min="1" max="20" value="1" required>
-      <div class="hint">Поля по каждой кассе появятся ниже автоматически</div>
+    <!-- Блок 3: Кассы -->
+    <div class="section">
+      <div class="section-title">Кассовое оборудование</div>
+      <div class="fg">
+        <label>Кол-во касс для настройки ТС ПиОТ <span class="req">*</span></label>
+        <input type="number" id="cashCount" name="cashCount" min="1" max="20" value="1" required>
+        <div class="hint">Блоки РНМ / ЗН ККТ / ФН / Модель появятся ниже</div>
+      </div>
       <div id="kktContainer"></div>
     </div>
 
-    <div class="form-group">
-      <label for="needVisitSelect">Нужен выезд *</label>
-      <select id="needVisitSelect" name="needVisit" required>
-        <option value="нет" selected>нет</option>
-        <option value="да">да</option>
-      </select>
-      <div id="visitAddressBlock" class="sub-block" style="display:none">
-        <label for="visitAddress">Адрес выезда *</label>
-        <input type="text" id="visitAddress" name="visitAddress" placeholder="Город, улица, дом, офис">
+    <!-- Блок 4: Допы -->
+    <div class="section">
+      <div class="section-title">Дополнительно</div>
+
+      <div class="fg">
+        <label>Нужен выезд <span class="req">*</span></label>
+        <div class="toggle">
+          <input type="radio" id="vNo" name="needVisit" value="нет" checked><label for="vNo">Нет</label>
+          <input type="radio" id="vYes" name="needVisit" value="да"><label for="vYes">Да</label>
+        </div>
+        <div id="visitBlock" class="visit-block" style="display:none">
+          <div class="fg" style="margin-bottom:0">
+            <label>Адрес выезда <span class="req">*</span></label>
+            <input type="text" id="visitAddr" name="visitAddress" placeholder="Город, улица, дом, офис">
+          </div>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Зарегистрирован в ЕСП <span class="req">*</span></label>
+        <div class="toggle">
+          <input type="radio" id="eNo" name="espRegistered" value="нет" checked><label for="eNo">Нет</label>
+          <input type="radio" id="eYes" name="espRegistered" value="да"><label for="eYes">Да</label>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Есть ли КЭП <span class="req">*</span></label>
+        <div class="toggle">
+          <input type="radio" id="kNo" name="hasKep" value="нет" checked><label for="kNo">Нет</label>
+          <input type="radio" id="kYes" name="hasKep" value="да"><label for="kYes">Да</label>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Есть ли Wi-Fi</label>
+        <div class="toggle">
+          <input type="radio" id="wNo" name="hasWifi" value="нет" checked><label for="wNo">Нет</label>
+          <input type="radio" id="wYes" name="hasWifi" value="да"><label for="wYes">Да</label>
+        </div>
+      </div>
+
+      <div class="fg" style="margin-bottom:0">
+        <label>Комментарий</label>
+        <textarea name="comment" placeholder="Дополнительная информация..."></textarea>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="hasKep">Есть ли КЭП *</label>
-      <select id="hasKep" name="hasKep" required>
-        <option value="" disabled selected>Выберите</option>
-        <option value="да">да</option>
-        <option value="нет">нет</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <div class="checkbox-group">
-        <input type="checkbox" id="espRegistered" name="espRegistered">
-        <label for="espRegistered" style="margin:0">Зарегистрирован в ЕСП</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="checkbox-group">
-        <input type="checkbox" id="hasWifi" name="hasWifi">
-        <label for="hasWifi" style="margin:0">Есть Wi-Fi</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="comment">Комментарий</label>
-      <textarea id="comment" name="comment" placeholder="Дополнительная информация..."></textarea>
-    </div>
-
-    <button type="submit" id="submitBtn">Отправить заявку</button>
-    <div class="error-text" id="errorText"></div>
+    <button type="submit" class="btn-submit" id="submitBtn">Отправить заявку →</button>
+    <div class="error-box" id="errorBox"></div>
   </form>
 
+  <!-- Успех -->
   <div id="success-message">
-    <div class="success-text">Заявка отправлена и записана в таблицу</div>
-    <button type="button" class="btn-secondary" id="resetBtn">Создать новую заявку</button>
+    <div class="check-wrap">✓</div>
+    <div class="success-title">Заявка отправлена!</div>
+    <div class="success-sub">Номер: <span class="success-no" id="sentNo"></span><br>Данные записаны в таблицу</div>
+    <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
+
 </div>
 
 <script>
-// ====== НАСТРОЙКА: URL веб-приложения Google Apps Script (…/exec) ======
-const SCRIPT_URL = ''; // ← вставь сюда https://script.google.com/macros/s/.../exec
+/* ── НАСТРОЙКА ── */
+const SCRIPT_URL = ''; // ← https://script.google.com/macros/s/.../exec
 
-const form        = document.getElementById('iotForm');
-const btn         = document.getElementById('submitBtn');
-const errorText   = document.getElementById('errorText');
-const cashCount   = document.getElementById('cashCount');
-const kktBox      = document.getElementById('kktContainer');
-const visitSelect = document.getElementById('needVisitSelect');
-const visitBlock  = document.getElementById('visitAddressBlock');
-const visitInput  = document.getElementById('visitAddress');
+const form      = document.getElementById('iotForm');
+const submitBtn = document.getElementById('submitBtn');
+const errorBox  = document.getElementById('errorBox');
+const cashCount = document.getElementById('cashCount');
+const kktBox    = document.getElementById('kktContainer');
+const vBlock    = document.getElementById('visitBlock');
+const vAddr     = document.getElementById('visitAddr');
+const noInput   = document.getElementById('ticketNo');
+const dtInput   = document.getElementById('ticketDate');
+const curStatus = document.getElementById('curStatus');
+const curTxt    = document.getElementById('curTxt');
 
-/* --- Блоки ККТ по количеству касс --- */
-function kktTemplate(i){
-  return `<div class="sub-block kkt-block">
-    <div class="kkt-title">Касса №${i}</div>
-    <div class="form-group"><label>РНМ</label>
-      <input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
-    <div class="form-group"><label>ЗН ККТ</label>
-      <input type="text" data-f="znKkt" placeholder="Заводской номер ККТ"></div>
-    <div class="form-group"><label>ФН</label>
-      <input type="text" data-f="fn" inputmode="numeric" placeholder="Номер фискального накопителя"></div>
-    <div class="form-group" style="margin-bottom:0"><label>Модель ККТ</label>
-      <input type="text" data-f="modelKkt" placeholder="Например: ПТК MSPOS-K"></div>
-  </div>`;
+/* статус */
+const SM = {
+  new :{cls:'s-new', txt:'Новая'},
+  work:{cls:'s-work',txt:'В работе'},
+  done:{cls:'s-done',txt:'Выполнена'},
+  fail:{cls:'s-fail',txt:'Не выполнена'}
+};
+function activateStatus(key){
+  document.querySelectorAll('.s-btn').forEach(b=>b.classList.remove('active'));
+  const pill = document.querySelector(`.s-btn[data-s="${key}"]`);
+  if(pill){ pill.classList.add('active'); pill.querySelector('input').checked=true; }
+  const m = SM[key];
+  curStatus.className='cur-status '+m.cls;
+  curTxt.textContent=m.txt;
 }
+document.querySelectorAll('.s-btn').forEach(pill=>{
+  pill.addEventListener('click',()=>activateStatus(pill.dataset.s));
+});
+activateStatus('new');
+
+/* дата */
+const pad = n=>String(n).padStart(2,'0');
+function setNow(){
+  const d=new Date();
+  dtInput.value=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+function fmtDt(v){
+  if(!v)return'';
+  const[dt,tm]=v.split('T'),[y,m,d]=dt.split('-');
+  return`${d}.${m}.${y} ${tm}`;
+}
+document.getElementById('btnNow').addEventListener('click',setNow);
+
+/* кассы */
+const kktTpl=i=>`<div class="kkt-block">
+  <div class="kkt-badge">⌨ Касса №${i}</div>
+  <div class="row2">
+    <div class="fg"><label>РНМ</label><input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
+    <div class="fg"><label>ЗН ККТ</label><input type="text" data-f="znKkt" placeholder="Заводской номер"></div>
+  </div>
+  <div class="row2" style="margin-top:10px">
+    <div class="fg"><label>ФН</label><input type="text" data-f="fn" inputmode="numeric" placeholder="Номер ФН"></div>
+    <div class="fg"><label>Модель ККТ</label><input type="text" data-f="modelKkt" placeholder="ПТК MSPOS-K"></div>
+  </div>
+</div>`;
 function renderKkt(){
-  const n = Math.min(20, Math.max(1, parseInt(cashCount.value, 10) || 1));
-  let blocks = kktBox.querySelectorAll('.kkt-block');
-  while (blocks.length > n){ blocks[blocks.length-1].remove(); blocks = kktBox.querySelectorAll('.kkt-block'); }
-  for (let i = blocks.length; i < n; i++) kktBox.insertAdjacentHTML('beforeend', kktTemplate(i+1));
+  const n=Math.min(20,Math.max(1,parseInt(cashCount.value,10)||1));
+  let bl=kktBox.querySelectorAll('.kkt-block');
+  while(bl.length>n){bl[bl.length-1].remove();bl=kktBox.querySelectorAll('.kkt-block');}
+  for(let i=bl.length;i<n;i++) kktBox.insertAdjacentHTML('beforeend',kktTpl(i+1));
 }
-cashCount.addEventListener('input', renderKkt);
+cashCount.addEventListener('input',renderKkt);
 
-/* --- Адрес выезда --- */
+/* выезд */
 function toggleVisit(){
-  const yes = visitSelect.value === 'да';
-  visitBlock.style.display = yes ? 'block' : 'none';
-  visitInput.required = yes;               // ← была ошибка: адрес не был обязательным
-  if (!yes) visitInput.value = '';
+  const yes=document.getElementById('vYes').checked;
+  vBlock.style.display=yes?'block':'none';
+  vAddr.required=yes;
+  if(!yes)vAddr.value='';
 }
-visitSelect.addEventListener('change', toggleVisit);
+document.querySelectorAll('input[name=needVisit]').forEach(r=>r.addEventListener('change',toggleVisit));
 
-/* --- Отправка --- */
-form.addEventListener('submit', async (e) => {
+/* отправка */
+form.addEventListener('submit',async e=>{
   e.preventDefault();
-  errorText.style.display = 'none';
-
-  if (!form.reportValidity()) return;
-
-  if (!SCRIPT_URL || !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
-    errorText.textContent = 'Не задан SCRIPT_URL — укажите адрес Apps Script (…/exec) в коде страницы.';
-    errorText.style.display = 'block';
-    return;
+  errorBox.style.display='none';
+  if(!noInput.value.trim()){noInput.focus();showErr('Укажите № заявки.');return;}
+  if(!dtInput.value){dtInput.focus();showErr('Укажите дату и время.');return;}
+  if(!form.reportValidity())return;
+  if(!SCRIPT_URL||!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
+    showErr('Не задан SCRIPT_URL — вставьте адрес Apps Script (…/exec) в код страницы.');return;
   }
-
-  btn.disabled = true;
-  btn.textContent = 'Отправка...';
-
-  const data = Object.fromEntries(new FormData(form).entries());
-  data.espRegistered = document.getElementById('espRegistered').checked ? 'да' : 'нет';
-  data.hasWifi       = document.getElementById('hasWifi').checked ? 'да' : 'нет';
-  data.createdAt     = new Date().toISOString();
-  data.kkt = [...kktBox.querySelectorAll('.kkt-block')].map((b, i) => ({
-    n:        i + 1,
-    rnm:      b.querySelector('[data-f=rnm]').value.trim(),
-    znKkt:    b.querySelector('[data-f=znKkt]').value.trim(),
-    fn:       b.querySelector('[data-f=fn]').value.trim(),
-    modelKkt: b.querySelector('[data-f=modelKkt]').value.trim()
+  submitBtn.disabled=true;submitBtn.textContent='Отправка...';
+  const activePill=document.querySelector('.s-btn.active');
+  const data=Object.fromEntries(new FormData(form).entries());
+  data.ticketNo=noInput.value.trim();
+  data.ticketDate=fmtDt(dtInput.value);
+  data.ticketStatus=activePill?activePill.querySelector('input').value:'';
+  data.createdAt=new Date().toISOString();
+  data.kkt=[...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
+    n:i+1,
+    rnm:b.querySelector('[data-f=rnm]').value.trim(),
+    znKkt:b.querySelector('[data-f=znKkt]').value.trim(),
+    fn:b.querySelector('[data-f=fn]').value.trim(),
+    modelKkt:b.querySelector('[data-f=modelKkt]').value.trim()
   }));
-
-  try {
-    // no-cors нужен для Apps Script: ответ будет opaque, статус прочитать нельзя.
-    // Content-Type text/plain — чтобы не улетел preflight OPTIONS.
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(data)
-    });
-    form.style.display = 'none';
-    document.getElementById('success-message').style.display = 'block';
-  } catch (err) {
-    errorText.textContent = 'Ошибка отправки: ' + err.message + '. Проверьте соединение.';
-    errorText.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Отправить заявку';
+  try{
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
+    document.getElementById('sentNo').textContent=data.ticketNo;
+    ['.meta','.form-header','.status-section'].forEach(s=>document.querySelector(s).style.display='none');
+    form.style.display='none';
+    document.getElementById('success-message').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){
+    showErr('Ошибка отправки: '+err.message);
+    submitBtn.disabled=false;submitBtn.textContent='Отправить заявку →';
   }
 });
 
-/* --- Сброс --- */
-document.getElementById('resetBtn').addEventListener('click', () => {
-  form.reset();
-  cashCount.value = 1;
-  renderKkt();
-  toggleVisit();
-  form.style.display = 'block';
-  document.getElementById('success-message').style.display = 'none';
-  errorText.style.display = 'none';
-  btn.disabled = false;
-  btn.textContent = 'Отправить заявку';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function showErr(msg){
+  errorBox.textContent=msg;errorBox.style.display='block';
+  errorBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* сброс */
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  form.reset();cashCount.value=1;noInput.value='';
+  setNow();renderKkt();toggleVisit();activateStatus('new');
+  ['.meta','.form-header','.status-section'].forEach(s=>document.querySelector(s).style.display='');
+  form.style.display='block';
+  document.getElementById('success-message').style.display='none';
+  errorBox.style.display='none';
+  submitBtn.disabled=false;submitBtn.textContent='Отправить заявку →';
+  window.scrollTo({top:0,behavior:'smooth'});
 });
 
-renderKkt();
-toggleVisit();
+setNow();renderKkt();toggleVisit();
 </script>
 </body>
 </html>
 
 							<script>
-                            	function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Заявки');
-  const d = JSON.parse(e.postData.contents);
-  const kkt = (d.kkt || []).map(k => `№${k.n}: РНМ ${k.rnm}, ЗН ${k.znKkt}, ФН ${k.fn}, ${k.modelKkt}`).join('\n');
-  sheet.appendRow([
-    new Date(), d.lpEmployee, d.priority, d.orgName, d.inn, d.contactName,
-    d.phone, d.email, d.cashCount, kkt, d.needVisit, d.visitAddress || '',
-    d.espRegistered, d.hasKep, d.hasWifi, d.comment || ''
-  ]);
-  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-                       .setMimeType(ContentService.MimeType.JSON);
-}
+                            	
 							</script>
                         </body>
                         </html>

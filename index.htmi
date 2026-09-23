@@ -14,18 +14,10 @@
                         </head>
                         <body>
                             <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>body{background-color:white}</style>
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>LIFE PAY · Форма передачи заявки ТС ПиОТ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,264 +33,311 @@
   --muted:#5b7095;
   --ok:#16a34a;
   --err:#e11d48;
-  --radius:22px;
+  --radius:18px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100%}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+html,body{min-height:100%;}
 body{
   font-family:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--txt);
   background:linear-gradient(160deg,#eaf2ff 0%,#dde8ff 40%,#eef6ff 100%);
   overflow-x:hidden;
-  padding:40px 16px 80px;
+  padding:28px 12px 70px;
   position:relative;
 }
+
+/* ── Фоновые блобы ── */
 #particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:0;pointer-events:none}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:0;pointer-events:none;}
 .b1{width:600px;height:600px;background:radial-gradient(circle at 30% 40%,#4f8dff,#1d4ed8,#6366f1);top:-220px;left:-180px;animation:float1 20s ease-in-out infinite;}
 .b2{width:520px;height:520px;background:radial-gradient(circle at 60% 50%,#22d3ee,#3b82f6,#06b6d4);bottom:-190px;right:-150px;animation:float2 25s ease-in-out infinite;}
 .b3{width:420px;height:420px;background:radial-gradient(circle,#a5b4fc,#6366f1,#8b5cf6);top:42%;left:58%;animation:float3 30s ease-in-out infinite;opacity:.28;}
 .b4{width:300px;height:300px;background:radial-gradient(circle,#bfdbfe,#93c5fd);top:30%;left:-80px;animation:float4 22s ease-in-out infinite;opacity:.35;}
-@keyframes float1{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}33%{transform:translate(80px,60px) scale(1.10) rotate(5deg)}66%{transform:translate(40px,110px) scale(1.05) rotate(-3deg)}}
-@keyframes float2{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}33%{transform:translate(-70px,-50px) scale(1.12) rotate(-6deg)}66%{transform:translate(-110px,-20px) scale(1.08) rotate(4deg)}}
-@keyframes float3{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(-130px,70px) rotate(15deg)}}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(80px,60px) scale(1.10)}66%{transform:translate(40px,110px) scale(1.05)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-70px,-50px) scale(1.12)}66%{transform:translate(-110px,-20px) scale(1.08)}}
+@keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(-130px,70px)}}
 @keyframes float4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}}
+
+/* ── Shimmer line ── */
 .shimmer-line{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:linear-gradient(90deg,transparent,#2f7cf6,#22d3ee,#6366f1,transparent);background-size:200% 100%;animation:shimmerMove 3s linear infinite;}
 @keyframes shimmerMove{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
 .ring{position:fixed;border-radius:50%;border:1.5px solid rgba(99,130,246,.18);pointer-events:none;z-index:0;}
 .ring1{width:340px;height:340px;top:10%;right:5%;animation:ringPulse 7s ease-in-out infinite;}
 .ring2{width:220px;height:220px;top:55%;left:8%;animation:ringPulse 9s ease-in-out infinite reverse;}
 .ring3{width:500px;height:500px;top:-60px;left:30%;animation:ringPulse 12s ease-in-out infinite 2s;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:.15}}
+
+/* ── Page wrapper ── */
 .page{position:relative;z-index:2;max-width:740px;margin:0 auto;}
 
-/* ═══════════════════════════════════
-   BRAND / LOGO — новый стиль
-   ═══════════════════════════════════ */
-.brand{
-  text-align:center;
-  margin-bottom:32px;
-  animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both;
-}
-.brand-logo-wrap{
-  display:inline-flex;
-  flex-direction:column;
-  align-items:center;
-  gap:12px;
-  padding:14px 28px 10px;
-  position:relative;
-}
-/* Свечение за логотипом */
+/* ══════════════════════════════
+   BRAND / LOGO
+══════════════════════════════ */
+.brand{text-align:center;margin-bottom:24px;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both;}
+.brand-logo-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:10px;padding:12px 20px 8px;position:relative;}
 .brand-glow{
-  position:absolute;
-  width:340px;height:90px;
+  position:absolute;width:340px;height:90px;
   background:radial-gradient(ellipse,rgba(30,30,30,.13) 0%,transparent 70%);
   top:50%;left:50%;transform:translate(-50%,-50%);
-  pointer-events:none;
-  animation:glowPulseMono 4s ease-in-out infinite;
-  z-index:0;
+  pointer-events:none;animation:glowPulseMono 4s ease-in-out infinite;z-index:0;
 }
-@keyframes glowPulseMono{
-  0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
-  50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}
-}
-
-/* ── Обёртка SVG-логотипа ── */
+@keyframes glowPulseMono{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}}
 .brand-logo-svg-wrap{
-  position:relative;
-  z-index:1;
-  display:inline-block;
-  /* Плавный переход цвета при ховере */
-  transition:filter .5s ease, transform .4s ease;
+  position:relative;z-index:1;display:inline-block;
+  transition:filter .5s ease,transform .4s ease;
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));
 }
 .brand-logo-svg-wrap:hover{
   filter:drop-shadow(0 4px 22px rgba(0,0,0,.32)) drop-shadow(0 0 40px rgba(30,30,30,.15));
   transform:scale(1.05) translateY(-3px);
 }
-
-/* SVG сам */
-.brand-logo{
-  display:block;
-  /* ★ КРУПНЕЕ — было clamp(160px,28vw,260px) */
-  width:clamp(220px,38vw,340px);
-  height:auto;
-}
-
-/* Все пути/прямоугольники — анимация серый→чёрный */
-.brand-logo path,
-.brand-logo rect{
-  transition:fill .4s ease;
-}
-
-/* ── Анимация прыжка буквы L (первый path = rect + первый path) ── */
-/* rect — вертикальная черта буквы L */
-.brand-logo rect{
-  animation:jumpL 3.2s cubic-bezier(.34,1.56,.64,1) infinite;
-  transform-origin:center bottom;
-  transform-box:fill-box;
-}
-/* 4-й path = нижняя горизонталь L (буква L целиком с rect) */
-.brand-logo path:nth-child(4){
-  animation:jumpL 3.2s cubic-bezier(.34,1.56,.64,1) infinite;
-  transform-origin:center bottom;
-  transform-box:fill-box;
-}
-
-/* ── Анимация прыжка буквы Y (последние 2 path) ── */
-.brand-logo path:nth-child(5),
-.brand-logo path:nth-child(8){
-  animation:jumpY 3.2s cubic-bezier(.34,1.56,.64,1) .55s infinite;
-  transform-origin:center bottom;
-  transform-box:fill-box;
-}
-
-@keyframes jumpL{
-  0%,100%{transform:translateY(0)}
-  18%{transform:translateY(-9px) scaleY(1.06)}
-  28%{transform:translateY(2px)  scaleY(.97)}
-  38%{transform:translateY(-4px)}
-  48%{transform:translateY(0)}
-}
-@keyframes jumpY{
-  0%,100%{transform:translateY(0)}
-  18%{transform:translateY(-9px) scaleY(1.06)}
-  28%{transform:translateY(2px)  scaleY(.97)}
-  38%{transform:translateY(-4px)}
-  48%{transform:translateY(0)}
-}
-
-/* Tagline */
+.brand-logo{display:block;width:clamp(200px,50vw,320px);height:auto;}
 .brand-tagline{
-  font-size:11.5px;
-  font-weight:800;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  color:#6b7a8d;
+  font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;
   position:relative;z-index:1;
-  animation:fadeUp .9s cubic-bezier(.22,1,.36,1) .2s both;
-  /* мягкий shimmer для tagline */
   background:linear-gradient(90deg,#9aa5b4,#4a5568,#9aa5b4);
   background-size:300% 100%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:taglineFade 5s linear infinite, fadeUp .9s cubic-bezier(.22,1,.36,1) .2s both;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:taglineFade 5s linear infinite;
 }
-@keyframes taglineFade{
-  0%{background-position:0% 0}
-  100%{background-position:300% 0}
-}
+@keyframes taglineFade{0%{background-position:0% 0}100%{background-position:300% 0}}
 
-/* ═══════════════════════════════════
+/* ══════════════════════════════
    CARDS
-   ═══════════════════════════════════ */
-.card{background:rgba(255,255,255,.52);backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);border:1px solid rgba(255,255,255,.85);border-radius:var(--radius);box-shadow:0 20px 60px rgba(13,42,92,.12),0 4px 16px rgba(13,42,92,.06),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(13,42,92,.03);position:relative;overflow:hidden;margin-bottom:14px;animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both;transition:transform .3s ease,box-shadow .3s ease;}
+══════════════════════════════ */
+.card{
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(28px) saturate(200%);
+  -webkit-backdrop-filter:blur(28px) saturate(200%);
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:var(--radius);
+  box-shadow:0 16px 50px rgba(13,42,92,.11),0 4px 14px rgba(13,42,92,.05),
+             inset 0 1px 0 rgba(255,255,255,.95);
+  position:relative;overflow:hidden;margin-bottom:12px;
+  animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both;
+  transition:box-shadow .3s ease;
+}
 .card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;background:linear-gradient(140deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 60%);}
-.card:hover{transform:translateY(-2px);box-shadow:0 28px 70px rgba(13,42,92,.15),0 8px 24px rgba(47,124,246,.08),inset 0 1px 0 rgba(255,255,255,.95);}
-.card-body{padding:26px 28px;position:relative;z-index:1;}
-.card-body:last-child{padding-bottom:28px}
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.10s}.card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.20s}.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.30s}
-.card-title-only{background:transparent !important;border:none !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;margin-bottom:4px;}
-.card-title-only::before{display:none}
-.card-title-only:hover{transform:none !important;box-shadow:none !important}
-.form-title{text-align:center;padding:16px 28px 10px;position:relative;z-index:1;}
-.form-title h1{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,#0a1f44 0%,#1d4ed8 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:titleReveal 1s cubic-bezier(.22,1,.36,1) .3s both;}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.10s}
+.card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.30s}
+
+.card-title-only{
+  background:transparent !important;border:none !important;
+  box-shadow:none !important;backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;margin-bottom:4px;
+}
+.card-title-only::before{display:none;}
+
+.card-body{padding:20px 18px;position:relative;z-index:1;}
+.card-body:last-child{padding-bottom:22px;}
+
+.form-title{text-align:center;padding:14px 18px 8px;position:relative;z-index:1;}
+.form-title h1{
+  font-size:clamp(18px,5vw,28px);font-weight:800;letter-spacing:-.4px;
+  background:linear-gradient(135deg,#0a1f44 0%,#1d4ed8 50%,#22d3ee 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:titleReveal 1s cubic-bezier(.22,1,.36,1) .3s both;
+  line-height:1.25;
+}
 @keyframes titleReveal{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
-.sec-label{font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+
+/* ── Section label ── */
+.sec-label{
+  font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
 .sec-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(91,112,149,.30),transparent);}
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px 28px;position:relative;z-index:1;}
-.meta-item{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.90);border-radius:15px;padding:13px 16px;backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 2px 10px rgba(13,42,92,.07);display:flex;flex-direction:column;gap:4px;transition:transform .2s ease,box-shadow .2s ease;}
-.meta-item:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 6px 20px rgba(13,42,92,.10);}
-.meta-k{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);}
-.meta-v{font-size:15px;font-weight:700;color:var(--blue-700);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.meta-item input{width:100%;background:transparent;border:none;padding:0;margin:0;font:700 15px/1.1 'Manrope',sans-serif;color:var(--blue-700);caret-color:var(--blue-500);}
-.meta-item input:focus{outline:none}
-.meta-item input::placeholder{color:#b0bec8;font-weight:500;font-size:13px}
-.meta-item input[type=datetime-local]{color-scheme:light;font-size:13px}
-.meta-item.ticket-no-item{border-left:3px solid var(--blue-500);}
-.meta-item.ticket-no-item .meta-k{color:var(--blue-700);}
-.meta-item.ticket-no-item input{font-size:16px;letter-spacing:.5px;}
-.btn-now{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 11px;border-radius:99px;cursor:pointer;background:linear-gradient(135deg,var(--blue-700),var(--blue-500));color:#fff;border:none;box-shadow:0 3px 10px rgba(47,124,246,.30);transition:all .22s cubic-bezier(.34,1.56,.64,1);flex-shrink:0;}
-.btn-now:hover{transform:scale(1.08) translateY(-1px);box-shadow:0 6px 18px rgba(47,124,246,.45)}
-.status-section{padding:20px 28px;position:relative;z-index:1}
-.status-pills{display:flex;gap:8px;flex-wrap:wrap}
-.status-pills input[type=radio]{position:absolute;opacity:0;pointer-events:none}
-.s-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:99px;font:700 12.5px/1 'Manrope',sans-serif;cursor:pointer;background:rgba(255,255,255,.55);border:1px solid rgba(160,190,235,.55);color:var(--muted);backdrop-filter:blur(12px);box-shadow:0 2px 8px rgba(13,42,92,.08),inset 0 1px 0 rgba(255,255,255,.85);transition:all .28s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;user-select:none;}
-.s-btn:hover{transform:translateY(-3px) scale(1.03);color:var(--blue-700);border-color:rgba(47,124,246,.40);box-shadow:0 8px 22px rgba(13,42,92,.14),inset 0 1px 0 rgba(255,255,255,.9);}
-.s-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:rgba(91,112,149,.35);transition:all .28s ease;}
-.s-btn[data-s=new].active{background:linear-gradient(135deg,rgba(99,102,241,.20),rgba(139,92,246,.14));border-color:rgba(99,102,241,.50);color:#3730a3;box-shadow:0 0 0 3px rgba(99,102,241,.15),0 8px 24px rgba(99,102,241,.22);}
-.s-btn[data-s=new].active .s-dot{background:#6366f1;box-shadow:0 0 10px rgba(99,102,241,.80)}
-.s-btn[data-s=new] .s-dot{background:rgba(99,102,241,.50)}
-.s-btn[data-s=work].active{background:linear-gradient(135deg,rgba(251,191,36,.20),rgba(245,158,11,.12));border-color:rgba(245,158,11,.55);color:#92400e;box-shadow:0 0 0 3px rgba(245,158,11,.15),0 8px 24px rgba(245,158,11,.22);}
-.s-btn[data-s=work].active .s-dot{background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.80);animation:pulseDot 1.4s ease-in-out infinite;}
-.s-btn[data-s=work] .s-dot{background:rgba(245,158,11,.55)}
-.s-btn[data-s=done].active{background:linear-gradient(135deg,rgba(16,185,129,.20),rgba(5,150,105,.12));border-color:rgba(16,185,129,.50);color:#065f46;box-shadow:0 0 0 3px rgba(16,185,129,.15),0 8px 24px rgba(16,185,129,.22);}
-.s-btn[data-s=done].active .s-dot{background:#10b981;box-shadow:0 0 10px rgba(16,185,129,.80)}
-.s-btn[data-s=done] .s-dot{background:rgba(16,185,129,.55)}
-.s-btn[data-s=fail].active{background:linear-gradient(135deg,rgba(239,68,68,.18),rgba(220,38,38,.12));border-color:rgba(239,68,68,.45);color:#991b1b;box-shadow:0 0 0 3px rgba(239,68,68,.12),0 8px 24px rgba(239,68,68,.20);}
-.s-btn[data-s=fail].active .s-dot{background:#ef4444;box-shadow:0 0 10px rgba(239,68,68,.80)}
-.s-btn[data-s=fail] .s-dot{background:rgba(239,68,68,.55)}
-@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.45);opacity:.25}}
-.fg{margin-bottom:16px}
-.fg:last-child{margin-bottom:0}
-.fg label{display:block;font-size:13px;font-weight:700;color:#274063;margin-bottom:7px;}
-.req{color:var(--err);font-weight:800}
-.hint{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.55}
+
+/* ── Form groups ── */
+.fg{margin-bottom:14px;}
+.fg:last-child{margin-bottom:0;}
+.fg label{display:block;font-size:12.5px;font-weight:700;color:#274063;margin-bottom:6px;}
+.req{color:var(--err);font-weight:800;}
+.hint{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
+
+/* ── Inputs ── */
 input[type=text],input[type=email],input[type=tel],
 input[type=number],input[type=datetime-local],select,textarea{
-  width:100%;padding:12px 14px;
-  font:500 14.5px/1.4 'Manrope',sans-serif;
+  width:100%;
+  padding:13px 14px;
+  font:500 15px/1.4 'Manrope',sans-serif;
   color:var(--txt);
-  background:rgba(255,255,255,.65);
+  background:rgba(255,255,255,.68);
   border:1px solid rgba(160,190,235,.60);
-  border-radius:13px;
+  border-radius:12px;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);
-  transition:border-color .22s,box-shadow .22s,background .22s,transform .22s;
+  transition:border-color .22s,box-shadow .22s,background .22s;
   -webkit-appearance:none;
+  appearance:none;
+  /* Убираем zoom на iOS */
+  font-size:16px;
 }
-input::placeholder,textarea::placeholder{color:#93a7c4;font-weight:400}
-input:focus,select:focus,textarea:focus{outline:none;background:rgba(255,255,255,.92);border-color:var(--blue-500);box-shadow:0 0 0 4px rgba(47,124,246,.16),0 0 0 8px rgba(47,124,246,.05),inset 0 1px 0 rgba(255,255,255,.95);transform:translateY(-1px);}
-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232f7cf6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;cursor:pointer;}
-textarea{resize:vertical;min-height:100px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.toggle{display:flex;gap:8px}
-.toggle input[type=radio]{position:absolute;opacity:0;pointer-events:none}
-.toggle label{flex:1;text-align:center;cursor:pointer;padding:11px 0;font-size:13.5px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);border-radius:13px;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);transition:all .25s cubic-bezier(.34,1.56,.64,1);}
-.toggle label:hover{color:var(--blue-700);transform:translateY(-2px);border-color:rgba(47,124,246,.38);background:rgba(255,255,255,.82);box-shadow:0 6px 16px rgba(13,42,92,.10),inset 0 1px 0 rgba(255,255,255,.90);}
-.toggle input[type=radio]:checked + label{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 6px 20px rgba(47,124,246,.36),inset 0 1px 0 rgba(255,255,255,.22);transform:translateY(-1px);}
-.kkt-block{background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);border-radius:16px;padding:18px 18px 6px;margin-top:13px;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 18px rgba(13,42,92,.08);animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);}
-.kkt-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:13px;box-shadow:0 4px 14px rgba(47,124,246,.32);}
-@keyframes slideUp{from{opacity:0;transform:translateY(-10px) scale(.96)}to{opacity:1;transform:none}}
-.visit-block{margin-top:12px;padding:16px;border-radius:15px;background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(224,238,255,.38));border:1px solid rgba(255,255,255,.82);border-left:3px solid var(--cyan);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 3px 14px rgba(13,42,92,.07);animation:slideUp .28s ease;}
-.btn-submit{width:100%;margin-top:8px;padding:15px;font:700 15.5px/1 'Manrope',sans-serif;letter-spacing:.2px;color:#fff;border:none;border-radius:15px;cursor:pointer;background:linear-gradient(135deg,#1d4ed8 0%,#2f7cf6 50%,#22d3ee 120%);background-size:200% 100%;box-shadow:0 10px 30px rgba(29,78,216,.32),0 4px 10px rgba(29,78,216,.20);transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease,background-position .4s ease;position:relative;overflow:hidden;}
-.btn-submit::before{content:"";position:absolute;top:0;left:-120%;width:80%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transition:left .6s ease;}
-.btn-submit:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 16px 40px rgba(29,78,216,.42),0 6px 16px rgba(29,78,216,.25);background-position:100% 0;}
-.btn-submit:hover::before{left:150%}
-.btn-submit:active{transform:translateY(0) scale(.99)}
-.btn-submit:disabled{filter:grayscale(.55);opacity:.65;cursor:not-allowed;transform:none}
-.btn-reset{width:100%;margin-top:10px;padding:13px;font:600 14px/1 'Manrope',sans-serif;color:var(--blue-700);background:rgba(255,255,255,.65);border:1px solid rgba(160,190,235,.65);border-radius:15px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 8px rgba(13,42,92,.08);transition:all .25s cubic-bezier(.34,1.56,.64,1);}
-.btn-reset:hover{background:rgba(255,255,255,.90);transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,42,92,.13);color:var(--blue-900);}
-.error-box{display:none;margin-top:12px;padding:12px 16px;border-radius:13px;font-size:13px;font-weight:600;color:#9f1239;background:rgba(255,228,235,.80);border:1px solid rgba(244,163,181,.75);}
-#success-message{display:none;text-align:center;padding:52px 28px;}
-.check-wrap{width:80px;height:80px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 36px rgba(5,150,105,.35),0 0 0 0 rgba(5,150,105,.3);animation:popBounce .5s cubic-bezier(.34,1.56,.64,1),successPulse 2s ease 0.5s infinite;}
+input::placeholder,textarea::placeholder{color:#93a7c4;font-weight:400;}
+input:focus,select:focus,textarea:focus{
+  outline:none;background:rgba(255,255,255,.95);border-color:var(--blue-500);
+  box-shadow:0 0 0 3px rgba(47,124,246,.18),inset 0 1px 0 rgba(255,255,255,.95);
+}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232f7cf6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;
+}
+textarea{resize:vertical;min-height:90px;font-size:15px;}
+
+/* ── Grid ── */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* ── Toggle ── */
+.toggle{display:flex;gap:8px;}
+.toggle input[type=radio]{position:absolute;opacity:0;pointer-events:none;}
+.toggle label{
+  flex:1;text-align:center;cursor:pointer;
+  padding:13px 0;font-size:14px;font-weight:600;color:var(--muted);
+  background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);
+  border-radius:12px;margin:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);
+  transition:all .22s ease;
+  /* Крупнее для пальца */
+  min-height:46px;display:flex;align-items:center;justify-content:center;
+}
+.toggle label:active{transform:scale(.97);}
+.toggle input[type=radio]:checked + label{
+  background:linear-gradient(135deg,var(--blue-700),var(--blue-500));
+  border-color:transparent;color:#fff;font-weight:700;
+  box-shadow:0 6px 18px rgba(47,124,246,.34),inset 0 1px 0 rgba(255,255,255,.22);
+}
+
+/* ── KKT block ── */
+.kkt-block{
+  background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));
+  border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);
+  border-radius:14px;padding:16px 14px 8px;margin-top:12px;
+  backdrop-filter:blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 16px rgba(13,42,92,.08);
+  animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);
+}
+.kkt-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(90deg,var(--blue-700),var(--blue-500));
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 13px;border-radius:99px;margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(47,124,246,.30);
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ── Visit block ── */
+.visit-block{
+  margin-top:10px;padding:14px;border-radius:13px;
+  background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(224,238,255,.38));
+  border:1px solid rgba(255,255,255,.82);border-left:3px solid var(--cyan);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 3px 12px rgba(13,42,92,.07);
+  animation:slideUp .28s ease;
+}
+
+/* ── Submit button ── */
+.btn-submit{
+  width:100%;margin-top:4px;
+  padding:16px;
+  font:700 16px/1 'Manrope',sans-serif;letter-spacing:.2px;
+  color:#fff;border:none;border-radius:14px;cursor:pointer;
+  background:linear-gradient(135deg,#1d4ed8 0%,#2f7cf6 50%,#22d3ee 120%);
+  background-size:200% 100%;
+  box-shadow:0 10px 28px rgba(29,78,216,.32),0 4px 10px rgba(29,78,216,.20);
+  transition:transform .18s ease,box-shadow .22s ease;
+  position:relative;overflow:hidden;
+  min-height:54px;
+}
+.btn-submit:active{transform:scale(.98);}
+.btn-submit:disabled{filter:grayscale(.55);opacity:.65;cursor:not-allowed;}
+
+/* ── Reset button ── */
+.btn-reset{
+  width:100%;margin-top:10px;padding:14px;
+  font:600 14px/1 'Manrope',sans-serif;color:var(--blue-700);
+  background:rgba(255,255,255,.65);border:1px solid rgba(160,190,235,.65);
+  border-radius:14px;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 8px rgba(13,42,92,.08);
+  transition:all .22s ease;min-height:48px;
+}
+.btn-reset:active{transform:scale(.98);}
+
+/* ── Error ── */
+.error-box{
+  display:none;margin-top:10px;padding:12px 14px;border-radius:12px;
+  font-size:13px;font-weight:600;color:#9f1239;
+  background:rgba(255,228,235,.85);border:1px solid rgba(244,163,181,.75);
+}
+
+/* ── Success ── */
+#success-message{display:none;text-align:center;padding:44px 24px 32px;}
+.check-wrap{
+  width:76px;height:76px;margin:0 auto 18px;border-radius:50%;
+  background:linear-gradient(135deg,#34d399,#059669);
+  color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 34px rgba(5,150,105,.35);
+  animation:popBounce .5s cubic-bezier(.34,1.56,.64,1),successPulse 2s ease .5s infinite;
+}
 @keyframes popBounce{0%{opacity:0;transform:scale(.2) rotate(-20deg)}70%{transform:scale(1.10) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes successPulse{0%,100%{box-shadow:0 12px 36px rgba(5,150,105,.35),0 0 0 0 rgba(5,150,105,.3)}50%{box-shadow:0 12px 36px rgba(5,150,105,.35),0 0 0 14px rgba(5,150,105,.0)}}
-.success-title{font-size:24px;font-weight:800;color:var(--blue-900);margin-bottom:8px}
-.success-sub{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:24px}
-.success-no{color:var(--blue-700);font-weight:800}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@media(max-width:560px){
-  .meta-grid,.row2{grid-template-columns:1fr}
-  .card-body{padding:20px 18px}
-  .meta-grid{padding:16px 18px}
-  .status-section{padding:16px 18px}
-  .form-title{padding:16px 18px 10px}
-  body{padding:26px 10px 60px}
-  .status-pills{gap:7px}
-  .s-btn{padding:9px 13px;font-size:12px}
-  .brand-logo{width:clamp(180px,55vw,280px);}
+@keyframes successPulse{0%,100%{box-shadow:0 12px 34px rgba(5,150,105,.35),0 0 0 0 rgba(5,150,105,.3)}50%{box-shadow:0 12px 34px rgba(5,150,105,.35),0 0 0 14px rgba(5,150,105,.0)}}
+.success-title{font-size:22px;font-weight:800;color:var(--blue-900);margin-bottom:8px;}
+.success-sub{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
+.success-no{color:var(--blue-700);font-weight:800;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ══════════════════════════════
+   MOBILE — до 480px
+══════════════════════════════ */
+@media(max-width:480px){
+  body{padding:18px 8px 60px;}
+  .page{max-width:100%;}
+
+  /* Логотип */
+  .brand{margin-bottom:18px;}
+  .brand-logo{width:clamp(170px,58vw,260px);}
+  .brand-tagline{font-size:9px;letter-spacing:3px;}
+
+  /* Заголовок */
+  .form-title h1{font-size:clamp(16px,5.5vw,22px);}
+
+  /* Карточки */
+  .card{border-radius:14px;margin-bottom:10px;}
+  .card-body{padding:16px 14px;}
+
+  /* Двухколоночные сетки → одна колонка */
+  .row2{grid-template-columns:1fr;}
+
+  /* Инпуты — уже достаточно крупные (font-size:16px = no zoom iOS) */
+
+  /* Тогглы — чуть крупнее */
+  .toggle label{padding:14px 0;font-size:14.5px;min-height:48px;}
+
+  /* КЗТ-блок */
+  .kkt-block{padding:14px 12px 6px;}
+
+  /* Кнопка отправки */
+  .btn-submit{padding:17px;font-size:15.5px;min-height:56px;}
+
+  /* Успех */
+  #success-message{padding:36px 16px 28px;}
+  .success-title{font-size:20px;}
+
+  /* Убираем анимацию hover на мобиле */
+  .card:hover{transform:none;box-shadow:0 16px 50px rgba(13,42,92,.11);}
+  .brand-logo-svg-wrap:hover{transform:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));}
+}
+
+/* ══════════════════════════════
+   MOBILE — 481–640px
+══════════════════════════════ */
+@media(min-width:481px) and (max-width:640px){
+  .brand-logo{width:clamp(200px,44vw,280px);}
+  .row2{grid-template-columns:1fr;}
+  .card-body{padding:18px 16px;}
 }
 </style>
 </head>
@@ -316,49 +355,23 @@ textarea{resize:vertical;min-height:100px}
     <div class="brand-logo-wrap">
       <div class="brand-glow"></div>
       <div class="brand-logo-svg-wrap">
-        <!--
-          SVG разбит на именованные группы, чтобы JS мог
-          анимировать каждую букву отдельно (серый→чёрный)
-          и применить прыжок к L и Y.
-        -->
-        <svg class="brand-logo"
-             viewBox="0 0 142.001 23.585"
-             fill="none"
-             xmlns="http://www.w3.org/2000/svg">
-
-          <!-- ── L (вертикаль + горизонталь) ── -->
+        <svg class="brand-logo" viewBox="0 0 142.001 23.585" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g class="ltr-L">
             <path d="M2.97904 10.4267C2.97904 13.3059 5.31313 15.64 8.19237 15.64C9.92774 15.64 11.4651 14.7921 12.4127 13.488L15.3243 14.4608C13.9168 16.9437 11.2503 18.619 8.19237 18.619C3.66785 18.619 0 14.9512 0 10.4267V0H2.97904V10.4267Z"/>
             <rect x="20.3565" y="0.000155866" width="2.97904" height="18.619"/>
           </g>
-
-          <!-- ── I ── -->
-          <g class="ltr-I">
-            <!-- нет отдельного пути для I в этом SVG, I — это rect выше,
-                 но rect уже в L-группе. I здесь объединена с L визуально. -->
-          </g>
-
-          <!-- ── F ── -->
           <g class="ltr-F">
             <path d="M37.4865 0.000155866C40.5444 0.000185923 43.2109 1.67553 44.6184 4.15836L41.7073 5.13102C40.7597 3.82692 39.2219 2.97967 37.4865 2.97965C34.7325 2.97965 32.4782 5.11493 32.2873 7.82047H39.8459V10.799H32.2727V18.6193H29.2942V8.19254C29.2942 3.66804 32.962 0.000155866 37.4865 0.000155866Z"/>
           </g>
-
-          <!-- ── E ── -->
           <g class="ltr-E">
             <path d="M56.3798 0.000155866C61.502 0.000155866 65.655 4.15242 65.6552 9.27457C65.6552 9.77205 65.6134 10.3227 65.538 10.799H65.3485V10.8H50.2724C50.9543 13.5397 53.429 15.5703 56.3798 15.5705C58.1447 15.5705 59.7406 14.8439 60.8837 13.674L63.8056 14.8332C62.1138 17.0895 59.417 18.55 56.3798 18.55C51.2576 18.5498 47.1054 14.3968 47.1054 9.27457C47.1055 4.15253 51.2577 0.000333086 56.3798 0.000155866ZM56.3798 2.97965C53.4037 2.9798 50.9124 5.04505 50.2558 7.82047H62.5048C61.8482 5.04491 59.356 2.97965 56.3798 2.97965Z"/>
           </g>
-
-          <!-- ── P ── -->
           <g class="ltr-P">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M88.9949 0.125808C94.047 0.18981 98.1228 4.30518 98.1228 9.3725L98.1221 9.49194C98.0581 14.5441 93.9427 18.6198 88.8754 18.6199L88.7559 18.6192C86.3841 18.5891 84.2276 17.6661 82.6069 16.171V23.585H79.6279V8.57886C80.0367 3.84942 84.04 0.125001 88.8754 0.125001L88.9949 0.125808ZM88.8754 3.10398C85.4135 3.10398 82.6069 5.91055 82.6069 9.3725C82.6069 12.8344 85.4135 15.6409 88.8754 15.6409C92.3373 15.6408 95.1438 12.8344 95.1438 9.3725C95.1438 5.91059 92.3373 3.10403 88.8754 3.10398Z"/>
           </g>
-
-          <!-- ── A ── -->
           <g class="ltr-A">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M111.241 0.125808C116.184 0.188434 120.195 4.11802 120.389 9.02858H120.396V18.5862H117.417V16.21C115.763 17.7395 113.552 18.6745 111.121 18.6745L111.001 18.6737C105.974 18.61 101.911 14.5468 101.847 9.51965L101.847 9.3998C101.847 4.27751 105.999 0.125014 111.121 0.125001L111.241 0.125808ZM111.121 3.10398C107.644 3.10399 104.826 5.92279 104.826 9.3998C104.826 12.8768 107.644 15.6955 111.121 15.6955C114.598 15.6955 117.417 12.8768 117.417 9.3998C117.417 5.9228 114.598 3.10401 111.121 3.10398Z"/>
           </g>
-
-          <!-- ── Y (верхняя вилка + нижняя ножка) ── -->
           <g class="ltr-Y">
             <path d="M128.72 6.20621C128.72 9.05103 131.025 11.3573 133.87 11.3576C136.715 11.3576 139.021 9.05117 139.021 6.20621V0.000155866H142.001V6.20621L142 6.31168C141.944 10.7534 138.325 14.3371 133.87 14.3371C129.415 14.3368 125.797 10.7533 125.741 6.31168L125.74 6.20621V0.000155866H128.72V6.20621Z"/>
             <path d="M128.967 15.6405C128.967 16.2742 129.093 16.902 129.339 17.4883C129.584 18.0746 129.944 18.6083 130.398 19.0585C130.853 19.5087 131.393 19.8666 131.989 20.111C132.585 20.3554 133.224 20.4814 133.87 20.4814C134.516 20.4814 135.155 20.3554 135.751 20.111C136.347 19.8666 136.888 19.5087 137.342 19.0585C137.797 18.6083 138.157 18.0746 138.402 17.4883C138.647 16.902 138.773 16.2742 138.773 15.6405H141.752C141.752 16.6695 141.548 17.6881 141.15 18.6379C140.753 19.5877 140.171 20.4497 139.439 21.1752C138.706 21.9006 137.837 22.4754 136.882 22.8672C135.927 23.259 134.903 23.4605 133.87 23.4605C132.837 23.4605 131.814 23.259 130.859 22.8672C129.903 22.4754 129.035 21.9006 128.302 21.1752C127.569 20.4497 126.988 19.5877 126.59 18.6379C126.193 17.6881 125.988 16.6695 125.988 15.6405H128.967Z"/>
@@ -376,52 +389,8 @@ textarea{resize:vertical;min-height:100px}
     </div>
   </div>
 
-  <!-- STATUS -->
-  <div class="card">
-    <div class="status-section">
-      <div class="sec-label">Статус заявки</div>
-      <div class="status-pills">
-        <label class="s-btn" data-s="new">
-          <input type="radio" name="ticketStatus" value="Новая">
-          <span class="s-dot"></span>Новая
-        </label>
-        <label class="s-btn" data-s="work">
-          <input type="radio" name="ticketStatus" value="В работе">
-          <span class="s-dot"></span>В работе
-        </label>
-        <label class="s-btn" data-s="done">
-          <input type="radio" name="ticketStatus" value="Выполнена">
-          <span class="s-dot"></span>Выполнена
-        </label>
-        <label class="s-btn" data-s="fail">
-          <input type="radio" name="ticketStatus" value="Не выполнена">
-          <span class="s-dot"></span>Не выполнена
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <!-- META -->
-  <div class="card">
-    <div class="meta-grid">
-      <div class="meta-item ticket-no-item">
-        <div class="meta-k">№ Заявки</div>
-        <div class="meta-v">
-          <input type="text" id="ticketNumber" placeholder="Например: 12345"
-                 inputmode="numeric" maxlength="20">
-        </div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-k">Дата / Время</div>
-        <div class="meta-v" style="gap:6px">
-          <input type="datetime-local" id="ticketDate" style="flex:1;min-width:0">
-          <button class="btn-now" type="button" id="btnNow">↺ Сейчас</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <form id="iotForm">
+
     <!-- PARAMS -->
     <div class="card">
       <div class="card-body">
@@ -430,8 +399,10 @@ textarea{resize:vertical;min-height:100px}
           <label>Приоритет <span class="req">*</span></label>
           <select name="priority" required>
             <option value="" disabled selected>Выберите приоритет</option>
-            <option>Низкий</option><option>Средний</option>
-            <option>Высокий</option><option>Критический</option>
+            <option>Низкий</option>
+            <option>Средний</option>
+            <option>Высокий</option>
+            <option>Критический</option>
           </select>
         </div>
         <div class="fg">
@@ -484,7 +455,7 @@ textarea{resize:vertical;min-height:100px}
         <div class="sec-label">Кассовое оборудование</div>
         <div class="fg">
           <label>Кол-во касс для настройки ТС ПиОТ <span class="req">*</span></label>
-          <input type="number" id="cashCount" name="cashCount" min="1" max="20" value="1" required>
+          <input type="number" id="cashCount" name="cashCount" min="1" max="20" value="1" required inputmode="numeric">
           <div class="hint">Блоки РНМ / ЗН ККТ / ФН / Модель появятся ниже</div>
         </div>
         <div id="kktContainer"></div>
@@ -551,6 +522,7 @@ textarea{resize:vertical;min-height:100px}
         <div class="error-box" id="errorBox"></div>
       </div>
     </div>
+
   </form>
 
   <!-- SUCCESS -->
@@ -558,8 +530,7 @@ textarea{resize:vertical;min-height:100px}
     <div class="check-wrap">✓</div>
     <div class="success-title">Заявка отправлена!</div>
     <div class="success-sub">
-      Данные успешно записаны в таблицу.<br>
-      <span id="successNoDisplay"></span>
+      Данные успешно записаны в таблицу.
     </div>
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
@@ -567,150 +538,78 @@ textarea{resize:vertical;min-height:100px}
 </div><!-- /page -->
 
 <script>
-/* ══════════════════════════════════════════
-   PARTICLES
-══════════════════════════════════════════ */
+/* ══ PARTICLES ══ */
 (function(){
-  const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');
-  let W,H,particles=[],sparks=[];
-  const COUNT=70,COLORS=['#4f8dff','#22d3ee','#a5b4fc','#6366f1','#93c5fd','#818cf8','#38bdf8'];
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-  function rand(a,b){return a+Math.random()*(b-a);}
-  function mkP(){return{x:rand(0,W),y:rand(0,H),r:rand(1.2,4),vx:rand(-.3,.3),vy:rand(-.5,-.05),alpha:rand(.10,.50),color:COLORS[Math.floor(rand(0,COLORS.length))],pulse:rand(0,Math.PI*2),pulseSpeed:rand(.01,.03)};}
-  function initP(){particles=[];for(let i=0;i<COUNT;i++)particles.push(mkP());}
-  function spark(){if(Math.random()<.008)sparks.push({x:rand(0,W),y:rand(0,H),r:rand(3,7),alpha:1,color:COLORS[Math.floor(rand(0,COLORS.length))],decay:rand(.02,.06)});}
-  function lines(){
-    for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
-      const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<130){ctx.beginPath();ctx.strokeStyle='rgba(99,130,246,'+(0.10*(1-d/130))+')';ctx.lineWidth=.9;ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}
-    }
+  const cv=document.getElementById('particles-canvas'),ctx=cv.getContext('2d');
+  let W,H,P=[],SP=[];
+  const N=50,CL=['#4f8dff','#22d3ee','#a5b4fc','#6366f1','#93c5fd','#818cf8'];
+  const r=(a,b)=>a+Math.random()*(b-a);
+  function mkP(){return{x:r(0,W),y:r(0,H),rad:r(1,3.2),vx:r(-.25,.25),vy:r(-.4,-.05),a:r(.1,.45),c:CL[~~r(0,CL.length)],p:r(0,Math.PI*2),ps:r(.01,.03)};}
+  function init(){P=[];for(let i=0;i<N;i++)P.push(mkP());}
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    if(Math.random()<.005)SP.push({x:r(0,W),y:r(0,H),rad:r(2,5),a:1,c:CL[~~r(0,CL.length)],d:r(.03,.07)});
+    SP=SP.filter(s=>{s.a-=s.d;if(s.a<=0)return false;const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.rad*2);g.addColorStop(0,s.c);g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(s.x,s.y,s.rad,0,Math.PI*2);ctx.fillStyle=g;ctx.globalAlpha=s.a;ctx.fill();ctx.globalAlpha=1;return true;});
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.strokeStyle='rgba(99,130,246,'+(0.09*(1-d/110))+')';ctx.lineWidth=.8;ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.stroke();}}
+    P.forEach(p=>{p.p+=p.ps;const pr=p.rad*(1+.2*Math.sin(p.p));p.x+=p.vx;p.y+=p.vy;if(p.y<-8){p.y=H+8;p.x=r(0,W);}if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);g.addColorStop(0,p.c);g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(p.x,p.y,pr,0,Math.PI*2);ctx.fillStyle=p.c;ctx.globalAlpha=p.a;ctx.fill();ctx.globalAlpha=1;});
+    requestAnimationFrame(frame);
   }
-  function animate(){
-    ctx.clearRect(0,0,W,H);spark();lines();
-    sparks=sparks.filter(s=>{s.alpha-=s.decay;if(s.alpha<=0)return false;ctx.beginPath();ctx.arc(s.x,s.y,s.r*s.alpha,0,Math.PI*2);const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*2);g.addColorStop(0,s.color);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.globalAlpha=s.alpha;ctx.fill();ctx.globalAlpha=1;return true;});
-    particles.forEach(p=>{p.pulse+=p.pulseSpeed;const pr=p.r*(1+.25*Math.sin(p.pulse));p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=H+10;p.x=rand(0,W);}if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*3);g.addColorStop(0,p.color);g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(p.x,p.y,pr*3,0,Math.PI*2);ctx.fillStyle=g;ctx.globalAlpha=p.alpha*.35;ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,pr,0,Math.PI*2);ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha;ctx.fill();ctx.globalAlpha=1;});
-    requestAnimationFrame(animate);
-  }
-  resize();initP();animate();
-  window.addEventListener('resize',()=>{resize();initP();});
+  resize();init();frame();
+  window.addEventListener('resize',()=>{resize();init();});
 })();
 
-/* ══════════════════════════════════════════
-   LOGO — серый→чёрный + прыжок L и Y
-══════════════════════════════════════════ */
+/* ══ LOGO ANIMATION ══ */
 (function(){
-  const grpL = document.querySelector('.ltr-L');
-  const grpY = document.querySelector('.ltr-Y');
-  const allGroups = document.querySelectorAll('.brand-logo g[class^="ltr-"]');
-
-  /* ── 1. Анимация цвета: серый (#9ca3af) → чёрный (#111827) ── */
-  const C_DARK  = [17,  24, 39];   // #111827  (почти чёрный)
-  const C_MID   = [75,  85,99];    // #4b5563  (тёмно-серый)
-  const C_LIGHT = [156,163,175];   // #9ca3af  (средне-серый)
-
-  // Опорные точки цикла: light → mid → dark → mid → light
-  const colorStops = [C_LIGHT, C_MID, C_DARK, C_MID, C_LIGHT];
-
-  function lerpRGB(a,b,t){
-    return [~~(a[0]+(b[0]-a[0])*t), ~~(a[1]+(b[1]-a[1])*t), ~~(a[2]+(b[2]-a[2])*t)];
-  }
-  function toRGB(c){ return `rgb(${c[0]},${c[1]},${c[2]})`; }
-
-  let ct = 0;
+  const grpL=document.querySelector('.ltr-L');
+  const grpY=document.querySelector('.ltr-Y');
+  const all=document.querySelectorAll('.brand-logo g[class^="ltr-"]');
+  const C0=[156,163,175],C1=[75,85,99],C2=[17,24,39];
+  const stops=[C0,C1,C2,C1,C0];
+  function lerp(a,b,t){return[~~(a[0]+(b[0]-a[0])*t),~~(a[1]+(b[1]-a[1])*t),~~(a[2]+(b[2]-a[2])*t)];}
+  let ct=0;
   function colorTick(){
-    ct += 0.004;                         // скорость цикла
-    allGroups.forEach((g, gi) => {
-      // Каждая группа немного сдвинута по фазе
-      const phase = (ct + gi * 0.28) % (colorStops.length - 1);
-      const lo  = Math.floor(phase);
-      const hi  = lo + 1;
-      const frac = phase - lo;
-      const col = lerpRGB(colorStops[lo], colorStops[hi], frac);
-      g.querySelectorAll('path,rect').forEach(el => el.setAttribute('fill', toRGB(col)));
+    ct+=.004;
+    all.forEach((g,i)=>{
+      const ph=(ct+i*.28)%(stops.length-1);
+      const lo=~~ph,hi=lo+1,f=ph-lo;
+      const c=lerp(stops[lo],stops[hi],f);
+      g.querySelectorAll('path,rect').forEach(el=>el.setAttribute('fill',`rgb(${c[0]},${c[1]},${c[2]})`));
     });
     requestAnimationFrame(colorTick);
   }
   colorTick();
-
-  /* ── 2. Анимация прыжка L и Y через JS (плавнее CSS-анимации) ── */
-  // Период: 2.8 с, L прыгает первой, Y через 0.55 с
-  const JUMP_PERIOD = 2800;   // мс
-  const JUMP_H      = 10;     // px высота прыжка (в координатах SVG viewBox)
-  const SCALE_Y_UP  = 1.06;
-  const SCALE_Y_DWN = 0.96;
-
-  function easeOutElastic(t){
-    if(t===0) return 0; if(t===1) return 1;
-    return Math.pow(2,-10*t)*Math.sin((t*10-0.75)*(2*Math.PI)/3)+1;
+  const JP=2800,JH=10;
+  function jEase(t){
+    if(t<.45){return -Math.sin((t/.45)*Math.PI)*JH;}
+    if(t<.60){return 0;}
+    return -Math.sin(((t-.60)/.40)*Math.PI)*JH*.28;
   }
-  function jumpEase(t){
-    // t in [0,1] — одна «волна»: вверх → вниз → отскок
-    if(t<.45){
-      const s=t/.45;
-      return -Math.sin(s*Math.PI)*JUMP_H;   // вверх (отрицательно = вверх в SVG)
-    } else if(t<.60){
-      return 0;
-    } else {
-      const s=(t-.60)/.40;
-      return -Math.sin(s*Math.PI)*JUMP_H*.28; // маленький отскок
-    }
-  }
-
-  let startTime = null;
+  let st=null;
   function jumpTick(ts){
-    if(!startTime) startTime = ts;
-    const elapsed = ts - startTime;
-
-    // L — фаза 0
-    const tL = ((elapsed % JUMP_PERIOD) / JUMP_PERIOD);
-    // Y — фаза со сдвигом 0.55 / 2.8
-    const tY = (((elapsed + 550) % JUMP_PERIOD) / JUMP_PERIOD);
-
-    // Активная фаза прыжка только в первые 65% периода
-    const dyL = tL < 0.65 ? jumpEase(tL / 0.65) : 0;
-    const dyY = tY < 0.65 ? jumpEase(tY / 0.65) : 0;
-
-    if(grpL) grpL.setAttribute('transform', `translate(0,${dyL})`);
-    if(grpY) grpY.setAttribute('transform', `translate(0,${dyY})`);
-
+    if(!st)st=ts;
+    const el=ts-st;
+    const tL=(el%JP)/JP;
+    const tY=((el+550)%JP)/JP;
+    const dL=tL<.65?jEase(tL/.65):0;
+    const dY=tY<.65?jEase(tY/.65):0;
+    if(grpL)grpL.setAttribute('transform',`translate(0,${dL})`);
+    if(grpY)grpY.setAttribute('transform',`translate(0,${dY})`);
     requestAnimationFrame(jumpTick);
   }
   requestAnimationFrame(jumpTick);
 })();
 
-/* ══════════════════════════════════════════
-   FORM CONFIG
-══════════════════════════════════════════ */
+/* ══ FORM ══ */
 const SCRIPT_URL = '';  // ← вставьте URL Apps Script
 
-/* ── DOM ── */
-const form        = document.getElementById('iotForm');
-const submitBtn   = document.getElementById('submitBtn');
-const errorBox    = document.getElementById('errorBox');
-const cashCount   = document.getElementById('cashCount');
-const kktBox      = document.getElementById('kktContainer');
-const vBlock      = document.getElementById('visitBlock');
-const vAddr       = document.getElementById('visitAddr');
-const dtInput     = document.getElementById('ticketDate');
-const ticketNoInp = document.getElementById('ticketNumber');
-
-/* ── Status pills ── */
-function activateStatus(key){
-  document.querySelectorAll('.s-btn').forEach(b=>b.classList.remove('active'));
-  const pill=document.querySelector('.s-btn[data-s="'+key+'"]');
-  if(pill){pill.classList.add('active');pill.querySelector('input').checked=true;}
-}
-document.querySelectorAll('.s-btn').forEach(p=>p.addEventListener('click',()=>activateStatus(p.dataset.s)));
-activateStatus('new');
-
-/* ── Date/time ── */
-const pad=n=>String(n).padStart(2,'0');
-function setNow(){
-  const d=new Date();
-  dtInput.value=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'T'+pad(d.getHours())+':'+pad(d.getMinutes());
-}
-function fmtDt(v){if(!v)return'';const[dt,tm]=v.split('T'),[y,m,d]=dt.split('-');return d+'.'+m+'.'+y+' '+tm;}
-document.getElementById('btnNow').addEventListener('click',setNow);
+const form      = document.getElementById('iotForm');
+const submitBtn = document.getElementById('submitBtn');
+const errorBox  = document.getElementById('errorBox');
+const cashCount = document.getElementById('cashCount');
+const kktBox    = document.getElementById('kktContainer');
+const vBlock    = document.getElementById('visitBlock');
+const vAddr     = document.getElementById('visitAddr');
 
 /* ── KKT blocks ── */
 const kktTpl=i=>`<div class="kkt-block">
@@ -745,17 +644,12 @@ document.querySelectorAll('input[name=needVisit]').forEach(r=>r.addEventListener
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   errorBox.style.display='none';
-  if(!dtInput.value){dtInput.focus();showErr('Укажите дату и время.');return;}
   if(!form.reportValidity())return;
   if(!SCRIPT_URL||!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
     showErr('Не задан SCRIPT_URL — вставьте адрес Apps Script в код.');return;
   }
   submitBtn.disabled=true;submitBtn.textContent='Отправка...';
-  const activePill=document.querySelector('.s-btn.active');
   const data=Object.fromEntries(new FormData(form).entries());
-  data.ticketNumber=ticketNoInp.value.trim();
-  data.ticketDate=fmtDt(dtInput.value);
-  data.ticketStatus=activePill?activePill.querySelector('input').value:'';
   data.createdAt=new Date().toISOString();
   data.kkt=[...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
     n:i+1,
@@ -766,8 +660,6 @@ form.addEventListener('submit',async e=>{
   }));
   try{
     await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
-    const noText=data.ticketNumber?'№ <span class="success-no">'+data.ticketNumber+'</span>':'';
-    document.getElementById('successNoDisplay').innerHTML=noText?'Номер заявки: '+noText:'';
     form.style.display='none';
     document.querySelectorAll('.card').forEach(c=>{if(!c.closest('#success-message'))c.style.display='none';});
     document.getElementById('success-message').style.display='block';
@@ -781,8 +673,8 @@ function showErr(msg){errorBox.textContent=msg;errorBox.style.display='block';er
 
 /* ── Reset ── */
 document.getElementById('resetBtn').addEventListener('click',()=>{
-  form.reset();cashCount.value=1;ticketNoInp.value='';
-  setNow();renderKkt();toggleVisit();activateStatus('new');
+  form.reset();cashCount.value=1;
+  renderKkt();toggleVisit();
   document.querySelectorAll('.card').forEach(c=>c.style.display='');
   form.style.display='block';
   document.getElementById('success-message').style.display='none';
@@ -792,10 +684,8 @@ document.getElementById('resetBtn').addEventListener('click',()=>{
 });
 
 /* ── Init ── */
-setNow();renderKkt();toggleVisit();
+renderKkt();toggleVisit();
 </script>
-</body>
-</html>
 </body>
 </html>
 

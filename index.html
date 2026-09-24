@@ -1,34 +1,17 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-							<style>
-								body {
-									background-color: white; /* Ensure the iframe has a white background */
-								}
-
-								
-							</style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { background-color: white; }
-  </style>
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>LIFE PAY · Форма передачи заявки ТС ПиОТ</title>
+
+<!-- ══ FAVICON — встроен inline, файл не нужен ══ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='55%25' stop-color='%232f7cf6'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23a)'/%3E%3Crect width='64' height='32' rx='14' fill='rgba(255,255,255,0.07)'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff' opacity='.93'/%3E%3C/svg%3E">
+<!-- Fallback PNG для старых браузеров (необязательно) -->
+<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff'/%3E%3C/svg%3E">
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -374,7 +357,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       const ph=(ct+i*.28)%(stops.length-1);
       const lo=~~ph,hi=lo+1,f=ph-lo;
       const c=lerp(stops[lo],stops[hi],f);
-      /* ✅ ИСПРАВЛЕНО: добавлена запятая и правильные backtick */
       g.querySelectorAll('path,rect').forEach(el=>el.setAttribute('fill',`rgb(${c[0]},${c[1]},${c[2]})`));
     });
     requestAnimationFrame(colorTick);
@@ -394,7 +376,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
     const tY=((el+550)%JP)/JP;
     const dL=tL<.65?jEase(tL/.65):0;
     const dY=tY<.65?jEase(tY/.65):0;
-    /* ✅ ИСПРАВЛЕНО: добавлена запятая и правильные backtick */
     if(grpL)grpL.setAttribute('transform',`translate(0,${dL})`);
     if(grpY)grpY.setAttribute('transform',`translate(0,${dY})`);
     requestAnimationFrame(jumpTick);
@@ -403,17 +384,17 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 })();
 
 /* ══ FORM ══ */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIVVjeCc7amNq785mJWPvHUOwtBRZ_x8g7ysNO5r94bv2mQARkLq2Z7dbJ2bmMrcipeA/exec';
-const form      = document.getElementById('iotForm');
-const submitBtn = document.getElementById('submitBtn');
-const errorBox  = document.getElementById('errorBox');
-const cashCount = document.getElementById('cashCount');
-const kktBox    = document.getElementById('kktContainer');
-const vBlock    = document.getElementById('visitBlock');
-const vAddr     = document.getElementById('visitAddr');
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbxIVVjeCc7amNq785mJWPvHUOwtBRZ_x8g7ysNO5r94bv2mQARkLq2Z7dbJ2bmMrcipeA/exec';
+const form=document.getElementById('iotForm');
+const submitBtn=document.getElementById('submitBtn');
+const errorBox=document.getElementById('errorBox');
+const cashCount=document.getElementById('cashCount');
+const kktBox=document.getElementById('kktContainer');
+const vBlock=document.getElementById('visitBlock');
+const vAddr=document.getElementById('visitAddr');
 
 /* ── KKT blocks ── */
-const kktTpl = i => `<div class="kkt-block">
+const kktTpl=i=>`<div class="kkt-block">
   <div class="kkt-badge">⌨ Касса No${i}</div>
   <div class="row2">
     <div class="fg"><label>РНМ</label><input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
@@ -448,50 +429,35 @@ form.addEventListener('submit',async e=>{
   errorBox.style.display='none';
   if(!form.reportValidity())return;
   submitBtn.disabled=true;submitBtn.textContent='Отправка...';
-
-  /* Читаем сырые значения из формы */
-  const raw = Object.fromEntries(new FormData(form).entries());
-
-  /* Собираем КТ-блоки */
-  const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
-    n        : i+1,
-    rnm      : b.querySelector('[data-f=rnm]').value.trim(),
-    znKkt    : b.querySelector('[data-f=znKkt]').value.trim(),
-    fn       : b.querySelector('[data-f=fn]').value.trim(),
-    modelKkt : b.querySelector('[data-f=modelKkt]').value.trim()
+  const raw=Object.fromEntries(new FormData(form).entries());
+  const kassas=[...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
+    n:i+1,
+    rnm:b.querySelector('[data-f=rnm]').value.trim(),
+    znKkt:b.querySelector('[data-f=znKkt]').value.trim(),
+    fn:b.querySelector('[data-f=fn]').value.trim(),
+    modelKkt:b.querySelector('[data-f=modelKkt]').value.trim()
   }));
-
-  /* ✅ ПЕРЕИМЕНОВЫВАЕМ поля так, чтобы совпасть с Apps Script rowData */
-  const data = {
-    /* C  */ employee_fio    : raw.lpEmployee      || '',
-    /* D  */ priority        : raw.priority         || 'Средний',
-    /* G  */ comment         : raw.comment          || '',
-    /* H  */ org_name        : raw.orgName          || '',
-    /* I  */ inn             : raw.inn              || '',
-    /* J  */ contact_person  : raw.contactName      || '',
-    /* K  */ phone           : raw.phone            || '',
-    /* L  */ email           : raw.email            || '',
-    /* M  */ kassas          : kassas,               /* Apps Script читает kassas.length */
-    /* N–Q*/ kkt             : kassas,               /* для списков РНМ/ЗН/ФН/Модель */
-    /* R  */ need_trip       : raw.needVisit        || 'нет',
-    /* S  */ trip_address    : raw.visitAddress     || '',
-    /* T  */ registered_esp  : raw.espRegistered    || 'нет',
-    /* U  */ has_kep         : raw.hasKep           || 'нет',
-    /* V  */ has_wifi        : raw.hasWifi          || 'нет',
-             createdAt       : new Date().toISOString()
+  const data={
+    employee_fio:raw.lpEmployee||'',
+    priority:raw.priority||'Средний',
+    comment:raw.comment||'',
+    org_name:raw.orgName||'',
+    inn:raw.inn||'',
+    contact_person:raw.contactName||'',
+    phone:raw.phone||'',
+    email:raw.email||'',
+    kkt:kassas,
+    need_trip:raw.needVisit||'нет',
+    trip_address:raw.visitAddress||'',
+    registered_esp:raw.espRegistered||'нет',
+    has_kep:raw.hasKep||'нет',
+    has_wifi:raw.hasWifi||'нет',
+    createdAt:new Date().toISOString()
   };
-
   try{
-    await fetch(SCRIPT_URL,{
-      method :'POST',
-      mode   :'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body   :JSON.stringify(data)
-    });
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
     form.style.display='none';
-    document.querySelectorAll('.card').forEach(c=>{
-      if(!c.closest('#success-message'))c.style.display='none';
-    });
+    document.querySelectorAll('.card').forEach(c=>{if(!c.closest('#success-message'))c.style.display='none';});
     document.getElementById('success-message').style.display='block';
     window.scrollTo({top:0,behavior:'smooth'});
   }catch(err){
@@ -524,12 +490,3 @@ renderKkt();toggleVisit();
 </script>
 </body>
 </html>
-</body>
-</html>
-
-							<script>
-                            	
-							</script>
-                        </body>
-                        </html>
-                    

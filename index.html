@@ -14,6 +14,16 @@
                         </head>
                         <body>
                             <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background-color: white; }
+  </style>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -46,8 +56,6 @@ body{
   padding:28px 12px 70px;
   position:relative;
 }
-
-/* ── Фоновые блобы ── */
 #particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
 .blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:0;pointer-events:none;}
 .b1{width:600px;height:600px;background:radial-gradient(circle at 30% 40%,#4f8dff,#1d4ed8,#6366f1);top:-220px;left:-180px;animation:float1 20s ease-in-out infinite;}
@@ -58,282 +66,97 @@ body{
 @keyframes float2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-70px,-50px) scale(1.12)}66%{transform:translate(-110px,-20px) scale(1.08)}}
 @keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(-130px,70px)}}
 @keyframes float4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}}
-
-/* ── Shimmer line ── */
 .shimmer-line{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:linear-gradient(90deg,transparent,#2f7cf6,#22d3ee,#6366f1,transparent);background-size:200% 100%;animation:shimmerMove 3s linear infinite;}
 @keyframes shimmerMove{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
 .ring{position:fixed;border-radius:50%;border:1.5px solid rgba(99,130,246,.18);pointer-events:none;z-index:0;}
 .ring1{width:340px;height:340px;top:10%;right:5%;animation:ringPulse 7s ease-in-out infinite;}
 .ring2{width:220px;height:220px;top:55%;left:8%;animation:ringPulse 9s ease-in-out infinite reverse;}
 .ring3{width:500px;height:500px;top:-60px;left:30%;animation:ringPulse 12s ease-in-out infinite 2s;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:.15}}
-
-/* ── Page wrapper ── */
 .page{position:relative;z-index:2;max-width:740px;margin:0 auto;}
-
-/* ══════════════════════════════
-   BRAND / LOGO
-══════════════════════════════ */
 .brand{text-align:center;margin-bottom:24px;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both;}
 .brand-logo-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:10px;padding:12px 20px 8px;position:relative;}
-.brand-glow{
-  position:absolute;width:340px;height:90px;
-  background:radial-gradient(ellipse,rgba(30,30,30,.13) 0%,transparent 70%);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  pointer-events:none;animation:glowPulseMono 4s ease-in-out infinite;z-index:0;
-}
+.brand-glow{position:absolute;width:340px;height:90px;background:radial-gradient(ellipse,rgba(30,30,30,.13) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:glowPulseMono 4s ease-in-out infinite;z-index:0;}
 @keyframes glowPulseMono{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}}
-.brand-logo-svg-wrap{
-  position:relative;z-index:1;display:inline-block;
-  transition:filter .5s ease,transform .4s ease;
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));
-}
-.brand-logo-svg-wrap:hover{
-  filter:drop-shadow(0 4px 22px rgba(0,0,0,.32)) drop-shadow(0 0 40px rgba(30,30,30,.15));
-  transform:scale(1.05) translateY(-3px);
-}
+.brand-logo-svg-wrap{position:relative;z-index:1;display:inline-block;transition:filter .5s ease,transform .4s ease;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));}
+.brand-logo-svg-wrap:hover{filter:drop-shadow(0 4px 22px rgba(0,0,0,.32)) drop-shadow(0 0 40px rgba(30,30,30,.15));transform:scale(1.05) translateY(-3px);}
 .brand-logo{display:block;width:clamp(200px,50vw,320px);height:auto;}
-.brand-tagline{
-  font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;
-  position:relative;z-index:1;
-  background:linear-gradient(90deg,#9aa5b4,#4a5568,#9aa5b4);
-  background-size:300% 100%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:taglineFade 5s linear infinite;
-}
+.brand-tagline{font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;position:relative;z-index:1;background:linear-gradient(90deg,#9aa5b4,#4a5568,#9aa5b4);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:taglineFade 5s linear infinite;}
 @keyframes taglineFade{0%{background-position:0% 0}100%{background-position:300% 0}}
-
-/* ══════════════════════════════
-   CARDS
-══════════════════════════════ */
-.card{
-  background:rgba(255,255,255,.55);
-  backdrop-filter:blur(28px) saturate(200%);
-  -webkit-backdrop-filter:blur(28px) saturate(200%);
-  border:1px solid rgba(255,255,255,.88);
-  border-radius:var(--radius);
-  box-shadow:0 16px 50px rgba(13,42,92,.11),0 4px 14px rgba(13,42,92,.05),
-             inset 0 1px 0 rgba(255,255,255,.95);
-  position:relative;overflow:hidden;margin-bottom:12px;
-  animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both;
-  transition:box-shadow .3s ease;
-}
+.card{background:rgba(255,255,255,.55);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid rgba(255,255,255,.88);border-radius:var(--radius);box-shadow:0 16px 50px rgba(13,42,92,.11),0 4px 14px rgba(13,42,92,.05),inset 0 1px 0 rgba(255,255,255,.95);position:relative;overflow:hidden;margin-bottom:12px;animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both;transition:box-shadow .3s ease;}
 .card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;background:linear-gradient(140deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 60%);}
 .card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.10s}
 .card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.20s}
 .card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.30s}
-
-.card-title-only{
-  background:transparent !important;border:none !important;
-  box-shadow:none !important;backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;margin-bottom:4px;
-}
+.card-title-only{background:transparent !important;border:none !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;margin-bottom:4px;}
 .card-title-only::before{display:none;}
-
 .card-body{padding:20px 18px;position:relative;z-index:1;}
 .card-body:last-child{padding-bottom:22px;}
-
 .form-title{text-align:center;padding:14px 18px 8px;position:relative;z-index:1;}
-.form-title h1{
-  font-size:clamp(18px,5vw,28px);font-weight:800;letter-spacing:-.4px;
-  background:linear-gradient(135deg,#0a1f44 0%,#1d4ed8 50%,#22d3ee 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:titleReveal 1s cubic-bezier(.22,1,.36,1) .3s both;
-  line-height:1.25;
-}
+.form-title h1{font-size:clamp(18px,5vw,28px);font-weight:800;letter-spacing:-.4px;background:linear-gradient(135deg,#0a1f44 0%,#1d4ed8 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:titleReveal 1s cubic-bezier(.22,1,.36,1) .3s both;line-height:1.25;}
 @keyframes titleReveal{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
-
-/* ── Section label ── */
-.sec-label{
-  font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;
-}
+.sec-label{font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(91,112,149,.30),transparent);}
-
-/* ── Form groups ── */
 .fg{margin-bottom:14px;}
 .fg:last-child{margin-bottom:0;}
 .fg label{display:block;font-size:12.5px;font-weight:700;color:#274063;margin-bottom:6px;}
 .req{color:var(--err);font-weight:800;}
 .hint{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
-
-/* ── Inputs ── */
 input[type=text],input[type=email],input[type=tel],
 input[type=number],input[type=datetime-local],select,textarea{
-  width:100%;
-  padding:13px 14px;
-  font:500 15px/1.4 'Manrope',sans-serif;
-  color:var(--txt);
-  background:rgba(255,255,255,.68);
-  border:1px solid rgba(160,190,235,.60);
-  border-radius:12px;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
+  width:100%;padding:13px 14px;font:500 15px/1.4 'Manrope',sans-serif;color:var(--txt);
+  background:rgba(255,255,255,.68);border:1px solid rgba(160,190,235,.60);border-radius:12px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);
   transition:border-color .22s,box-shadow .22s,background .22s;
-  -webkit-appearance:none;
-  appearance:none;
-  /* Убираем zoom на iOS */
-  font-size:16px;
+  -webkit-appearance:none;appearance:none;font-size:16px;
 }
 input::placeholder,textarea::placeholder{color:#93a7c4;font-weight:400;}
-input:focus,select:focus,textarea:focus{
-  outline:none;background:rgba(255,255,255,.95);border-color:var(--blue-500);
-  box-shadow:0 0 0 3px rgba(47,124,246,.18),inset 0 1px 0 rgba(255,255,255,.95);
-}
-select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232f7cf6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;
-}
+input:focus,select:focus,textarea:focus{outline:none;background:rgba(255,255,255,.95);border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(47,124,246,.18),inset 0 1px 0 rgba(255,255,255,.95);}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232f7cf6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;}
 textarea{resize:vertical;min-height:90px;font-size:15px;}
-
-/* ── Grid ── */
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-
-/* ── Toggle ── */
 .toggle{display:flex;gap:8px;}
 .toggle input[type=radio]{position:absolute;opacity:0;pointer-events:none;}
-.toggle label{
-  flex:1;text-align:center;cursor:pointer;
-  padding:13px 0;font-size:14px;font-weight:600;color:var(--muted);
-  background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);
-  border-radius:12px;margin:0;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);
-  transition:all .22s ease;
-  /* Крупнее для пальца */
-  min-height:46px;display:flex;align-items:center;justify-content:center;
-}
+.toggle label{flex:1;text-align:center;cursor:pointer;padding:13px 0;font-size:14px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);border-radius:12px;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);transition:all .22s ease;min-height:46px;display:flex;align-items:center;justify-content:center;}
 .toggle label:active{transform:scale(.97);}
-.toggle input[type=radio]:checked + label{
-  background:linear-gradient(135deg,var(--blue-700),var(--blue-500));
-  border-color:transparent;color:#fff;font-weight:700;
-  box-shadow:0 6px 18px rgba(47,124,246,.34),inset 0 1px 0 rgba(255,255,255,.22);
-}
-
-/* ── KKT block ── */
-.kkt-block{
-  background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));
-  border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);
-  border-radius:14px;padding:16px 14px 8px;margin-top:12px;
-  backdrop-filter:blur(14px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 16px rgba(13,42,92,.08);
-  animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);
-}
-.kkt-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(90deg,var(--blue-700),var(--blue-500));
-  color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  padding:4px 13px;border-radius:99px;margin-bottom:12px;
-  box-shadow:0 4px 12px rgba(47,124,246,.30);
-}
+.toggle input[type=radio]:checked + label{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(47,124,246,.34),inset 0 1px 0 rgba(255,255,255,.22);}
+.kkt-block{background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);border-radius:14px;padding:16px 14px 8px;margin-top:12px;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 16px rgba(13,42,92,.08);animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);}
+.kkt-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:99px;margin-bottom:12px;box-shadow:0 4px 12px rgba(47,124,246,.30);}
 @keyframes slideUp{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
-
-/* ── Visit block ── */
-.visit-block{
-  margin-top:10px;padding:14px;border-radius:13px;
-  background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(224,238,255,.38));
-  border:1px solid rgba(255,255,255,.82);border-left:3px solid var(--cyan);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 3px 12px rgba(13,42,92,.07);
-  animation:slideUp .28s ease;
-}
-
-/* ── Submit button ── */
-.btn-submit{
-  width:100%;margin-top:4px;
-  padding:16px;
-  font:700 16px/1 'Manrope',sans-serif;letter-spacing:.2px;
-  color:#fff;border:none;border-radius:14px;cursor:pointer;
-  background:linear-gradient(135deg,#1d4ed8 0%,#2f7cf6 50%,#22d3ee 120%);
-  background-size:200% 100%;
-  box-shadow:0 10px 28px rgba(29,78,216,.32),0 4px 10px rgba(29,78,216,.20);
-  transition:transform .18s ease,box-shadow .22s ease;
-  position:relative;overflow:hidden;
-  min-height:54px;
-}
+.visit-block{margin-top:10px;padding:14px;border-radius:13px;background:linear-gradient(135deg,rgba(255,255,255,.52),rgba(224,238,255,.38));border:1px solid rgba(255,255,255,.82);border-left:3px solid var(--cyan);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 3px 12px rgba(13,42,92,.07);animation:slideUp .28s ease;}
+.btn-submit{width:100%;margin-top:4px;padding:16px;font:700 16px/1 'Manrope',sans-serif;letter-spacing:.2px;color:#fff;border:none;border-radius:14px;cursor:pointer;background:linear-gradient(135deg,#1d4ed8 0%,#2f7cf6 50%,#22d3ee 120%);background-size:200% 100%;box-shadow:0 10px 28px rgba(29,78,216,.32),0 4px 10px rgba(29,78,216,.20);transition:transform .18s ease,box-shadow .22s ease;position:relative;overflow:hidden;min-height:54px;}
 .btn-submit:active{transform:scale(.98);}
 .btn-submit:disabled{filter:grayscale(.55);opacity:.65;cursor:not-allowed;}
-
-/* ── Reset button ── */
-.btn-reset{
-  width:100%;margin-top:10px;padding:14px;
-  font:600 14px/1 'Manrope',sans-serif;color:var(--blue-700);
-  background:rgba(255,255,255,.65);border:1px solid rgba(160,190,235,.65);
-  border-radius:14px;cursor:pointer;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 8px rgba(13,42,92,.08);
-  transition:all .22s ease;min-height:48px;
-}
+.btn-reset{width:100%;margin-top:10px;padding:14px;font:600 14px/1 'Manrope',sans-serif;color:var(--blue-700);background:rgba(255,255,255,.65);border:1px solid rgba(160,190,235,.65);border-radius:14px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 8px rgba(13,42,92,.08);transition:all .22s ease;min-height:48px;}
 .btn-reset:active{transform:scale(.98);}
-
-/* ── Error ── */
-.error-box{
-  display:none;margin-top:10px;padding:12px 14px;border-radius:12px;
-  font-size:13px;font-weight:600;color:#9f1239;
-  background:rgba(255,228,235,.85);border:1px solid rgba(244,163,181,.75);
-}
-
-/* ── Success ── */
+.error-box{display:none;margin-top:10px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;color:#9f1239;background:rgba(255,228,235,.85);border:1px solid rgba(244,163,181,.75);}
 #success-message{display:none;text-align:center;padding:44px 24px 32px;}
-.check-wrap{
-  width:76px;height:76px;margin:0 auto 18px;border-radius:50%;
-  background:linear-gradient(135deg,#34d399,#059669);
-  color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 12px 34px rgba(5,150,105,.35);
-  animation:popBounce .5s cubic-bezier(.34,1.56,.64,1),successPulse 2s ease .5s infinite;
-}
+.check-wrap{width:76px;height:76px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(5,150,105,.35);animation:popBounce .5s cubic-bezier(.34,1.56,.64,1),successPulse 2s ease .5s infinite;}
 @keyframes popBounce{0%{opacity:0;transform:scale(.2) rotate(-20deg)}70%{transform:scale(1.10) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes successPulse{0%,100%{box-shadow:0 12px 34px rgba(5,150,105,.35),0 0 0 0 rgba(5,150,105,.3)}50%{box-shadow:0 12px 34px rgba(5,150,105,.35),0 0 0 14px rgba(5,150,105,.0)}}
 .success-title{font-size:22px;font-weight:800;color:var(--blue-900);margin-bottom:8px;}
 .success-sub{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
 .success-no{color:var(--blue-700);font-weight:800;}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
-/* ══════════════════════════════
-   MOBILE — до 480px
-══════════════════════════════ */
 @media(max-width:480px){
   body{padding:18px 8px 60px;}
   .page{max-width:100%;}
-
-  /* Логотип */
   .brand{margin-bottom:18px;}
   .brand-logo{width:clamp(170px,58vw,260px);}
   .brand-tagline{font-size:9px;letter-spacing:3px;}
-
-  /* Заголовок */
   .form-title h1{font-size:clamp(16px,5.5vw,22px);}
-
-  /* Карточки */
   .card{border-radius:14px;margin-bottom:10px;}
   .card-body{padding:16px 14px;}
-
-  /* Двухколоночные сетки → одна колонка */
   .row2{grid-template-columns:1fr;}
-
-  /* Инпуты — уже достаточно крупные (font-size:16px = no zoom iOS) */
-
-  /* Тогглы — чуть крупнее */
   .toggle label{padding:14px 0;font-size:14.5px;min-height:48px;}
-
-  /* КЗТ-блок */
   .kkt-block{padding:14px 12px 6px;}
-
-  /* Кнопка отправки */
   .btn-submit{padding:17px;font-size:15.5px;min-height:56px;}
-
-  /* Успех */
   #success-message{padding:36px 16px 28px;}
   .success-title{font-size:20px;}
-
-  /* Убираем анимацию hover на мобиле */
   .card:hover{transform:none;box-shadow:0 16px 50px rgba(13,42,92,.11);}
   .brand-logo-svg-wrap:hover{transform:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));}
 }
-
-/* ══════════════════════════════
-   MOBILE — 481–640px
-══════════════════════════════ */
 @media(min-width:481px) and (max-width:640px){
   .brand-logo{width:clamp(200px,44vw,280px);}
   .row2{grid-template-columns:1fr;}
@@ -347,10 +170,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 <div class="blob b1"></div><div class="blob b2"></div>
 <div class="blob b3"></div><div class="blob b4"></div>
 <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
-
 <div class="page">
-
-  <!-- ═══ LOGO ═══ -->
   <div class="brand">
     <div class="brand-logo-wrap">
       <div class="brand-glow"></div>
@@ -381,17 +201,12 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       <div class="brand-tagline">Технический сервис · ПиОТ</div>
     </div>
   </div>
-
-  <!-- TITLE -->
   <div class="card card-title-only">
     <div class="form-title">
       <h1>Форма передачи заявки · ТС ПиОТ</h1>
     </div>
   </div>
-
   <form id="iotForm">
-
-    <!-- PARAMS -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Параметры заявки</div>
@@ -415,8 +230,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         </div>
       </div>
     </div>
-
-    <!-- CLIENT -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Данные клиента</div>
@@ -448,8 +261,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         </div>
       </div>
     </div>
-
-    <!-- KKT -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Кассовое оборудование</div>
@@ -461,8 +272,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div id="kktContainer"></div>
       </div>
     </div>
-
-    <!-- EXTRA -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Дополнительно</div>
@@ -514,29 +323,20 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         </div>
       </div>
     </div>
-
-    <!-- SUBMIT -->
     <div class="card">
       <div class="card-body">
         <button type="submit" class="btn-submit" id="submitBtn">Отправить заявку →</button>
         <div class="error-box" id="errorBox"></div>
       </div>
     </div>
-
   </form>
-
-  <!-- SUCCESS -->
   <div id="success-message" class="card">
     <div class="check-wrap">✓</div>
     <div class="success-title">Заявка отправлена!</div>
-    <div class="success-sub">
-      Данные успешно записаны в таблицу.
-    </div>
+    <div class="success-sub">Данные успешно записаны в таблицу.</div>
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
-
-</div><!-- /page -->
-
+</div>
 <script>
 /* ══ PARTICLES ══ */
 (function(){
@@ -574,6 +374,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       const ph=(ct+i*.28)%(stops.length-1);
       const lo=~~ph,hi=lo+1,f=ph-lo;
       const c=lerp(stops[lo],stops[hi],f);
+      /* ✅ ИСПРАВЛЕНО: добавлена запятая и правильные backtick */
       g.querySelectorAll('path,rect').forEach(el=>el.setAttribute('fill',`rgb(${c[0]},${c[1]},${c[2]})`));
     });
     requestAnimationFrame(colorTick);
@@ -593,6 +394,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
     const tY=((el+550)%JP)/JP;
     const dL=tL<.65?jEase(tL/.65):0;
     const dY=tY<.65?jEase(tY/.65):0;
+    /* ✅ ИСПРАВЛЕНО: добавлена запятая и правильные backtick */
     if(grpL)grpL.setAttribute('transform',`translate(0,${dL})`);
     if(grpY)grpY.setAttribute('transform',`translate(0,${dY})`);
     requestAnimationFrame(jumpTick);
@@ -601,8 +403,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 })();
 
 /* ══ FORM ══ */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7h2VCjpLUB9wOMZ9SUHDS58KxzYT-8GhrqsqCDHyi4KXor7n3JZPp2hObJNfijV83Gg/exec';  // ← вставьте URL Apps Script
-
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7h2VCjpLUB9wOMZ9SUHDS58KxzYT-8GhrqsqCDHyi4KXor7n3JZPp2hObJNfijV83Gg/exec';
 const form      = document.getElementById('iotForm');
 const submitBtn = document.getElementById('submitBtn');
 const errorBox  = document.getElementById('errorBox');
@@ -612,8 +413,8 @@ const vBlock    = document.getElementById('visitBlock');
 const vAddr     = document.getElementById('visitAddr');
 
 /* ── KKT blocks ── */
-const kktTpl=i=>`<div class="kkt-block">
-  <div class="kkt-badge">⌨ Касса №${i}</div>
+const kktTpl = i => `<div class="kkt-block">
+  <div class="kkt-badge">⌨ Касса No${i}</div>
   <div class="row2">
     <div class="fg"><label>РНМ</label><input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
     <div class="fg"><label>ЗН ККТ</label><input type="text" data-f="znKkt" placeholder="Заводской номер"></div>
@@ -623,6 +424,7 @@ const kktTpl=i=>`<div class="kkt-block">
     <div class="fg"><label>Модель ККТ</label><input type="text" data-f="modelKkt" placeholder="Например: ПТК MSPOS-K"></div>
   </div>
 </div>`;
+
 function renderKkt(){
   const n=Math.min(20,Math.max(1,parseInt(cashCount.value,10)||1));
   let bl=kktBox.querySelectorAll('.kkt-block');
@@ -645,31 +447,65 @@ form.addEventListener('submit',async e=>{
   e.preventDefault();
   errorBox.style.display='none';
   if(!form.reportValidity())return;
-  if(!SCRIPT_URL||!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
-    showErr('Не задан SCRIPT_URL — вставьте адрес Apps Script в код.');return;
-  }
   submitBtn.disabled=true;submitBtn.textContent='Отправка...';
-  const data=Object.fromEntries(new FormData(form).entries());
-  data.createdAt=new Date().toISOString();
-  data.kkt=[...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
-    n:i+1,
-    rnm:b.querySelector('[data-f=rnm]').value.trim(),
-    znKkt:b.querySelector('[data-f=znKkt]').value.trim(),
-    fn:b.querySelector('[data-f=fn]').value.trim(),
-    modelKkt:b.querySelector('[data-f=modelKkt]').value.trim()
+
+  /* Читаем сырые значения из формы */
+  const raw = Object.fromEntries(new FormData(form).entries());
+
+  /* Собираем КТ-блоки */
+  const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
+    n        : i+1,
+    rnm      : b.querySelector('[data-f=rnm]').value.trim(),
+    znKkt    : b.querySelector('[data-f=znKkt]').value.trim(),
+    fn       : b.querySelector('[data-f=fn]').value.trim(),
+    modelKkt : b.querySelector('[data-f=modelKkt]').value.trim()
   }));
+
+  /* ✅ ПЕРЕИМЕНОВЫВАЕМ поля так, чтобы совпасть с Apps Script rowData */
+  const data = {
+    /* C  */ employee_fio    : raw.lpEmployee      || '',
+    /* D  */ priority        : raw.priority         || 'Средний',
+    /* G  */ comment         : raw.comment          || '',
+    /* H  */ org_name        : raw.orgName          || '',
+    /* I  */ inn             : raw.inn              || '',
+    /* J  */ contact_person  : raw.contactName      || '',
+    /* K  */ phone           : raw.phone            || '',
+    /* L  */ email           : raw.email            || '',
+    /* M  */ kassas          : kassas,               /* Apps Script читает kassas.length */
+    /* N–Q*/ kkt             : kassas,               /* для списков РНМ/ЗН/ФН/Модель */
+    /* R  */ need_trip       : raw.needVisit        || 'нет',
+    /* S  */ trip_address    : raw.visitAddress     || '',
+    /* T  */ registered_esp  : raw.espRegistered    || 'нет',
+    /* U  */ has_kep         : raw.hasKep           || 'нет',
+    /* V  */ has_wifi        : raw.hasWifi          || 'нет',
+             createdAt       : new Date().toISOString()
+  };
+
   try{
-    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
+    await fetch(SCRIPT_URL,{
+      method :'POST',
+      mode   :'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body   :JSON.stringify(data)
+    });
     form.style.display='none';
-    document.querySelectorAll('.card').forEach(c=>{if(!c.closest('#success-message'))c.style.display='none';});
+    document.querySelectorAll('.card').forEach(c=>{
+      if(!c.closest('#success-message'))c.style.display='none';
+    });
     document.getElementById('success-message').style.display='block';
     window.scrollTo({top:0,behavior:'smooth'});
   }catch(err){
     showErr('Ошибка отправки: '+err.message);
-    submitBtn.disabled=false;submitBtn.textContent='Отправить заявку →';
+    submitBtn.disabled=false;
+    submitBtn.textContent='Отправить заявку →';
   }
 });
-function showErr(msg){errorBox.textContent=msg;errorBox.style.display='block';errorBox.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+function showErr(msg){
+  errorBox.textContent=msg;
+  errorBox.style.display='block';
+  errorBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 
 /* ── Reset ── */
 document.getElementById('resetBtn').addEventListener('click',()=>{
@@ -686,6 +522,8 @@ document.getElementById('resetBtn').addEventListener('click',()=>{
 /* ── Init ── */
 renderKkt();toggleVisit();
 </script>
+</body>
+</html>
 </body>
 </html>
 

@@ -439,9 +439,11 @@ form.addEventListener('submit',async e=>{
   }));
   const data={
     employee_fio:raw.lpEmployee||'',
-    priority:raw.priority||'Средний',
-    comment:raw.comment||'',
-    org_name:raw.orgName||'',
+    priority: raw.priority || 'Средний',
+executorOrg: raw.executorOrg || '', // <-- добавляем сюда
+comment: raw.comment || '',
+org_name: raw.orgname || '',
+// ... остальные поля
     inn:raw.inn||'',
     contact_person:raw.contactName||'',
     phone:raw.phone||'',

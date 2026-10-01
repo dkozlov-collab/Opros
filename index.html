@@ -1,17 +1,25 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>LIFE PAY · Форма передачи заявки ТС ПиОТ</title>
-
-<!-- ══ FAVICON — встроен inline, файл не нужен ══ -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='55%25' stop-color='%232f7cf6'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23a)'/%3E%3Crect width='64' height='32' rx='14' fill='rgba(255,255,255,0.07)'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff' opacity='.93'/%3E%3C/svg%3E">
-<!-- Fallback PNG для старых браузеров (необязательно) -->
-<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff'/%3E%3C/svg%3E">
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff'/%3E%3C/svg%3E">
-
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='55%25' stop-color='%232f7cf6'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23a)'/%3E%3Crect x='13' y='12' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='13' y='33' width='20' height='7' rx='3.5' fill='%23fff'/%3E%3Cpolygon points='38,12 30,31 37,31 29,52 48,28 40,28 47,12' fill='%23fff' opacity='.93'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -137,8 +145,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   .btn-submit{padding:17px;font-size:15.5px;min-height:56px;}
   #success-message{padding:36px 16px 28px;}
   .success-title{font-size:20px;}
-  .card:hover{transform:none;box-shadow:0 16px 50px rgba(13,42,92,.11);}
-  .brand-logo-svg-wrap:hover{transform:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));}
 }
 @media(min-width:481px) and (max-width:640px){
   .brand-logo{width:clamp(200px,44vw,280px);}
@@ -184,15 +190,29 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       <div class="brand-tagline">Технический сервис · ПиОТ</div>
     </div>
   </div>
+
   <div class="card card-title-only">
     <div class="form-title">
       <h1>Форма передачи заявки · ТС ПиОТ</h1>
     </div>
   </div>
+
   <form id="iotForm">
+    <!-- ═══ БЛОК 1: Параметры заявки ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Параметры заявки</div>
+
+        <div class="fg">
+          <label>Организация СП <span class="req">*</span></label>
+          <select name="targetOrg" id="targetOrg" required>
+            <option value="" disabled selected>Выберите организацию</option>
+            <option value="АБ">АБ</option>
+            <option value="ООО &quot;БР&quot;">ООО "БР"</option>
+          </select>
+          <div class="hint">Заявка будет записана в таблицу выбранной организации</div>
+        </div>
+
         <div class="fg">
           <label>Приоритет <span class="req">*</span></label>
           <select name="priority" required>
@@ -203,35 +223,38 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <option>Критический</option>
           </select>
         </div>
-        <div class="fg">
-          <label>Кто выполняет заявку из СП? <span class="req">*</span></label>
-          <input type="text" name="executorOrg" required placeholder="Введите название организации">
-        </div>
+
         <div class="fg">
           <label>ФИО сотрудника <span class="req">*</span></label>
           <input type="text" name="lpEmployee" required placeholder="Фамилия Имя Отчество">
         </div>
       </div>
     </div>
+
+    <!-- ═══ БЛОК 2: Данные клиента ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Данные клиента</div>
-        <div class="row2">
-          <div class="fg">
-            <label>Организация (ООО/ИП) <span class="req">*</span></label>
-            <input type="text" name="orgName" required placeholder="ООО «Ромашка»">
-          </div>
-          <div class="fg">
-            <label>ИНН <span class="req">*</span></label>
-            <input type="text" name="inn" required inputmode="numeric"
-                   pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
-            <div class="hint">10 цифр — юрлицо · 12 — ИП</div>
-          </div>
+
+        <!-- ИНН отдельно на всю ширину -->
+        <div class="fg">
+          <label>ИНН <span class="req">*</span></label>
+          <input type="text" name="inn" id="inn" required inputmode="numeric"
+                 pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
+          <div class="hint">10 цифр — юрлицо · 12 — ИП</div>
         </div>
+
+        <div class="fg">
+          <label>Наименование организации (ООО/ИП) <span class="req">*</span></label>
+          <input type="text" name="orgName" id="orgName" required placeholder="ООО «Ромашка»">
+          <div class="hint">Автоматически заполнено из «Организация СП» — при необходимости исправьте</div>
+        </div>
+
         <div class="fg">
           <label>Контактное лицо (ФИО) <span class="req">*</span></label>
           <input type="text" name="contactName" required placeholder="Фамилия Имя Отчество">
         </div>
+
         <div class="row2">
           <div class="fg">
             <label>Телефон <span class="req">*</span></label>
@@ -239,11 +262,13 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
           </div>
           <div class="fg">
             <label>E-Mail <span class="req">*</span></label>
-            <input type="email" name="email" required placeholder="mail@example.com">
+            <input type="email" name="email" required placeholder="example@mail.ru">
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ═══ БЛОК 3: Кассовое оборудование ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Кассовое оборудование</div>
@@ -255,9 +280,12 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div id="kktContainer"></div>
       </div>
     </div>
+
+    <!-- ═══ БЛОК 4: Дополнительно ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Дополнительно</div>
+
         <div class="fg">
           <label>Нужен выезд <span class="req">*</span></label>
           <div class="toggle">
@@ -273,6 +301,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             </div>
           </div>
         </div>
+
         <div class="fg">
           <label>Зарегистрирован в ЕСП <span class="req">*</span></label>
           <div class="toggle">
@@ -282,6 +311,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="eYes">Да</label>
           </div>
         </div>
+
         <div class="fg">
           <label>Есть ли КЭП <span class="req">*</span></label>
           <div class="toggle">
@@ -291,6 +321,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="kYes">Да</label>
           </div>
         </div>
+
         <div class="fg">
           <label>Есть ли Wi-Fi</label>
           <div class="toggle">
@@ -300,12 +331,15 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="wYes">Да</label>
           </div>
         </div>
+
         <div class="fg" style="margin-bottom:0">
           <label>Комментарий</label>
           <textarea name="comment" placeholder="Дополнительная информация..."></textarea>
         </div>
       </div>
     </div>
+
+    <!-- ═══ БЛОК 5: Кнопка ═══ -->
     <div class="card">
       <div class="card-body">
         <button type="submit" class="btn-submit" id="submitBtn">Отправить заявку →</button>
@@ -313,13 +347,16 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       </div>
     </div>
   </form>
+
+  <!-- ═══ Успех ═══ -->
   <div id="success-message" class="card">
     <div class="check-wrap">✓</div>
     <div class="success-title">Заявка отправлена!</div>
-    <div class="success-sub">.</div>
+    <div class="success-sub">Заявка успешно записана в таблицу организации <span class="success-no" id="successOrgName"></span></div>
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
 </div>
+
 <script>
 /* ══ PARTICLES ══ */
 (function(){
@@ -333,9 +370,27 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   function frame(){
     ctx.clearRect(0,0,W,H);
     if(Math.random()<.005)SP.push({x:r(0,W),y:r(0,H),rad:r(2,5),a:1,c:CL[~~r(0,CL.length)],d:r(.03,.07)});
-    SP=SP.filter(s=>{s.a-=s.d;if(s.a<=0)return false;const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.rad*2);g.addColorStop(0,s.c);g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(s.x,s.y,s.rad,0,Math.PI*2);ctx.fillStyle=g;ctx.globalAlpha=s.a;ctx.fill();ctx.globalAlpha=1;return true;});
-    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.strokeStyle='rgba(99,130,246,'+(0.09*(1-d/110))+')';ctx.lineWidth=.8;ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.stroke();}}
-    P.forEach(p=>{p.p+=p.ps;const pr=p.rad*(1+.2*Math.sin(p.p));p.x+=p.vx;p.y+=p.vy;if(p.y<-8){p.y=H+8;p.x=r(0,W);}if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);g.addColorStop(0,p.c);g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(p.x,p.y,pr,0,Math.PI*2);ctx.fillStyle=p.c;ctx.globalAlpha=p.a;ctx.fill();ctx.globalAlpha=1;});
+    SP=SP.filter(s=>{
+      s.a-=s.d;if(s.a<=0)return false;
+      const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.rad*2);
+      g.addColorStop(0,s.c);g.addColorStop(1,'transparent');
+      ctx.beginPath();ctx.arc(s.x,s.y,s.rad,0,Math.PI*2);
+      ctx.fillStyle=g;ctx.globalAlpha=s.a;ctx.fill();ctx.globalAlpha=1;return true;
+    });
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
+      const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){ctx.beginPath();ctx.strokeStyle='rgba(99,130,246,'+(0.09*(1-d/110))+')';ctx.lineWidth=.8;ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.stroke();}
+    }
+    P.forEach(p=>{
+      p.p+=p.ps;const pr=p.rad*(1+.2*Math.sin(p.p));
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.y<-8){p.y=H+8;p.x=r(0,W);}
+      if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);
+      g.addColorStop(0,p.c);g.addColorStop(1,'transparent');
+      ctx.beginPath();ctx.arc(p.x,p.y,pr,0,Math.PI*2);
+      ctx.fillStyle=p.c;ctx.globalAlpha=p.a;ctx.fill();ctx.globalAlpha=1;
+    });
     requestAnimationFrame(frame);
   }
   resize();init();frame();
@@ -364,16 +419,15 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   colorTick();
   const JP=2800,JH=10;
   function jEase(t){
-    if(t<.45){return -Math.sin((t/.45)*Math.PI)*JH;}
-    if(t<.60){return 0;}
+    if(t<.45)return -Math.sin((t/.45)*Math.PI)*JH;
+    if(t<.60)return 0;
     return -Math.sin(((t-.60)/.40)*Math.PI)*JH*.28;
   }
   let st=null;
   function jumpTick(ts){
     if(!st)st=ts;
     const el=ts-st;
-    const tL=(el%JP)/JP;
-    const tY=((el+550)%JP)/JP;
+    const tL=(el%JP)/JP,tY=((el+550)%JP)/JP;
     const dL=tL<.65?jEase(tL/.65):0;
     const dY=tY<.65?jEase(tY/.65):0;
     if(grpL)grpL.setAttribute('transform',`translate(0,${dL})`);
@@ -383,18 +437,30 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   requestAnimationFrame(jumpTick);
 })();
 
-/* ══ FORM ══ */
+/* ══ FORM LOGIC ══ */
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwNjewNBbSPBsIgqbLJvTckAgj0HcsXP578RsLpw6cmB2AhEksdTMNdqhZSZKFX6c6lBg/exec';
-const form=document.getElementById('iotForm');
-const submitBtn=document.getElementById('submitBtn');
-const errorBox=document.getElementById('errorBox');
-const cashCount=document.getElementById('cashCount');
-const kktBox=document.getElementById('kktContainer');
-const vBlock=document.getElementById('visitBlock');
-const vAddr=document.getElementById('visitAddr');
+const form       = document.getElementById('iotForm');
+const submitBtn  = document.getElementById('submitBtn');
+const errorBox   = document.getElementById('errorBox');
+const cashCount  = document.getElementById('cashCount');
+const kktBox     = document.getElementById('kktContainer');
+const vBlock     = document.getElementById('visitBlock');
+const vAddr      = document.getElementById('visitAddr');
+const targetOrg  = document.getElementById('targetOrg');
+const orgNameInp = document.getElementById('orgName');
+
+/* ── Автозаполнение "Наименование организации" из "Организация СП" ── */
+targetOrg.addEventListener('change', function(){
+  // Заполняем только если поле пустое или совпадает с предыдущим авто-значением
+  const prev = this._prevVal || '';
+  if(orgNameInp.value === '' || orgNameInp.value === prev){
+    orgNameInp.value = this.value;
+  }
+  this._prevVal = this.value;
+});
 
 /* ── KKT blocks ── */
-const kktTpl=i=>`<div class="kkt-block">
+const kktTpl = i => `<div class="kkt-block">
   <div class="kkt-badge">⌨ Касса No${i}</div>
   <div class="row2">
     <div class="fg"><label>РНМ</label><input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
@@ -407,88 +473,114 @@ const kktTpl=i=>`<div class="kkt-block">
 </div>`;
 
 function renderKkt(){
-  const n=Math.min(20,Math.max(1,parseInt(cashCount.value,10)||1));
-  let bl=kktBox.querySelectorAll('.kkt-block');
-  while(bl.length>n){bl[bl.length-1].remove();bl=kktBox.querySelectorAll('.kkt-block');}
-  for(let i=bl.length;i<n;i++)kktBox.insertAdjacentHTML('beforeend',kktTpl(i+1));
+  const n = Math.min(20, Math.max(1, parseInt(cashCount.value,10)||1));
+  let bl = kktBox.querySelectorAll('.kkt-block');
+  while(bl.length > n){ bl[bl.length-1].remove(); bl = kktBox.querySelectorAll('.kkt-block'); }
+  for(let i = bl.length; i < n; i++) kktBox.insertAdjacentHTML('beforeend', kktTpl(i+1));
 }
-cashCount.addEventListener('input',renderKkt);
+cashCount.addEventListener('input', renderKkt);
 
 /* ── Visit toggle ── */
 function toggleVisit(){
-  const yes=document.getElementById('vYes').checked;
-  vBlock.style.display=yes?'block':'none';
-  vAddr.required=yes;
-  if(!yes)vAddr.value='';
+  const yes = document.getElementById('vYes').checked;
+  vBlock.style.display = yes ? 'block' : 'none';
+  vAddr.required = yes;
+  if(!yes) vAddr.value = '';
 }
-document.querySelectorAll('input[name=needVisit]').forEach(r=>r.addEventListener('change',toggleVisit));
+document.querySelectorAll('input[name=needVisit]').forEach(r => r.addEventListener('change', toggleVisit));
 
 /* ── Submit ── */
-form.addEventListener('submit',async e=>{
+form.addEventListener('submit', async e => {
   e.preventDefault();
-  errorBox.style.display='none';
-  if(!form.reportValidity())return;
-  submitBtn.disabled=true;submitBtn.textContent='Отправка...';
-  const raw=Object.fromEntries(new FormData(form).entries());
-  const kassas=[...kktBox.querySelectorAll('.kkt-block')].map((b,i)=>({
-    n:i+1,
-    rnm:b.querySelector('[data-f=rnm]').value.trim(),
-    znKkt:b.querySelector('[data-f=znKkt]').value.trim(),
-    fn:b.querySelector('[data-f=fn]').value.trim(),
-    modelKkt:b.querySelector('[data-f=modelKkt]').value.trim()
+  errorBox.style.display = 'none';
+  if(!form.reportValidity()) return;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Отправка...';
+
+  const raw = Object.fromEntries(new FormData(form).entries());
+  const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i) => ({
+    n: i+1,
+    rnm:      b.querySelector('[data-f=rnm]').value.trim(),
+    znKkt:    b.querySelector('[data-f=znKkt]').value.trim(),
+    fn:       b.querySelector('[data-f=fn]').value.trim(),
+    modelKkt: b.querySelector('[data-f=modelKkt]').value.trim()
   }));
-  const data={
-    employee_fio:raw.lpEmployee||'',
-    priority: raw.priority || 'Средний',
-executorOrg: raw.executorOrg || '', // <-- добавляем сюда
-comment: raw.comment || '',
-org_name: raw.orgName || '',
-// ... остальные поля
-    inn:raw.inn||'',
-    contact_person:raw.contactName||'',
-    phone:raw.phone||'',
-    email:raw.email||'',
-    kkt:kassas,
-    need_trip:raw.needVisit||'нет',
-    trip_address:raw.visitAddress||'',
-    registered_esp:raw.espRegistered||'нет',
-    has_kep:raw.hasKep||'нет',
-    has_wifi:raw.hasWifi||'нет',
-    createdAt:new Date().toISOString()
+
+  const data = {
+    targetOrg:      raw.targetOrg      || '',
+    employee_fio:   raw.lpEmployee     || '',
+    priority:       raw.priority       || 'Средний',
+    comment:        raw.comment        || '',
+    org_name:       raw.orgName        || '',
+    inn:            raw.inn            || '',
+    contact_person: raw.contactName    || '',
+    phone:          raw.phone          || '',
+    email:          raw.email          || '',
+    kkt:            kassas,
+    need_trip:      raw.needVisit      || 'нет',
+    trip_address:   raw.visitAddress   || '',
+    registered_esp: raw.espRegistered  || 'нет',
+    has_kep:        raw.hasKep         || 'нет',
+    has_wifi:       raw.hasWifi        || 'нет',
+    createdAt:      new Date().toISOString()
   };
+
   try{
-    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
-    form.style.display='none';
-    document.querySelectorAll('.card').forEach(c=>{if(!c.closest('#success-message'))c.style.display='none';});
-    document.getElementById('success-message').style.display='block';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }catch(err){
-    showErr('Ошибка отправки: '+err.message);
-    submitBtn.disabled=false;
-    submitBtn.textContent='Отправить заявку →';
+    await fetch(SCRIPT_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(data)
+    });
+    document.getElementById('successOrgName').textContent = raw.targetOrg || '';
+    form.style.display = 'none';
+    document.querySelectorAll('.card').forEach(c => { if(!c.closest('#success-message')) c.style.display='none'; });
+    document.getElementById('success-message').style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch(err){
+    showErr('Ошибка отправки: ' + err.message);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Отправить заявку →';
   }
 });
 
 function showErr(msg){
-  errorBox.textContent=msg;
-  errorBox.style.display='block';
-  errorBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+  errorBox.textContent = msg;
+  errorBox.style.display = 'block';
+  errorBox.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
 /* ── Reset ── */
-document.getElementById('resetBtn').addEventListener('click',()=>{
-  form.reset();cashCount.value=1;
-  renderKkt();toggleVisit();
-  document.querySelectorAll('.card').forEach(c=>c.style.display='');
-  form.style.display='block';
-  document.getElementById('success-message').style.display='none';
-  errorBox.style.display='none';
-  submitBtn.disabled=false;submitBtn.textContent='Отправить заявку →';
-  window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  form.reset();
+  cashCount.value = 1;
+  targetOrg._prevVal = '';
+  renderKkt();
+  toggleVisit();
+  document.querySelectorAll('.card').forEach(c => c.style.display = '');
+  form.style.display = 'block';
+  document.getElementById('success-message').style.display = 'none';
+  errorBox.style.display = 'none';
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Отправить заявку →';
+  window.scrollTo({top:0, behavior:'smooth'});
 });
 
 /* ── Init ── */
-renderKkt();toggleVisit();
+renderKkt();
+toggleVisit();
 </script>
 </body>
 </html>
+
+							<script>
+                            	targetOrg.addEventListener('change', function(){
+  const prev = this._prevVal || '';
+  if(orgNameInp.value === '' || orgNameInp.value === prev){
+    orgNameInp.value = this.value; // подставляет "АБ" или "ООО БР"
+  }
+  this._prevVal = this.value;
+});
+							</script>
+                        </body>
+                        </html>
+                    

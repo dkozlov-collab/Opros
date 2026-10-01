@@ -14,6 +14,18 @@
                         </head>
                         <body>
                             <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+background-color: white;
+}
+</style>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -190,21 +202,20 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       <div class="brand-tagline">Технический сервис · ПиОТ</div>
     </div>
   </div>
-
   <div class="card card-title-only">
     <div class="form-title">
       <h1>Форма передачи заявки · ТС ПиОТ</h1>
     </div>
   </div>
-
   <form id="iotForm">
     <!-- ═══ БЛОК 1: Параметры заявки ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Параметры заявки</div>
 
+        <!-- ✅ ИЗМЕНЕНО: "Организация СП" → "Кто выполняет заявку из СП?" -->
         <div class="fg">
-          <label>Организация СП <span class="req">*</span></label>
+          <label>Кто выполняет заявку из СП? <span class="req">*</span></label>
           <select name="targetOrg" id="targetOrg" required>
             <option value="" disabled selected>Выберите организацию</option>
             <option value="АБ">АБ</option>
@@ -223,38 +234,31 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <option>Критический</option>
           </select>
         </div>
-
         <div class="fg">
           <label>ФИО сотрудника <span class="req">*</span></label>
           <input type="text" name="lpEmployee" required placeholder="Фамилия Имя Отчество">
         </div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 2: Данные клиента ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Данные клиента</div>
-
-        <!-- ИНН отдельно на всю ширину -->
         <div class="fg">
           <label>ИНН <span class="req">*</span></label>
           <input type="text" name="inn" id="inn" required inputmode="numeric"
                  pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
           <div class="hint">10 цифр — юрлицо · 12 — ИП</div>
         </div>
-
         <div class="fg">
           <label>Наименование организации (ООО/ИП) <span class="req">*</span></label>
           <input type="text" name="orgName" id="orgName" required placeholder="ООО «Ромашка»">
-          <div class="hint">Автоматически заполнено из «Организация СП» — при необходимости исправьте</div>
+          <div class="hint">При необходимости исправьте вручную</div>
         </div>
-
         <div class="fg">
           <label>Контактное лицо (ФИО) <span class="req">*</span></label>
           <input type="text" name="contactName" required placeholder="Фамилия Имя Отчество">
         </div>
-
         <div class="row2">
           <div class="fg">
             <label>Телефон <span class="req">*</span></label>
@@ -262,12 +266,11 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
           </div>
           <div class="fg">
             <label>E-Mail <span class="req">*</span></label>
-            <input type="email" name="email" required placeholder="example@mail.ru">
+            <input type="email" name="email" required placeholder="mail@example.com">
           </div>
         </div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 3: Кассовое оборудование ═══ -->
     <div class="card">
       <div class="card-body">
@@ -280,12 +283,10 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div id="kktContainer"></div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 4: Дополнительно ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">Дополнительно</div>
-
         <div class="fg">
           <label>Нужен выезд <span class="req">*</span></label>
           <div class="toggle">
@@ -301,7 +302,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             </div>
           </div>
         </div>
-
         <div class="fg">
           <label>Зарегистрирован в ЕСП <span class="req">*</span></label>
           <div class="toggle">
@@ -311,7 +311,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="eYes">Да</label>
           </div>
         </div>
-
         <div class="fg">
           <label>Есть ли КЭП <span class="req">*</span></label>
           <div class="toggle">
@@ -321,7 +320,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="kYes">Да</label>
           </div>
         </div>
-
         <div class="fg">
           <label>Есть ли Wi-Fi</label>
           <div class="toggle">
@@ -331,14 +329,12 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="wYes">Да</label>
           </div>
         </div>
-
         <div class="fg" style="margin-bottom:0">
           <label>Комментарий</label>
           <textarea name="comment" placeholder="Дополнительная информация..."></textarea>
         </div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 5: Кнопка ═══ -->
     <div class="card">
       <div class="card-body">
@@ -347,7 +343,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       </div>
     </div>
   </form>
-
   <!-- ═══ Успех ═══ -->
   <div id="success-message" class="card">
     <div class="check-wrap">✓</div>
@@ -356,7 +351,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
 </div>
-
 <script>
 /* ══ PARTICLES ══ */
 (function(){
@@ -396,7 +390,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   resize();init();frame();
   window.addEventListener('resize',()=>{resize();init();});
 })();
-
 /* ══ LOGO ANIMATION ══ */
 (function(){
   const grpL=document.querySelector('.ltr-L');
@@ -436,7 +429,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   }
   requestAnimationFrame(jumpTick);
 })();
-
 /* ══ FORM LOGIC ══ */
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwNjewNBbSPBsIgqbLJvTckAgj0HcsXP578RsLpw6cmB2AhEksdTMNdqhZSZKFX6c6lBg/exec';
 const form       = document.getElementById('iotForm');
@@ -448,17 +440,14 @@ const vBlock     = document.getElementById('visitBlock');
 const vAddr      = document.getElementById('visitAddr');
 const targetOrg  = document.getElementById('targetOrg');
 const orgNameInp = document.getElementById('orgName');
-
-/* ── Автозаполнение "Наименование организации" из "Организация СП" ── */
+/* ── Автозаполнение "Наименование организации" из "Кто выполняет заявку из СП?" ── */
 targetOrg.addEventListener('change', function(){
-  // Заполняем только если поле пустое или совпадает с предыдущим авто-значением
   const prev = this._prevVal || '';
   if(orgNameInp.value === '' || orgNameInp.value === prev){
     orgNameInp.value = this.value;
   }
   this._prevVal = this.value;
 });
-
 /* ── KKT blocks ── */
 const kktTpl = i => `<div class="kkt-block">
   <div class="kkt-badge">⌨ Касса No${i}</div>
@@ -471,7 +460,6 @@ const kktTpl = i => `<div class="kkt-block">
     <div class="fg"><label>Модель ККТ</label><input type="text" data-f="modelKkt" placeholder="Например: ПБФ Centerm K-10"></div>
   </div>
 </div>`;
-
 function renderKkt(){
   const n = Math.min(20, Math.max(1, parseInt(cashCount.value,10)||1));
   let bl = kktBox.querySelectorAll('.kkt-block');
@@ -479,7 +467,6 @@ function renderKkt(){
   for(let i = bl.length; i < n; i++) kktBox.insertAdjacentHTML('beforeend', kktTpl(i+1));
 }
 cashCount.addEventListener('input', renderKkt);
-
 /* ── Visit toggle ── */
 function toggleVisit(){
   const yes = document.getElementById('vYes').checked;
@@ -488,7 +475,6 @@ function toggleVisit(){
   if(!yes) vAddr.value = '';
 }
 document.querySelectorAll('input[name=needVisit]').forEach(r => r.addEventListener('change', toggleVisit));
-
 /* ── Submit ── */
 form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -496,7 +482,6 @@ form.addEventListener('submit', async e => {
   if(!form.reportValidity()) return;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправка...';
-
   const raw = Object.fromEntries(new FormData(form).entries());
   const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i) => ({
     n: i+1,
@@ -505,7 +490,6 @@ form.addEventListener('submit', async e => {
     fn:       b.querySelector('[data-f=fn]').value.trim(),
     modelKkt: b.querySelector('[data-f=modelKkt]').value.trim()
   }));
-
   const data = {
     targetOrg:      raw.targetOrg      || '',
     employee_fio:   raw.lpEmployee     || '',
@@ -524,7 +508,6 @@ form.addEventListener('submit', async e => {
     has_wifi:       raw.hasWifi        || 'нет',
     createdAt:      new Date().toISOString()
   };
-
   try{
     await fetch(SCRIPT_URL, {
       method:'POST', mode:'no-cors',
@@ -542,13 +525,11 @@ form.addEventListener('submit', async e => {
     submitBtn.textContent = 'Отправить заявку →';
   }
 });
-
 function showErr(msg){
   errorBox.textContent = msg;
   errorBox.style.display = 'block';
   errorBox.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-
 /* ── Reset ── */
 document.getElementById('resetBtn').addEventListener('click', () => {
   form.reset();
@@ -564,22 +545,17 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   submitBtn.textContent = 'Отправить заявку →';
   window.scrollTo({top:0, behavior:'smooth'});
 });
-
 /* ── Init ── */
 renderKkt();
 toggleVisit();
 </script>
 </body>
 </html>
+</body>
+</html>
 
 							<script>
-                            	targetOrg.addEventListener('change', function(){
-  const prev = this._prevVal || '';
-  if(orgNameInp.value === '' || orgNameInp.value === prev){
-    orgNameInp.value = this.value; // подставляет "АБ" или "ООО БР"
-  }
-  this._prevVal = this.value;
-});
+                            	
 							</script>
                         </body>
                         </html>

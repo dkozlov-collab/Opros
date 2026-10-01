@@ -14,18 +14,6 @@
                         </head>
                         <body>
                             <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-background-color: white;
-}
-</style>
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -76,6 +64,23 @@ body{
 .ring2{width:220px;height:220px;top:55%;left:8%;animation:ringPulse 9s ease-in-out infinite reverse;}
 .ring3{width:500px;height:500px;top:-60px;left:30%;animation:ringPulse 12s ease-in-out infinite 2s;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:.15}}
+
+/* ══ Кнопка звука ══ */
+.sound-btn{
+  position:fixed;top:14px;right:14px;z-index:120;
+  width:42px;height:42px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);
+  backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);
+  box-shadow:0 6px 18px rgba(13,42,92,.13),inset 0 1px 0 rgba(255,255,255,.95);
+  transition:transform .2s ease,box-shadow .25s ease;
+}
+.sound-btn:active{transform:scale(.9);}
+.sound-btn svg{width:19px;height:19px;stroke:var(--blue-700);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+.sound-btn.off svg{stroke:#9fb0c9;}
+.sound-btn.ping::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--blue-500);animation:sndPing .6s ease-out;}
+@keyframes sndPing{from{transform:scale(1);opacity:.7}to{transform:scale(1.7);opacity:0}}
+
 .page{position:relative;z-index:2;max-width:740px;margin:0 auto;}
 .brand{text-align:center;margin-bottom:24px;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both;}
 .brand-logo-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:10px;padding:12px 20px 8px;position:relative;}
@@ -100,6 +105,8 @@ body{
 @keyframes titleReveal{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 .sec-label{font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(91,112,149,.30),transparent);}
+.sec-label .sl-ico{width:22px;height:22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue-700),var(--blue-500));box-shadow:0 3px 9px rgba(47,124,246,.32);flex:0 0 auto;}
+.sec-label .sl-ico svg{width:12px;height:12px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .fg{margin-bottom:14px;}
 .fg:last-child{margin-bottom:0;}
 .fg label{display:block;font-size:12.5px;font-weight:700;color:#274063;margin-bottom:6px;}
@@ -124,6 +131,55 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .toggle label{flex:1;text-align:center;cursor:pointer;padding:13px 0;font-size:14px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);border-radius:12px;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);transition:all .22s ease;min-height:46px;display:flex;align-items:center;justify-content:center;}
 .toggle label:active{transform:scale(.97);}
 .toggle input[type=radio]:checked + label{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(47,124,246,.34),inset 0 1px 0 rgba(255,255,255,.22);}
+
+/* ════════════════════════════════════════
+   ✨ НОВЫЙ БЛОК «ДАННЫЕ КЛИЕНТА»
+════════════════════════════════════════ */
+.client-panel{
+  background:linear-gradient(145deg,rgba(255,255,255,.52),rgba(226,239,255,.40));
+  border:1px solid rgba(255,255,255,.80);
+  border-radius:15px;
+  padding:16px 14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 4px 16px rgba(13,42,92,.06);
+}
+.client-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px 14px;}
+.client-grid .span2{grid-column:1 / -1;}
+.client-grid .fg{margin-bottom:0;}
+
+.flab{
+  display:flex;align-items:center;gap:7px;
+  font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+  color:#41597e;margin-bottom:7px;
+}
+.flab .fl-ico{width:15px;height:15px;stroke:var(--blue-500);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
+.flab .req{font-size:13px;line-height:1;}
+
+.inp{position:relative;display:block;}
+.inp > input{padding-left:42px;padding-right:40px;background:rgba(255,255,255,.80);}
+.inp > .in-ico{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:17px;height:17px;stroke:#8aa0c2;stroke-width:1.9;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;pointer-events:none;transition:stroke .22s,transform .22s;
+}
+.inp > input:focus ~ .in-ico{stroke:var(--blue-500);transform:translateY(-50%) scale(1.08);}
+.inp > .in-tag{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  font-size:10.5px;font-weight:800;letter-spacing:.3px;color:#9fb0c9;
+  pointer-events:none;transition:color .22s,opacity .22s;
+  background:rgba(255,255,255,.85);padding:2px 5px;border-radius:6px;
+}
+/* состояния валидности */
+.inp > input.is-ok{border-color:rgba(22,163,74,.55);box-shadow:0 0 0 3px rgba(22,163,74,.10),inset 0 1px 0 rgba(255,255,255,.9);}
+.inp > input.is-ok ~ .in-ico{stroke:var(--ok);}
+.inp > input.is-ok ~ .in-tag{color:var(--ok);}
+.inp > input.is-bad{border-color:rgba(225,29,72,.55);box-shadow:0 0 0 3px rgba(225,29,72,.10),inset 0 1px 0 rgba(255,255,255,.9);}
+.inp > input.is-bad ~ .in-ico{stroke:var(--err);}
+.inp > input.is-bad ~ .in-tag{color:var(--err);}
+
+.hint-sm{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.45;display:flex;align-items:center;gap:5px;}
+.hint-sm::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--blue-300);flex:0 0 auto;}
+.client-div{height:1px;background:linear-gradient(90deg,transparent,rgba(120,150,200,.30),transparent);margin:15px 0 14px;grid-column:1/-1;}
+
 .kkt-block{background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);border-radius:14px;padding:16px 14px 8px;margin-top:12px;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 16px rgba(13,42,92,.08);animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);}
 .kkt-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:99px;margin-bottom:12px;box-shadow:0 4px 12px rgba(47,124,246,.30);}
 @keyframes slideUp{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
@@ -133,7 +189,8 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .btn-submit:disabled{filter:grayscale(.55);opacity:.65;cursor:not-allowed;}
 .btn-reset{width:100%;margin-top:10px;padding:14px;font:600 14px/1 'Manrope',sans-serif;color:var(--blue-700);background:rgba(255,255,255,.65);border:1px solid rgba(160,190,235,.65);border-radius:14px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 8px rgba(13,42,92,.08);transition:all .22s ease;min-height:48px;}
 .btn-reset:active{transform:scale(.98);}
-.error-box{display:none;margin-top:10px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;color:#9f1239;background:rgba(255,228,235,.85);border:1px solid rgba(244,163,181,.75);}
+.error-box{display:none;margin-top:10px;padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;color:#9f1239;background:rgba(255,228,235,.85);border:1px solid rgba(244,163,181,.75);animation:shakeX .4s ease;}
+@keyframes shakeX{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
 #success-message{display:none;text-align:center;padding:44px 24px 32px;}
 .check-wrap{width:76px;height:76px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(5,150,105,.35);animation:popBounce .5s cubic-bezier(.34,1.56,.64,1),successPulse 2s ease .5s infinite;}
 @keyframes popBounce{0%{opacity:0;transform:scale(.2) rotate(-20deg)}70%{transform:scale(1.10) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
@@ -142,7 +199,10 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .success-sub{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
 .success-no{color:var(--blue-700);font-weight:800;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@media(max-width:480px){
+
+@media(max-width:540px){
+  .client-grid{grid-template-columns:1fr;}
+  .client-panel{padding:14px 12px;}
   body{padding:18px 8px 60px;}
   .page{max-width:100%;}
   .brand{margin-bottom:18px;}
@@ -157,8 +217,9 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   .btn-submit{padding:17px;font-size:15.5px;min-height:56px;}
   #success-message{padding:36px 16px 28px;}
   .success-title{font-size:20px;}
+  .sound-btn{width:38px;height:38px;top:10px;right:10px;}
 }
-@media(min-width:481px) and (max-width:640px){
+@media(min-width:541px) and (max-width:640px){
   .brand-logo{width:clamp(200px,44vw,280px);}
   .row2{grid-template-columns:1fr;}
   .card-body{padding:18px 16px;}
@@ -171,7 +232,15 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 <div class="blob b1"></div><div class="blob b2"></div>
 <div class="blob b3"></div><div class="blob b4"></div>
 <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
+
+<!-- 🔊 Переключатель звука -->
+<div class="sound-btn" id="soundBtn" title="Звук уведомлений">
+  <svg viewBox="0 0 24 24" id="soundIcoOn"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+  <svg viewBox="0 0 24 24" id="soundIcoOff" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+</div>
+
 <div class="page">
+  <!-- BRAND -->
   <div class="brand">
     <div class="brand-logo-wrap">
       <div class="brand-glow"></div>
@@ -202,24 +271,30 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       <div class="brand-tagline">Технический сервис · ПиОТ</div>
     </div>
   </div>
+
+  <!-- ЗАГОЛОВОК -->
   <div class="card card-title-only">
     <div class="form-title">
       <h1>Форма передачи заявки · ТС ПиОТ</h1>
     </div>
   </div>
-  <form id="iotForm">
+
+  <form id="iotForm" novalidate>
+
     <!-- ═══ БЛОК 1: Параметры заявки ═══ -->
     <div class="card">
       <div class="card-body">
-        <div class="sec-label">Параметры заявки</div>
+        <div class="sec-label">
+          <span class="sl-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+          Параметры заявки
+        </div>
 
-        <!-- ✅ ИЗМЕНЕНО: "Организация СП" → "Кто выполняет заявку из СП?" -->
         <div class="fg">
           <label>Кто выполняет заявку из СП? <span class="req">*</span></label>
           <select name="targetOrg" id="targetOrg" required>
             <option value="" disabled selected>Выберите организацию</option>
             <option value="АБ">АБ</option>
-            <option value="ООО &quot;БР&quot;">ООО "БР"</option>
+            <option value='ООО "БР"'>ООО "БР"</option>
           </select>
           <div class="hint">Заявка будет записана в таблицу выбранной организации</div>
         </div>
@@ -234,47 +309,103 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <option>Критический</option>
           </select>
         </div>
+
         <div class="fg">
           <label>ФИО сотрудника <span class="req">*</span></label>
           <input type="text" name="lpEmployee" required placeholder="Фамилия Имя Отчество">
         </div>
       </div>
     </div>
-    <!-- ═══ БЛОК 2: Данные клиента ═══ -->
+
+    <!-- ═══ БЛОК 2: Данные клиента (НОВЫЙ ДИЗАЙН) ═══ -->
     <div class="card">
       <div class="card-body">
-        <div class="sec-label">Данные клиента</div>
-        <div class="fg">
-          <label>ИНН <span class="req">*</span></label>
-          <input type="text" name="inn" id="inn" required inputmode="numeric"
-                 pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567">
-          <div class="hint">10 цифр — юрлицо · 12 — ИП</div>
+        <div class="sec-label">
+          <span class="sl-ico"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          Данные клиента
         </div>
-        <div class="fg">
-          <label>Наименование организации (ООО/ИП) <span class="req">*</span></label>
-          <input type="text" name="orgName" id="orgName" required placeholder="ООО «Ромашка»">
-          <div class="hint">При необходимости исправьте вручную</div>
-        </div>
-        <div class="fg">
-          <label>Контактное лицо (ФИО) <span class="req">*</span></label>
-          <input type="text" name="contactName" required placeholder="Фамилия Имя Отчество">
-        </div>
-        <div class="row2">
-          <div class="fg">
-            <label>Телефон <span class="req">*</span></label>
-            <input type="tel" name="phone" required placeholder="8 (___) ___-__-__">
-          </div>
-          <div class="fg">
-            <label>E-Mail <span class="req">*</span></label>
-            <input type="email" name="email" required placeholder="mail@example.com">
+
+        <div class="client-panel">
+          <div class="client-grid">
+
+            <!-- ИНН -->
+            <div class="fg">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg>
+                ИНН <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="text" name="inn" id="inn" required inputmode="numeric"
+                       pattern="\d{10}|\d{12}" maxlength="12" placeholder="7701234567" autocomplete="off">
+                <svg class="in-ico" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg>
+                <span class="in-tag" id="innTag">0</span>
+              </label>
+              <div class="hint-sm">10 цифр — юрлицо · 12 цифр — ИП</div>
+            </div>
+
+            <!-- Наименование организации -->
+            <div class="fg">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5"/></svg>
+                Организация (ООО/ИП) <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="text" name="orgName" id="orgName" required placeholder="ООО «Ромашка»" autocomplete="organization">
+                <svg class="in-ico" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5"/></svg>
+              </label>
+              <div class="hint-sm">Наименование как в реквизитах</div>
+            </div>
+
+            <div class="client-div"></div>
+
+            <!-- Контактное лицо -->
+            <div class="fg span2">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Контактное лицо (ФИО) <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="text" name="contactName" id="contactName" required placeholder="Иванов Иван Иванович" autocomplete="name">
+                <svg class="in-ico" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </label>
+            </div>
+
+            <!-- Телефон -->
+            <div class="fg">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+                Телефон <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="tel" name="phone" id="phoneInp" required placeholder="8 (___) ___-__-__" autocomplete="tel" inputmode="tel">
+                <svg class="in-ico" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              </label>
+            </div>
+
+            <!-- E-Mail -->
+            <div class="fg">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+                E-Mail <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="email" name="email" id="emailInp" required placeholder="mail@example.com" autocomplete="email">
+                <svg class="in-ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              </label>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
+
     <!-- ═══ БЛОК 3: Кассовое оборудование ═══ -->
     <div class="card">
       <div class="card-body">
-        <div class="sec-label">Кассовое оборудование</div>
+        <div class="sec-label">
+          <span class="sl-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M7 16h7"/></svg></span>
+          Кассовое оборудование
+        </div>
         <div class="fg">
           <label>Кол-во касс для настройки ТС ПиОТ <span class="req">*</span></label>
           <input type="number" id="cashCount" name="cashCount" min="1" max="20" value="1" required inputmode="numeric">
@@ -283,14 +414,19 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div id="kktContainer"></div>
       </div>
     </div>
+
     <!-- ═══ БЛОК 4: Дополнительно ═══ -->
     <div class="card">
       <div class="card-body">
-        <div class="sec-label">Дополнительно</div>
+        <div class="sec-label">
+          <span class="sl-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></span>
+          Дополнительно
+        </div>
+
         <div class="fg">
           <label>Нужен выезд <span class="req">*</span></label>
           <div class="toggle">
-            <input type="radio" id="vNo" name="needVisit" value="нет" checked>
+            <input type="radio" id="vNo"  name="needVisit" value="нет" checked>
             <label for="vNo">Нет</label>
             <input type="radio" id="vYes" name="needVisit" value="да">
             <label for="vYes">Да</label>
@@ -302,39 +438,44 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             </div>
           </div>
         </div>
+
         <div class="fg">
           <label>Зарегистрирован в ЕСП <span class="req">*</span></label>
           <div class="toggle">
-            <input type="radio" id="eNo" name="espRegistered" value="нет" checked>
+            <input type="radio" id="eNo"  name="espRegistered" value="нет" checked>
             <label for="eNo">Нет</label>
             <input type="radio" id="eYes" name="espRegistered" value="да">
             <label for="eYes">Да</label>
           </div>
         </div>
+
         <div class="fg">
           <label>Есть ли КЭП <span class="req">*</span></label>
           <div class="toggle">
-            <input type="radio" id="kNo" name="hasKep" value="нет" checked>
+            <input type="radio" id="kNo"  name="hasKep" value="нет" checked>
             <label for="kNo">Нет</label>
             <input type="radio" id="kYes" name="hasKep" value="да">
             <label for="kYes">Да</label>
           </div>
         </div>
+
         <div class="fg">
           <label>Есть ли Wi-Fi</label>
           <div class="toggle">
-            <input type="radio" id="wNo" name="hasWifi" value="нет" checked>
+            <input type="radio" id="wNo"  name="hasWifi" value="нет" checked>
             <label for="wNo">Нет</label>
             <input type="radio" id="wYes" name="hasWifi" value="да">
             <label for="wYes">Да</label>
           </div>
         </div>
+
         <div class="fg" style="margin-bottom:0">
           <label>Комментарий</label>
           <textarea name="comment" placeholder="Дополнительная информация..."></textarea>
         </div>
       </div>
     </div>
+
     <!-- ═══ БЛОК 5: Кнопка ═══ -->
     <div class="card">
       <div class="card-body">
@@ -342,131 +483,281 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div class="error-box" id="errorBox"></div>
       </div>
     </div>
+
   </form>
+
   <!-- ═══ Успех ═══ -->
   <div id="success-message" class="card">
     <div class="check-wrap">✓</div>
     <div class="success-title">Заявка отправлена!</div>
-    <div class="success-sub">Заявка успешно записана в таблицу организации <span class="success-no" id="successOrgName"></span></div>
+    <div class="success-sub">
+      Заявка успешно записана в таблицу организации
+      <span class="success-no" id="successOrgName"></span>
+    </div>
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
-</div>
+</div><!-- /page -->
+
 <script>
+/* ══════════════════════════════════════════
+   КОНФИГ: URL для каждой организации
+══════════════════════════════════════════ */
+const SCRIPT_URLS = {
+  'АБ':       'https://script.google.com/macros/s/ЗАМЕНИТЕ_НА_URL_АБ/exec',
+  'ООО "БР"': 'https://script.google.com/macros/s/ЗАМЕНИТЕ_НА_URL_БР/exec'
+};
+
+/* ══════════════════════════════════════════
+   🔊 SOUND FX  (Web Audio API, без файлов)
+══════════════════════════════════════════ */
+const SFX = (function(){
+  let ctx = null, enabled = true;
+  try { if(localStorage.getItem('lp_sound') === '0') enabled = false; } catch(e){}
+
+  function ac(){
+    if(!ctx){
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return null;
+      ctx = new AC();
+    }
+    if(ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+
+  /* один тон */
+  function tone(freq, delay, dur, type, vol){
+    const c = ac(); if(!c) return;
+    const t0 = c.currentTime + delay;
+    const o  = c.createOscillator();
+    const g  = c.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(freq, t0);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(t0); o.stop(t0 + dur + 0.05);
+  }
+
+  return {
+    /* ✅ Успех: восходящее арпеджио C5–E5–G5–C6 + лёгкий «шиммер» */
+    success(){
+      if(!enabled) return;
+      try{
+        [[523.25,0,.50],[659.25,.085,.50],[783.99,.17,.55],[1046.50,.255,.80]]
+          .forEach(([f,d,l]) => tone(f, d, l, 'sine', .20));
+        tone(1567.98, .26, .9,  'triangle', .05);
+        tone(2093.00, .30, .7,  'sine',     .03);
+      }catch(e){}
+    },
+    /* ❌ Ошибка: два коротких низких тона */
+    error(){
+      if(!enabled) return;
+      try{
+        tone(311.13, 0,    .18, 'square', .09);
+        tone(233.08, .14,  .26, 'square', .09);
+      }catch(e){}
+    },
+    /* 🔘 Короткий клик */
+    tick(){
+      if(!enabled) return;
+      try{ tone(880, 0, .07, 'sine', .07); }catch(e){}
+    },
+    toggle(){
+      enabled = !enabled;
+      try{ localStorage.setItem('lp_sound', enabled ? '1' : '0'); }catch(e){}
+      if(enabled) this.tick();
+      return enabled;
+    },
+    isOn(){ return enabled; }
+  };
+})();
+
+/* — UI переключателя звука — */
+(function(){
+  const btn = document.getElementById('soundBtn');
+  const on  = document.getElementById('soundIcoOn');
+  const off = document.getElementById('soundIcoOff');
+  function paint(){
+    const e = SFX.isOn();
+    btn.classList.toggle('off', !e);
+    on.style.display  = e ? '' : 'none';
+    off.style.display = e ? 'none' : '';
+    btn.title = e ? 'Звук включён' : 'Звук выключен';
+  }
+  btn.addEventListener('click', () => {
+    SFX.toggle();
+    paint();
+    btn.classList.add('ping');
+    setTimeout(()=>btn.classList.remove('ping'), 620);
+  });
+  paint();
+})();
+
 /* ══ PARTICLES ══ */
 (function(){
-  const cv=document.getElementById('particles-canvas'),ctx=cv.getContext('2d');
-  let W,H,P=[],SP=[];
-  const N=50,CL=['#4f8dff','#22d3ee','#a5b4fc','#6366f1','#93c5fd','#818cf8'];
-  const r=(a,b)=>a+Math.random()*(b-a);
-  function mkP(){return{x:r(0,W),y:r(0,H),rad:r(1,3.2),vx:r(-.25,.25),vy:r(-.4,-.05),a:r(.1,.45),c:CL[~~r(0,CL.length)],p:r(0,Math.PI*2),ps:r(.01,.03)};}
-  function init(){P=[];for(let i=0;i<N;i++)P.push(mkP());}
-  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  const cv  = document.getElementById('particles-canvas');
+  const ctx = cv.getContext('2d');
+  let W, H, P = [], SP = [];
+  const N  = 50;
+  const CL = ['#4f8dff','#22d3ee','#a5b4fc','#6366f1','#93c5fd','#818cf8'];
+  const r  = (a, b) => a + Math.random() * (b - a);
+
+  function mkP(){
+    return {
+      x:r(0,W), y:r(0,H), rad:r(1,3.2),
+      vx:r(-.25,.25), vy:r(-.4,-.05),
+      a:r(.1,.45), c:CL[~~r(0,CL.length)],
+      p:r(0,Math.PI*2), ps:r(.01,.03)
+    };
+  }
+  function init(){ P = []; for(let i=0;i<N;i++) P.push(mkP()); }
+  function resize(){ W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+
   function frame(){
     ctx.clearRect(0,0,W,H);
-    if(Math.random()<.005)SP.push({x:r(0,W),y:r(0,H),rad:r(2,5),a:1,c:CL[~~r(0,CL.length)],d:r(.03,.07)});
-    SP=SP.filter(s=>{
-      s.a-=s.d;if(s.a<=0)return false;
-      const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.rad*2);
-      g.addColorStop(0,s.c);g.addColorStop(1,'transparent');
-      ctx.beginPath();ctx.arc(s.x,s.y,s.rad,0,Math.PI*2);
-      ctx.fillStyle=g;ctx.globalAlpha=s.a;ctx.fill();ctx.globalAlpha=1;return true;
+
+    /* sparkles */
+    if(Math.random() < .005)
+      SP.push({ x:r(0,W), y:r(0,H), rad:r(2,5), a:1, c:CL[~~r(0,CL.length)], d:r(.03,.07) });
+    SP = SP.filter(s=>{
+      s.a -= s.d; if(s.a <= 0) return false;
+      const g = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.rad*2);
+      g.addColorStop(0, s.c); g.addColorStop(1,'transparent');
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.rad,0,Math.PI*2);
+      ctx.fillStyle = g; ctx.globalAlpha = s.a; ctx.fill(); ctx.globalAlpha = 1;
+      return true;
     });
-    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
-      const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<110){ctx.beginPath();ctx.strokeStyle='rgba(99,130,246,'+(0.09*(1-d/110))+')';ctx.lineWidth=.8;ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.stroke();}
-    }
+
+    /* connections */
+    for(let i=0;i<P.length;i++)
+      for(let j=i+1;j<P.length;j++){
+        const dx=P[i].x-P[j].x, dy=P[i].y-P[j].y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<110){
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(99,130,246,${0.09*(1-d/110)})`;
+          ctx.lineWidth = .8;
+          ctx.moveTo(P[i].x,P[i].y); ctx.lineTo(P[j].x,P[j].y); ctx.stroke();
+        }
+      }
+
+    /* dots */
     P.forEach(p=>{
-      p.p+=p.ps;const pr=p.rad*(1+.2*Math.sin(p.p));
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.y<-8){p.y=H+8;p.x=r(0,W);}
-      if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;
-      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);
-      g.addColorStop(0,p.c);g.addColorStop(1,'transparent');
-      ctx.beginPath();ctx.arc(p.x,p.y,pr,0,Math.PI*2);
-      ctx.fillStyle=p.c;ctx.globalAlpha=p.a;ctx.fill();ctx.globalAlpha=1;
+      p.p += p.ps;
+      /* ✅ ИСПРАВЛЕНО: было p.rad _(1 + .2_Math.sin(p.p)) */
+      const pr = p.rad * (1 + 0.2 * Math.sin(p.p));
+      p.x += p.vx; p.y += p.vy;
+      if(p.y < -8){ p.y = H+8; p.x = r(0,W); }
+      if(p.x < -8) p.x = W+8;
+      if(p.x > W+8) p.x = -8;
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);
+      g.addColorStop(0, p.c); g.addColorStop(1,'transparent');
+      ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2);
+      ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill(); ctx.globalAlpha = 1;
     });
     requestAnimationFrame(frame);
   }
-  resize();init();frame();
-  window.addEventListener('resize',()=>{resize();init();});
+  resize(); init(); frame();
+  window.addEventListener('resize', ()=>{ resize(); init(); });
 })();
+
 /* ══ LOGO ANIMATION ══ */
 (function(){
-  const grpL=document.querySelector('.ltr-L');
-  const grpY=document.querySelector('.ltr-Y');
-  const all=document.querySelectorAll('.brand-logo g[class^="ltr-"]');
-  const C0=[156,163,175],C1=[75,85,99],C2=[17,24,39];
-  const stops=[C0,C1,C2,C1,C0];
-  function lerp(a,b,t){return[~~(a[0]+(b[0]-a[0])*t),~~(a[1]+(b[1]-a[1])*t),~~(a[2]+(b[2]-a[2])*t)];}
-  let ct=0;
+  const grpL = document.querySelector('.ltr-L');
+  const grpY = document.querySelector('.ltr-Y');
+  const all  = document.querySelectorAll('.brand-logo g[class^="ltr-"]');
+
+  const C0=[156,163,175], C1=[75,85,99], C2=[17,24,39];
+  const stops = [C0, C1, C2, C1, C0];
+
+  /* ✅ ИСПРАВЛЕНО: корректный lerp */
+  function lerp(a, b, t){
+    return [
+      Math.round(a[0] + (b[0]-a[0])*t),
+      Math.round(a[1] + (b[1]-a[1])*t),
+      Math.round(a[2] + (b[2]-a[2])*t)
+    ];
+  }
+
+  let ct = 0;
   function colorTick(){
-    ct+=.004;
+    ct += .004;
     all.forEach((g,i)=>{
-      const ph=(ct+i*.28)%(stops.length-1);
-      const lo=~~ph,hi=lo+1,f=ph-lo;
-      const c=lerp(stops[lo],stops[hi],f);
-      g.querySelectorAll('path,rect').forEach(el=>el.setAttribute('fill',`rgb(${c[0]},${c[1]},${c[2]})`));
+      const ph  = (ct + i*.28) % (stops.length-1);
+      const lo  = Math.floor(ph), hi = lo+1, f = ph-lo;
+      const c   = lerp(stops[lo], stops[hi], f);
+      g.querySelectorAll('path,rect').forEach(el =>
+        el.setAttribute('fill', `rgb(${c[0]},${c[1]},${c[2]})`)
+      );
     });
     requestAnimationFrame(colorTick);
   }
   colorTick();
-  const JP=2800,JH=10;
+
+  const JP = 2800, JH = 10;
   function jEase(t){
-    if(t<.45)return -Math.sin((t/.45)*Math.PI)*JH;
-    if(t<.60)return 0;
+    if(t < .45) return -Math.sin((t/.45)*Math.PI)*JH;
+    if(t < .60) return 0;
     return -Math.sin(((t-.60)/.40)*Math.PI)*JH*.28;
   }
-  let st=null;
+  let st = null;
   function jumpTick(ts){
-    if(!st)st=ts;
-    const el=ts-st;
-    const tL=(el%JP)/JP,tY=((el+550)%JP)/JP;
-    const dL=tL<.65?jEase(tL/.65):0;
-    const dY=tY<.65?jEase(tY/.65):0;
-    if(grpL)grpL.setAttribute('transform',`translate(0,${dL})`);
-    if(grpY)grpY.setAttribute('transform',`translate(0,${dY})`);
+    if(!st) st = ts;
+    const el = ts - st;
+    const tL = (el % JP) / JP;
+    const tY = ((el + 550) % JP) / JP;
+    const dL = tL < .65 ? jEase(tL/.65) : 0;
+    const dY = tY < .65 ? jEase(tY/.65) : 0;
+    if(grpL) grpL.setAttribute('transform', `translate(0,${dL})`);
+    if(grpY) grpY.setAttribute('transform', `translate(0,${dY})`);
     requestAnimationFrame(jumpTick);
   }
   requestAnimationFrame(jumpTick);
 })();
+
 /* ══ FORM LOGIC ══ */
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwNjewNBbSPBsIgqbLJvTckAgj0HcsXP578RsLpw6cmB2AhEksdTMNdqhZSZKFX6c6lBg/exec';
-const form       = document.getElementById('iotForm');
-const submitBtn  = document.getElementById('submitBtn');
-const errorBox   = document.getElementById('errorBox');
-const cashCount  = document.getElementById('cashCount');
-const kktBox     = document.getElementById('kktContainer');
-const vBlock     = document.getElementById('visitBlock');
-const vAddr      = document.getElementById('visitAddr');
-const targetOrg  = document.getElementById('targetOrg');
-const orgNameInp = document.getElementById('orgName');
-/* ── Автозаполнение "Наименование организации" из "Кто выполняет заявку из СП?" ── */
-targetOrg.addEventListener('change', function(){
-  const prev = this._prevVal || '';
-  if(orgNameInp.value === '' || orgNameInp.value === prev){
-    orgNameInp.value = this.value;
-  }
-  this._prevVal = this.value;
-});
+const form      = document.getElementById('iotForm');
+const submitBtn = document.getElementById('submitBtn');
+const errorBox  = document.getElementById('errorBox');
+const cashCount = document.getElementById('cashCount');
+const kktBox    = document.getElementById('kktContainer');
+const vBlock    = document.getElementById('visitBlock');
+const vAddr     = document.getElementById('visitAddr');
+
 /* ── KKT blocks ── */
-const kktTpl = i => `<div class="kkt-block">
-  <div class="kkt-badge">⌨ Касса No${i}</div>
+const kktTpl = i => `
+<div class="kkt-block">
+  <div class="kkt-badge">⌨ Касса №${i}</div>
   <div class="row2">
-    <div class="fg"><label>РНМ</label><input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер"></div>
-    <div class="fg"><label>ЗН ККТ</label><input type="text" data-f="znKkt" placeholder="Заводской номер"></div>
+    <div class="fg">
+      <label>РНМ</label>
+      <input type="text" data-f="rnm" inputmode="numeric" placeholder="Регистрационный номер">
+    </div>
+    <div class="fg">
+      <label>ЗН ККТ</label>
+      <input type="text" data-f="znKkt" placeholder="Заводской номер">
+    </div>
   </div>
   <div class="row2" style="margin-top:10px">
-    <div class="fg"><label>ФН</label><input type="text" data-f="fn" inputmode="numeric" placeholder="Номер ФН"></div>
-    <div class="fg"><label>Модель ККТ</label><input type="text" data-f="modelKkt" placeholder="Например: ПБФ Centerm K-10"></div>
+    <div class="fg">
+      <label>ФН</label>
+      <input type="text" data-f="fn" inputmode="numeric" placeholder="Номер ФН">
+    </div>
+    <div class="fg">
+      <label>Модель ККТ</label>
+      <input type="text" data-f="modelKkt" placeholder="Например: ПБФ Centerm K-10">
+    </div>
   </div>
 </div>`;
+
 function renderKkt(){
-  const n = Math.min(20, Math.max(1, parseInt(cashCount.value,10)||1));
+  const n = Math.min(20, Math.max(1, parseInt(cashCount.value, 10) || 1));
   let bl = kktBox.querySelectorAll('.kkt-block');
   while(bl.length > n){ bl[bl.length-1].remove(); bl = kktBox.querySelectorAll('.kkt-block'); }
   for(let i = bl.length; i < n; i++) kktBox.insertAdjacentHTML('beforeend', kktTpl(i+1));
 }
 cashCount.addEventListener('input', renderKkt);
+
 /* ── Visit toggle ── */
 function toggleVisit(){
   const yes = document.getElementById('vYes').checked;
@@ -475,31 +766,133 @@ function toggleVisit(){
   if(!yes) vAddr.value = '';
 }
 document.querySelectorAll('input[name=needVisit]').forEach(r => r.addEventListener('change', toggleVisit));
+
+/* ══ Валидация полей клиента (живая) ══ */
+const innEl   = document.getElementById('inn');
+const innTag  = document.getElementById('innTag');
+const phoneEl = document.getElementById('phoneInp');
+const mailEl  = document.getElementById('emailInp');
+const orgEl   = document.getElementById('orgName');
+const contEl  = document.getElementById('contactName');
+
+function mark(el, ok){
+  el.classList.toggle('is-ok',  ok === true);
+  el.classList.toggle('is-bad', ok === false);
+}
+
+/* ИНН: только цифры + счётчик + индикация */
+innEl.addEventListener('input', function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,12);
+  const n = this.value.length;
+  innTag.textContent = n;
+  if(n === 0) mark(this, null);
+  else mark(this, n === 10 || n === 12);
+});
+
+/* Телефон: маска 8 (XXX) XXX-XX-XX */
+phoneEl.addEventListener('input', function(){
+  let d = this.value.replace(/\D/g,'');
+  if(d.startsWith('7'))      d = '8' + d.slice(1);
+  if(!d.startsWith('8') && d.length) d = '8' + d;
+  d = d.slice(0,11);
+  let out = '';
+  if(d.length > 0) out = d[0];
+  if(d.length > 1) out += ' (' + d.slice(1,4);
+  if(d.length >= 5) out += ') ' + d.slice(4,7);
+  if(d.length >= 8) out += '-' + d.slice(7,9);
+  if(d.length >= 10) out += '-' + d.slice(9,11);
+  this.value = out;
+  if(d.length === 0) mark(this, null); else mark(this, d.length === 11);
+});
+
+/* E-mail */
+mailEl.addEventListener('input', function(){
+  const v = this.value.trim();
+  if(!v) mark(this, null);
+  else mark(this, /^[^\s@]+@[^\s@]+\.[a-zA-Zа-яА-Я]{2,}$/.test(v));
+});
+
+/* Орг. и ФИО */
+[orgEl, contEl].forEach(el => el.addEventListener('input', function(){
+  const v = this.value.trim();
+  if(!v) mark(this, null); else mark(this, v.length >= 3);
+}));
+
 /* ── Submit ── */
 form.addEventListener('submit', async e => {
   e.preventDefault();
   errorBox.style.display = 'none';
-  if(!form.reportValidity()) return;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Отправка...';
+
+  /* Валидация обязательных */
+  const required = form.querySelectorAll('[required]');
+  let firstInvalid = null;
+  for(const el of required){
+    if(!el.value.trim()){ firstInvalid = firstInvalid || el; }
+  }
+  if(firstInvalid){
+    SFX.error();
+    showErr('Заполните все обязательные поля, отмеченные *');
+    firstInvalid.focus();
+    return;
+  }
+
+  /* Проверка ИНН */
+  const innVal = innEl.value.trim();
+  if(!/^\d{10}$|^\d{12}$/.test(innVal)){
+    SFX.error();
+    showErr('ИНН должен содержать 10 цифр (юрлицо) или 12 цифр (ИП)');
+    mark(innEl, false); innEl.focus();
+    return;
+  }
+
+  /* Проверка телефона */
+  if(phoneEl.value.replace(/\D/g,'').length !== 11){
+    SFX.error();
+    showErr('Укажите корректный номер телефона: 8 (XXX) XXX-XX-XX');
+    mark(phoneEl, false); phoneEl.focus();
+    return;
+  }
+
+  /* Проверка e-mail */
+  if(!/^[^\s@]+@[^\s@]+\.[a-zA-Zа-яА-Я]{2,}$/.test(mailEl.value.trim())){
+    SFX.error();
+    showErr('Укажите корректный E-Mail');
+    mark(mailEl, false); mailEl.focus();
+    return;
+  }
+
   const raw = Object.fromEntries(new FormData(form).entries());
+
+  const url = SCRIPT_URLS[raw.targetOrg];
+  if(!url){
+    SFX.error();
+    showErr('Не найден URL для выбранной организации. Обратитесь к администратору.');
+    return;
+  }
+
+  submitBtn.disabled    = true;
+  submitBtn.textContent = 'Отправка...';
+
   const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i) => ({
-    n: i+1,
+    n:        i + 1,
     rnm:      b.querySelector('[data-f=rnm]').value.trim(),
     znKkt:    b.querySelector('[data-f=znKkt]').value.trim(),
     fn:       b.querySelector('[data-f=fn]').value.trim(),
     modelKkt: b.querySelector('[data-f=modelKkt]').value.trim()
   }));
+
   const data = {
     targetOrg:      raw.targetOrg      || '',
     employee_fio:   raw.lpEmployee     || '',
     priority:       raw.priority       || 'Средний',
+    status:         'Новая',
     comment:        raw.comment        || '',
     org_name:       raw.orgName        || '',
     inn:            raw.inn            || '',
     contact_person: raw.contactName    || '',
     phone:          raw.phone          || '',
     email:          raw.email          || '',
+    cash_count:     kassas.length,
     kkt:            kassas,
     need_trip:      raw.needVisit      || 'нет',
     trip_address:   raw.visitAddress   || '',
@@ -508,54 +901,68 @@ form.addEventListener('submit', async e => {
     has_wifi:       raw.hasWifi        || 'нет',
     createdAt:      new Date().toISOString()
   };
-  try{
-    await fetch(SCRIPT_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(data)
+
+  try {
+    await fetch(url, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body:    JSON.stringify(data)
     });
+
+    /* 🔊 ЗВУК УСПЕШНОЙ ОТПРАВКИ */
+    SFX.success();
+    if(navigator.vibrate) navigator.vibrate([18, 45, 28]);
+
     document.getElementById('successOrgName').textContent = raw.targetOrg || '';
     form.style.display = 'none';
-    document.querySelectorAll('.card').forEach(c => { if(!c.closest('#success-message')) c.style.display='none'; });
+    document.querySelectorAll('.card').forEach(c => {
+      if(!c.closest('#success-message')) c.style.display = 'none';
+    });
     document.getElementById('success-message').style.display = 'block';
-    window.scrollTo({top:0, behavior:'smooth'});
-  } catch(err){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch(err) {
+    SFX.error();
     showErr('Ошибка отправки: ' + err.message);
-    submitBtn.disabled = false;
+    submitBtn.disabled    = false;
     submitBtn.textContent = 'Отправить заявку →';
   }
 });
+
 function showErr(msg){
-  errorBox.textContent = msg;
+  errorBox.textContent   = msg;
   errorBox.style.display = 'block';
-  errorBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+  errorBox.scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
+
 /* ── Reset ── */
 document.getElementById('resetBtn').addEventListener('click', () => {
+  SFX.tick();
   form.reset();
   cashCount.value = 1;
-  targetOrg._prevVal = '';
   renderKkt();
   toggleVisit();
+  [innEl, phoneEl, mailEl, orgEl, contEl].forEach(el => mark(el, null));
+  innTag.textContent = '0';
   document.querySelectorAll('.card').forEach(c => c.style.display = '');
   form.style.display = 'block';
   document.getElementById('success-message').style.display = 'none';
-  errorBox.style.display = 'none';
-  submitBtn.disabled = false;
-  submitBtn.textContent = 'Отправить заявку →';
-  window.scrollTo({top:0, behavior:'smooth'});
+  errorBox.style.display  = 'none';
+  submitBtn.disabled      = false;
+  submitBtn.textContent   = 'Отправить заявку →';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
 /* ── Init ── */
 renderKkt();
 toggleVisit();
 </script>
 </body>
 </html>
-</body>
-</html>
 
 							<script>
-                            	
+                            	success(){ if(!enabled) return; new Audio('ССЫЛКА_НА_MP3').play().catch(()=>{}); }
 							</script>
                         </body>
                         </html>

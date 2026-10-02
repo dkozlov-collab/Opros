@@ -14,6 +14,18 @@
                         </head>
                         <body>
                             <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+background-color: white;
+}
+</style>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -64,8 +76,6 @@ body{
 .ring2{width:220px;height:220px;top:55%;left:8%;animation:ringPulse 9s ease-in-out infinite reverse;}
 .ring3{width:500px;height:500px;top:-60px;left:30%;animation:ringPulse 12s ease-in-out infinite 2s;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:.15}}
-
-/* ══ Кнопка звука ══ */
 .sound-btn{
   position:fixed;top:14px;right:14px;z-index:120;
   width:42px;height:42px;border-radius:50%;cursor:pointer;
@@ -80,7 +90,6 @@ body{
 .sound-btn.off svg{stroke:#9fb0c9;}
 .sound-btn.ping::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--blue-500);animation:sndPing .6s ease-out;}
 @keyframes sndPing{from{transform:scale(1);opacity:.7}to{transform:scale(1.7);opacity:0}}
-
 .page{position:relative;z-index:2;max-width:740px;margin:0 auto;}
 .brand{text-align:center;margin-bottom:24px;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both;}
 .brand-logo-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:10px;padding:12px 20px 8px;position:relative;}
@@ -131,10 +140,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .toggle label{flex:1;text-align:center;cursor:pointer;padding:13px 0;font-size:14px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.58);border:1px solid rgba(160,190,235,.55);border-radius:12px;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 2px 6px rgba(13,42,92,.06);transition:all .22s ease;min-height:46px;display:flex;align-items:center;justify-content:center;}
 .toggle label:active{transform:scale(.97);}
 .toggle input[type=radio]:checked + label{background:linear-gradient(135deg,var(--blue-700),var(--blue-500));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(47,124,246,.34),inset 0 1px 0 rgba(255,255,255,.22);}
-
-/* ════════════════════════════════════════
-   ✨ НОВЫЙ БЛОК «ДАННЫЕ КЛИЕНТА»
-════════════════════════════════════════ */
 .client-panel{
   background:linear-gradient(145deg,rgba(255,255,255,.52),rgba(226,239,255,.40));
   border:1px solid rgba(255,255,255,.80);
@@ -145,7 +150,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .client-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px 14px;}
 .client-grid .span2{grid-column:1 / -1;}
 .client-grid .fg{margin-bottom:0;}
-
 .flab{
   display:flex;align-items:center;gap:7px;
   font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
@@ -153,7 +157,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 }
 .flab .fl-ico{width:15px;height:15px;stroke:var(--blue-500);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .flab .req{font-size:13px;line-height:1;}
-
 .inp{position:relative;display:block;}
 .inp > input{padding-left:42px;padding-right:40px;background:rgba(255,255,255,.80);}
 .inp > .in-ico{
@@ -168,18 +171,15 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
   pointer-events:none;transition:color .22s,opacity .22s;
   background:rgba(255,255,255,.85);padding:2px 5px;border-radius:6px;
 }
-/* состояния валидности */
 .inp > input.is-ok{border-color:rgba(22,163,74,.55);box-shadow:0 0 0 3px rgba(22,163,74,.10),inset 0 1px 0 rgba(255,255,255,.9);}
 .inp > input.is-ok ~ .in-ico{stroke:var(--ok);}
 .inp > input.is-ok ~ .in-tag{color:var(--ok);}
 .inp > input.is-bad{border-color:rgba(225,29,72,.55);box-shadow:0 0 0 3px rgba(225,29,72,.10),inset 0 1px 0 rgba(255,255,255,.9);}
 .inp > input.is-bad ~ .in-ico{stroke:var(--err);}
 .inp > input.is-bad ~ .in-tag{color:var(--err);}
-
 .hint-sm{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.45;display:flex;align-items:center;gap:5px;}
 .hint-sm::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--blue-300);flex:0 0 auto;}
 .client-div{height:1px;background:linear-gradient(90deg,transparent,rgba(120,150,200,.30),transparent);margin:15px 0 14px;grid-column:1/-1;}
-
 .kkt-block{background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(224,238,255,.42));border:1px solid rgba(255,255,255,.85);border-left:3px solid var(--blue-500);border-radius:14px;padding:16px 14px 8px;margin-top:12px;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 4px 16px rgba(13,42,92,.08);animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);}
 .kkt-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:99px;margin-bottom:12px;box-shadow:0 4px 12px rgba(47,124,246,.30);}
 @keyframes slideUp{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
@@ -199,7 +199,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 .success-sub{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
 .success-no{color:var(--blue-700);font-weight:800;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
 @media(max-width:540px){
   .client-grid{grid-template-columns:1fr;}
   .client-panel{padding:14px 12px;}
@@ -232,15 +231,11 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
 <div class="blob b1"></div><div class="blob b2"></div>
 <div class="blob b3"></div><div class="blob b4"></div>
 <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
-
-<!-- 🔊 Переключатель звука -->
 <div class="sound-btn" id="soundBtn" title="Звук уведомлений">
   <svg viewBox="0 0 24 24" id="soundIcoOn"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
   <svg viewBox="0 0 24 24" id="soundIcoOff" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
 </div>
-
 <div class="page">
-  <!-- BRAND -->
   <div class="brand">
     <div class="brand-logo-wrap">
       <div class="brand-glow"></div>
@@ -271,16 +266,12 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
       <div class="brand-tagline">Технический сервис · ПиОТ</div>
     </div>
   </div>
-
-  <!-- ЗАГОЛОВОК -->
   <div class="card card-title-only">
     <div class="form-title">
       <h1>Форма передачи заявки · ТС ПиОТ</h1>
     </div>
   </div>
-
   <form id="iotForm" novalidate>
-
     <!-- ═══ БЛОК 1: Параметры заявки ═══ -->
     <div class="card">
       <div class="card-body">
@@ -288,7 +279,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
           <span class="sl-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
           Параметры заявки
         </div>
-
         <div class="fg">
           <label>Кто выполняет заявку из СП? <span class="req">*</span></label>
           <select name="targetOrg" id="targetOrg" required>
@@ -296,9 +286,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <option value="АБ">АБ</option>
             <option value='ООО "БР"'>ООО "БР"</option>
           </select>
-          <div class="hint"></div>
         </div>
-
         <div class="fg">
           <label>Приоритет <span class="req">*</span></label>
           <select name="priority" required>
@@ -309,24 +297,35 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <option>Критический</option>
           </select>
         </div>
-
         <div class="fg">
           <label>ФИО сотрудника <span class="req">*</span></label>
           <input type="text" name="lpEmployee" required placeholder="Фамилия Имя Отчество">
         </div>
       </div>
     </div>
-
-    <!-- ═══ БЛОК 2: Данные клиента (НОВЫЙ ДИЗАЙН) ═══ -->
+    <!-- ═══ БЛОК 2: Данные клиента ═══ -->
     <div class="card">
       <div class="card-body">
         <div class="sec-label">
           <span class="sl-ico"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
           Данные клиента
         </div>
-
         <div class="client-panel">
           <div class="client-grid">
+
+            <!-- ✅ НОВОЕ ПОЛЕ: Населённый пункт — первым, на всю ширину -->
+            <div class="fg span2">
+              <div class="flab">
+                <svg class="fl-ico" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                Населённый пункт <span class="req">*</span>
+              </div>
+              <label class="inp">
+                <input type="text" name="city" id="cityInp" required placeholder="Москва" autocomplete="address-level2">
+                <svg class="in-ico" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </label>
+            </div>
+
+            <div class="client-div"></div>
 
             <!-- ИНН -->
             <div class="fg">
@@ -342,7 +341,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
               </label>
               <div class="hint-sm"></div>
             </div>
-
             <!-- Наименование организации -->
             <div class="fg">
               <div class="flab">
@@ -355,9 +353,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
               </label>
               <div class="hint-sm">Наименование как в реквизитах</div>
             </div>
-
             <div class="client-div"></div>
-
             <!-- Контактное лицо -->
             <div class="fg span2">
               <div class="flab">
@@ -369,7 +365,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
                 <svg class="in-ico" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </label>
             </div>
-
             <!-- Телефон -->
             <div class="fg">
               <div class="flab">
@@ -381,7 +376,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
                 <svg class="in-ico" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
               </label>
             </div>
-
             <!-- E-Mail -->
             <div class="fg">
               <div class="flab">
@@ -393,12 +387,10 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
                 <svg class="in-ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
               </label>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 3: Кассовое оборудование ═══ -->
     <div class="card">
       <div class="card-body">
@@ -414,7 +406,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div id="kktContainer"></div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 4: Дополнительно ═══ -->
     <div class="card">
       <div class="card-body">
@@ -422,7 +413,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
           <span class="sl-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></span>
           Дополнительно
         </div>
-
         <div class="fg">
           <label>Нужен выезд <span class="req">*</span></label>
           <div class="toggle">
@@ -438,7 +428,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             </div>
           </div>
         </div>
-
         <div class="fg">
           <label>Зарегистрирован в ЕСП <span class="req">*</span></label>
           <div class="toggle">
@@ -448,7 +437,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="eYes">Да</label>
           </div>
         </div>
-
         <div class="fg">
           <label>Есть ли КЭП <span class="req">*</span></label>
           <div class="toggle">
@@ -458,7 +446,6 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="kYes">Да</label>
           </div>
         </div>
-
         <div class="fg">
           <label>Есть ли Wi-Fi</label>
           <div class="toggle">
@@ -468,14 +455,12 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
             <label for="wYes">Да</label>
           </div>
         </div>
-
         <div class="fg" style="margin-bottom:0">
           <label>Комментарий</label>
           <textarea name="comment" placeholder="Дополнительная информация..."></textarea>
         </div>
       </div>
     </div>
-
     <!-- ═══ БЛОК 5: Кнопка ═══ -->
     <div class="card">
       <div class="card-body">
@@ -483,10 +468,7 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
         <div class="error-box" id="errorBox"></div>
       </div>
     </div>
-
   </form>
-
-  <!-- ═══ Успех ═══ -->
   <div id="success-message" class="card">
     <div class="check-wrap">✓</div>
     <div class="success-title">Заявка отправлена!</div>
@@ -496,24 +478,15 @@ textarea{resize:vertical;min-height:90px;font-size:15px;}
     </div>
     <button class="btn-reset" id="resetBtn">← Создать новую заявку</button>
   </div>
-</div><!-- /page -->
-
+</div>
 <script>
-/* ══════════════════════════════════════════
-   КОНФИГ: URL для каждой организации
-══════════════════════════════════════════ */
 const SCRIPT_URLS = {
   'АБ':       'https://script.google.com/macros/s/AKfycbxXrnIH4MhHX2kT8R-yob_rTalzZ9RenYPPzT-uYzvg5tEbjYXqkVir3p1nbqoNYWjg0g/exec',
   'ООО "БР"': 'https://script.google.com/macros/s/AKfycbzchipMJ0LtlZBCQpY3Si766d9nea4w16UIE7ULUTO_23UECPIiLBipPL7dL4nJ7s9s/exec'
 };
-
-/* ══════════════════════════════════════════
-   🔊 SOUND FX  (Web Audio API, без файлов)
-══════════════════════════════════════════ */
 const SFX = (function(){
   let ctx = null, enabled = true;
   try { if(localStorage.getItem('lp_sound') === '0') enabled = false; } catch(e){}
-
   function ac(){
     if(!ctx){
       const AC = window.AudioContext || window.webkitAudioContext;
@@ -523,8 +496,6 @@ const SFX = (function(){
     if(ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
-
-  /* один тон */
   function tone(freq, delay, dur, type, vol){
     const c = ac(); if(!c) return;
     const t0 = c.currentTime + delay;
@@ -538,9 +509,7 @@ const SFX = (function(){
     o.connect(g); g.connect(c.destination);
     o.start(t0); o.stop(t0 + dur + 0.05);
   }
-
   return {
-    /* ✅ Успех: восходящее арпеджио C5–E5–G5–C6 + лёгкий «шиммер» */
     success(){
       if(!enabled) return;
       try{
@@ -550,7 +519,6 @@ const SFX = (function(){
         tone(2093.00, .30, .7,  'sine',     .03);
       }catch(e){}
     },
-    /* ❌ Ошибка: два коротких низких тона */
     error(){
       if(!enabled) return;
       try{
@@ -558,7 +526,6 @@ const SFX = (function(){
         tone(233.08, .14,  .26, 'square', .09);
       }catch(e){}
     },
-    /* 🔘 Короткий клик */
     tick(){
       if(!enabled) return;
       try{ tone(880, 0, .07, 'sine', .07); }catch(e){}
@@ -572,8 +539,6 @@ const SFX = (function(){
     isOn(){ return enabled; }
   };
 })();
-
-/* — UI переключателя звука — */
 (function(){
   const btn = document.getElementById('soundBtn');
   const on  = document.getElementById('soundIcoOn');
@@ -586,15 +551,12 @@ const SFX = (function(){
     btn.title = e ? 'Звук включён' : 'Звук выключен';
   }
   btn.addEventListener('click', () => {
-    SFX.toggle();
-    paint();
+    SFX.toggle(); paint();
     btn.classList.add('ping');
     setTimeout(()=>btn.classList.remove('ping'), 620);
   });
   paint();
 })();
-
-/* ══ PARTICLES ══ */
 (function(){
   const cv  = document.getElementById('particles-canvas');
   const ctx = cv.getContext('2d');
@@ -602,7 +564,6 @@ const SFX = (function(){
   const N  = 50;
   const CL = ['#4f8dff','#22d3ee','#a5b4fc','#6366f1','#93c5fd','#818cf8'];
   const r  = (a, b) => a + Math.random() * (b - a);
-
   function mkP(){
     return {
       x:r(0,W), y:r(0,H), rad:r(1,3.2),
@@ -613,11 +574,8 @@ const SFX = (function(){
   }
   function init(){ P = []; for(let i=0;i<N;i++) P.push(mkP()); }
   function resize(){ W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
-
   function frame(){
     ctx.clearRect(0,0,W,H);
-
-    /* sparkles */
     if(Math.random() < .005)
       SP.push({ x:r(0,W), y:r(0,H), rad:r(2,5), a:1, c:CL[~~r(0,CL.length)], d:r(.03,.07) });
     SP = SP.filter(s=>{
@@ -628,8 +586,6 @@ const SFX = (function(){
       ctx.fillStyle = g; ctx.globalAlpha = s.a; ctx.fill(); ctx.globalAlpha = 1;
       return true;
     });
-
-    /* connections */
     for(let i=0;i<P.length;i++)
       for(let j=i+1;j<P.length;j++){
         const dx=P[i].x-P[j].x, dy=P[i].y-P[j].y, d=Math.sqrt(dx*dx+dy*dy);
@@ -640,18 +596,13 @@ const SFX = (function(){
           ctx.moveTo(P[i].x,P[i].y); ctx.lineTo(P[j].x,P[j].y); ctx.stroke();
         }
       }
-
-    /* dots */
     P.forEach(p=>{
       p.p += p.ps;
-      /* ✅ ИСПРАВЛЕНО: было p.rad _(1 + .2_Math.sin(p.p)) */
       const pr = p.rad * (1 + 0.2 * Math.sin(p.p));
       p.x += p.vx; p.y += p.vy;
       if(p.y < -8){ p.y = H+8; p.x = r(0,W); }
       if(p.x < -8) p.x = W+8;
       if(p.x > W+8) p.x = -8;
-      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,pr*2.5);
-      g.addColorStop(0, p.c); g.addColorStop(1,'transparent');
       ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2);
       ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill(); ctx.globalAlpha = 1;
     });
@@ -660,17 +611,12 @@ const SFX = (function(){
   resize(); init(); frame();
   window.addEventListener('resize', ()=>{ resize(); init(); });
 })();
-
-/* ══ LOGO ANIMATION ══ */
 (function(){
   const grpL = document.querySelector('.ltr-L');
   const grpY = document.querySelector('.ltr-Y');
   const all  = document.querySelectorAll('.brand-logo g[class^="ltr-"]');
-
   const C0=[156,163,175], C1=[75,85,99], C2=[17,24,39];
   const stops = [C0, C1, C2, C1, C0];
-
-  /* ✅ ИСПРАВЛЕНО: корректный lerp */
   function lerp(a, b, t){
     return [
       Math.round(a[0] + (b[0]-a[0])*t),
@@ -678,7 +624,6 @@ const SFX = (function(){
       Math.round(a[2] + (b[2]-a[2])*t)
     ];
   }
-
   let ct = 0;
   function colorTick(){
     ct += .004;
@@ -693,7 +638,6 @@ const SFX = (function(){
     requestAnimationFrame(colorTick);
   }
   colorTick();
-
   const JP = 2800, JH = 10;
   function jEase(t){
     if(t < .45) return -Math.sin((t/.45)*Math.PI)*JH;
@@ -714,8 +658,6 @@ const SFX = (function(){
   }
   requestAnimationFrame(jumpTick);
 })();
-
-/* ══ FORM LOGIC ══ */
 const form      = document.getElementById('iotForm');
 const submitBtn = document.getElementById('submitBtn');
 const errorBox  = document.getElementById('errorBox');
@@ -723,11 +665,9 @@ const cashCount = document.getElementById('cashCount');
 const kktBox    = document.getElementById('kktContainer');
 const vBlock    = document.getElementById('visitBlock');
 const vAddr     = document.getElementById('visitAddr');
-
-/* ── KKT blocks ── */
 const kktTpl = i => `
 <div class="kkt-block">
-  <div class="kkt-badge">⌨ Касса №${i}</div>
+  <div class="kkt-badge">⌨ Касса No${i}</div>
   <div class="row2">
     <div class="fg">
       <label>РНМ</label>
@@ -749,7 +689,6 @@ const kktTpl = i => `
     </div>
   </div>
 </div>`;
-
 function renderKkt(){
   const n = Math.min(20, Math.max(1, parseInt(cashCount.value, 10) || 1));
   let bl = kktBox.querySelectorAll('.kkt-block');
@@ -757,8 +696,6 @@ function renderKkt(){
   for(let i = bl.length; i < n; i++) kktBox.insertAdjacentHTML('beforeend', kktTpl(i+1));
 }
 cashCount.addEventListener('input', renderKkt);
-
-/* ── Visit toggle ── */
 function toggleVisit(){
   const yes = document.getElementById('vYes').checked;
   vBlock.style.display = yes ? 'block' : 'none';
@@ -766,21 +703,18 @@ function toggleVisit(){
   if(!yes) vAddr.value = '';
 }
 document.querySelectorAll('input[name=needVisit]').forEach(r => r.addEventListener('change', toggleVisit));
-
-/* ══ Валидация полей клиента (живая) ══ */
 const innEl   = document.getElementById('inn');
 const innTag  = document.getElementById('innTag');
 const phoneEl = document.getElementById('phoneInp');
 const mailEl  = document.getElementById('emailInp');
 const orgEl   = document.getElementById('orgName');
 const contEl  = document.getElementById('contactName');
-
+// ✅ НОВОЕ: элемент поля Населённый пункт
+const cityEl  = document.getElementById('cityInp');
 function mark(el, ok){
   el.classList.toggle('is-ok',  ok === true);
   el.classList.toggle('is-bad', ok === false);
 }
-
-/* ИНН: только цифры + счётчик + индикация */
 innEl.addEventListener('input', function(){
   this.value = this.value.replace(/\D/g,'').slice(0,12);
   const n = this.value.length;
@@ -788,8 +722,6 @@ innEl.addEventListener('input', function(){
   if(n === 0) mark(this, null);
   else mark(this, n === 10 || n === 12);
 });
-
-/* Телефон: маска 8 (XXX) XXX-XX-XX */
 phoneEl.addEventListener('input', function(){
   let d = this.value.replace(/\D/g,'');
   if(d.startsWith('7'))      d = '8' + d.slice(1);
@@ -804,26 +736,23 @@ phoneEl.addEventListener('input', function(){
   this.value = out;
   if(d.length === 0) mark(this, null); else mark(this, d.length === 11);
 });
-
-/* E-mail */
 mailEl.addEventListener('input', function(){
   const v = this.value.trim();
   if(!v) mark(this, null);
   else mark(this, /^[^\s@]+@[^\s@]+\.[a-zA-Zа-яА-Я]{2,}$/.test(v));
 });
-
-/* Орг. и ФИО */
 [orgEl, contEl].forEach(el => el.addEventListener('input', function(){
   const v = this.value.trim();
   if(!v) mark(this, null); else mark(this, v.length >= 3);
 }));
-
-/* ── Submit ── */
+// ✅ НОВОЕ: живая валидация Населённого пункта
+cityEl.addEventListener('input', function(){
+  const v = this.value.trim();
+  if(!v) mark(this, null); else mark(this, v.length >= 2);
+});
 form.addEventListener('submit', async e => {
   e.preventDefault();
   errorBox.style.display = 'none';
-
-  /* Валидация обязательных */
   const required = form.querySelectorAll('[required]');
   let firstInvalid = null;
   for(const el of required){
@@ -835,8 +764,6 @@ form.addEventListener('submit', async e => {
     firstInvalid.focus();
     return;
   }
-
-  /* Проверка ИНН */
   const innVal = innEl.value.trim();
   if(!/^\d{10}$|^\d{12}$/.test(innVal)){
     SFX.error();
@@ -844,35 +771,27 @@ form.addEventListener('submit', async e => {
     mark(innEl, false); innEl.focus();
     return;
   }
-
-  /* Проверка телефона */
   if(phoneEl.value.replace(/\D/g,'').length !== 11){
     SFX.error();
     showErr('Укажите корректный номер телефона: 8 (XXX) XXX-XX-XX');
     mark(phoneEl, false); phoneEl.focus();
     return;
   }
-
-  /* Проверка e-mail */
   if(!/^[^\s@]+@[^\s@]+\.[a-zA-Zа-яА-Я]{2,}$/.test(mailEl.value.trim())){
     SFX.error();
     showErr('Укажите корректный E-Mail');
     mark(mailEl, false); mailEl.focus();
     return;
   }
-
   const raw = Object.fromEntries(new FormData(form).entries());
-
   const url = SCRIPT_URLS[raw.targetOrg];
   if(!url){
     SFX.error();
     showErr('Не найден URL для выбранной организации. Обратитесь к администратору.');
     return;
   }
-
   submitBtn.disabled    = true;
   submitBtn.textContent = 'Отправка...';
-
   const kassas = [...kktBox.querySelectorAll('.kkt-block')].map((b,i) => ({
     n:        i + 1,
     rnm:      b.querySelector('[data-f=rnm]').value.trim(),
@@ -880,15 +799,15 @@ form.addEventListener('submit', async e => {
     fn:       b.querySelector('[data-f=fn]').value.trim(),
     modelKkt: b.querySelector('[data-f=modelKkt]').value.trim()
   }));
-
   const data = {
     targetOrg:      raw.targetOrg      || '',
     employee_fio:   raw.lpEmployee     || '',
     priority:       raw.priority       || 'Средний',
     status:         'Новая',
     comment:        raw.comment        || '',
-    org_name:       raw.orgName        || '',
+    city:           raw.city           || '',   // ✅ НОВОЕ ПОЛЕ → столбец H
     inn:            raw.inn            || '',
+    org_name:       raw.orgName        || '',
     contact_person: raw.contactName    || '',
     phone:          raw.phone          || '',
     email:          raw.email          || '',
@@ -901,7 +820,6 @@ form.addEventListener('submit', async e => {
     has_wifi:       raw.hasWifi        || 'нет',
     createdAt:      new Date().toISOString()
   };
-
   try {
     await fetch(url, {
       method:  'POST',
@@ -909,11 +827,8 @@ form.addEventListener('submit', async e => {
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body:    JSON.stringify(data)
     });
-
-    /* 🔊 ЗВУК УСПЕШНОЙ ОТПРАВКИ */
     SFX.success();
     if(navigator.vibrate) navigator.vibrate([18, 45, 28]);
-
     document.getElementById('successOrgName').textContent = raw.targetOrg || '';
     form.style.display = 'none';
     document.querySelectorAll('.card').forEach(c => {
@@ -921,7 +836,6 @@ form.addEventListener('submit', async e => {
     });
     document.getElementById('success-message').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
   } catch(err) {
     SFX.error();
     showErr('Ошибка отправки: ' + err.message);
@@ -929,21 +843,18 @@ form.addEventListener('submit', async e => {
     submitBtn.textContent = 'Отправить заявку →';
   }
 });
-
 function showErr(msg){
   errorBox.textContent   = msg;
   errorBox.style.display = 'block';
   errorBox.scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
-
-/* ── Reset ── */
 document.getElementById('resetBtn').addEventListener('click', () => {
   SFX.tick();
   form.reset();
   cashCount.value = 1;
   renderKkt();
   toggleVisit();
-  [innEl, phoneEl, mailEl, orgEl, contEl].forEach(el => mark(el, null));
+  [innEl, phoneEl, mailEl, orgEl, contEl, cityEl].forEach(el => mark(el, null));
   innTag.textContent = '0';
   document.querySelectorAll('.card').forEach(c => c.style.display = '');
   form.style.display = 'block';
@@ -953,16 +864,31 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   submitBtn.textContent   = 'Отправить заявку →';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-/* ── Init ── */
 renderKkt();
 toggleVisit();
 </script>
 </body>
 </html>
+</body>
+</html>
 
 							<script>
-                            	success(){ if(!enabled) return; new Audio('ССЫЛКА_НА_MP3').play().catch(()=>{}); }
+                            	city: raw.city || '',   // → столбец H в таблице
+
+sheet.appendRow([
+  data.createdAt,       // A
+  data.targetOrg,       // B
+  data.employee_fio,    // C
+  data.priority,        // D
+  data.status,          // E
+  data.org_name,        // F
+  data.inn,             // G
+  data.city,            // H ← НОВОЕ «Населённый пункт»
+  data.contact_person,  // I (сдвиг)
+  data.phone,           // J
+  data.email,           // K
+  // ... остальные поля
+]);
 							</script>
                         </body>
                         </html>
